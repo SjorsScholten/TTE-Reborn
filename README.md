@@ -1,5 +1,8 @@
 # TTE-Reborn
 
+Niet alles naar de master pushen. Maak gebruik van branches.
+Weet je niet hoe branches werken? Vraag het aan een van je collegas
+
 Variabelen in camelCase: int camelCase = 0;
 
 Methoden: private int TestMethod()
