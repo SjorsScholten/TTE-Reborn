@@ -13,6 +13,8 @@ Please provide all methods of a Summary.
 
 Try to make your code reusable. Don't make code specifically for one thing.
 
+Inheritance is a thing that is useful, use it.
+
 We are using Unity, so:
 - Variables you want to assign in the editor and should not be accessed by other scripts should be private with the [SerializeField] attribute.
 - Try to use the [Tooltip] attribute to explain your variables. This makes things easier for everyone.
