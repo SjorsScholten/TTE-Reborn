@@ -8,6 +8,10 @@ public class TriggerReporter : MonoBehaviour {
 
     [SerializeField]
     private bool onlyTriggerOnce;
+    private bool hasTriggered;
+
+    [SerializeField]
+    private bool disableAfter;
 
     [Serializable]
     public class OnTriggerEnter : UnityEvent<Collider2D> { }
@@ -26,11 +30,36 @@ public class TriggerReporter : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (ignoreEnemies && other.CompareTag(Tags.Enemies.ToString())) {
+            return;
+        }
 
+        if (onlyTriggerOnce && hasTriggered) {
+            return;
+        }
+
+        hasTriggered = true;
+
+        if (onTriggerEnterEvent != null) {
+            onTriggerEnterEvent.Invoke(other);
+        }
+
+        if (disableAfter) {
+            gameObject.SetActive(false);
         }
     }
 
     private void OnTriggerExit2D(Collider2D other) {
-        
+        if (ignoreEnemies && other.CompareTag(Tags.Enemies.ToString())) {
+            return;
+        }
+
+        if (onlyTriggerOnce && hasTriggered) {
+            return;
+        }
+
+
+        if (onTriggerExitEvent != null) {
+            onTriggerExitEvent.Invoke(other);
+        }
     }
 }
