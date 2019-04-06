@@ -12,6 +12,11 @@ public class TriggerReporter : MonoBehaviour {
 
     [SerializeField]
     private bool disableAfter;
+    [SerializeField]
+    private bool resetOnDisableObject = false;
+
+    [SerializeField]
+    private bool ignoreEnemies = true;
 
     [Serializable]
     public class OnTriggerEnter : UnityEvent<Collider2D> { }
@@ -21,11 +26,10 @@ public class TriggerReporter : MonoBehaviour {
     public class OnTriggerExit : UnityEvent<Collider2D> { }
     public OnTriggerExit onTriggerExitEvent;
 
-    [SerializeField]
-    private bool ignoreEnemies;
+    private void OnEnable() {
+        if (!resetOnDisableObject) return;
 
-    void Start() {
-
+        hasTriggered = false;
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
