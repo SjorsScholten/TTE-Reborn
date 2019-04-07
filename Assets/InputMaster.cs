@@ -21,6 +21,9 @@ public class InputMaster : InputActionAssetReference
         // Movement
         m_Movement = asset.GetActionMap("Movement");
         m_Movement_Move = m_Movement.GetAction("Move");
+        // Cutscenes
+        m_Cutscenes = asset.GetActionMap("Cutscenes");
+        m_Cutscenes_Confirm = m_Cutscenes.GetAction("Confirm");
         m_Initialized = true;
     }
     private void Uninitialize()
@@ -31,15 +34,23 @@ public class InputMaster : InputActionAssetReference
         }
         m_Movement = null;
         m_Movement_Move = null;
+        if (m_CutscenesActionsCallbackInterface != null)
+        {
+            Cutscenes.SetCallbacks(null);
+        }
+        m_Cutscenes = null;
+        m_Cutscenes_Confirm = null;
         m_Initialized = false;
     }
     public void SetAsset(InputActionAsset newAsset)
     {
         if (newAsset == asset) return;
         var MovementCallbacks = m_MovementActionsCallbackInterface;
+        var CutscenesCallbacks = m_CutscenesActionsCallbackInterface;
         if (m_Initialized) Uninitialize();
         asset = newAsset;
         Movement.SetCallbacks(MovementCallbacks);
+        Cutscenes.SetCallbacks(CutscenesCallbacks);
     }
     public override void MakePrivateCopyOfActions()
     {
@@ -85,6 +96,46 @@ public class InputMaster : InputActionAssetReference
             return new MovementActions(this);
         }
     }
+    // Cutscenes
+    private InputActionMap m_Cutscenes;
+    private ICutscenesActions m_CutscenesActionsCallbackInterface;
+    private InputAction m_Cutscenes_Confirm;
+    public struct CutscenesActions
+    {
+        private InputMaster m_Wrapper;
+        public CutscenesActions(InputMaster wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Confirm { get { return m_Wrapper.m_Cutscenes_Confirm; } }
+        public InputActionMap Get() { return m_Wrapper.m_Cutscenes; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled { get { return Get().enabled; } }
+        public InputActionMap Clone() { return Get().Clone(); }
+        public static implicit operator InputActionMap(CutscenesActions set) { return set.Get(); }
+        public void SetCallbacks(ICutscenesActions instance)
+        {
+            if (m_Wrapper.m_CutscenesActionsCallbackInterface != null)
+            {
+                Confirm.started -= m_Wrapper.m_CutscenesActionsCallbackInterface.OnConfirm;
+                Confirm.performed -= m_Wrapper.m_CutscenesActionsCallbackInterface.OnConfirm;
+                Confirm.cancelled -= m_Wrapper.m_CutscenesActionsCallbackInterface.OnConfirm;
+            }
+            m_Wrapper.m_CutscenesActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                Confirm.started += instance.OnConfirm;
+                Confirm.performed += instance.OnConfirm;
+                Confirm.cancelled += instance.OnConfirm;
+            }
+        }
+    }
+    public CutscenesActions @Cutscenes
+    {
+        get
+        {
+            if (!m_Initialized) Initialize();
+            return new CutscenesActions(this);
+        }
+    }
     private int m_KeyboardSchemeIndex = -1;
     public InputControlScheme KeyboardScheme
     {
@@ -99,4 +150,8 @@ public class InputMaster : InputActionAssetReference
 public interface IMovementActions
 {
     void OnMove(InputAction.CallbackContext context);
+}
+public interface ICutscenesActions
+{
+    void OnConfirm(InputAction.CallbackContext context);
 }
