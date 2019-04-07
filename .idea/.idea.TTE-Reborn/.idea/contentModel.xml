@@ -16,6 +16,28 @@
           </e>
           <e p="tekst.txt" t="Include" />
           <e p="Utils" t="Include">
+            <e p="Interactables" t="Include">
+              <e p="IActivateable.cs" t="Include" />
+              <e p="IDamageable.cs" t="Include" />
+              <e p="IDestroyable.cs" t="Include" />
+              <e p="IInteractable.cs" t="Include" />
+              <e p="Interactable.cs" t="Include" />
+              <e p="SimpleActivateables" t="Include">
+                <e p="SimpleOnOff.cs" t="Include" />
+              </e>
+              <e p="SimpleDamageables" t="Include">
+                <e p="SimpleLivingEntity.cs" t="Include" />
+              </e>
+              <e p="SimpleDestroyables" t="Include">
+                <e p="SimpleDestroyable.cs" t="Include" />
+              </e>
+              <e p="SimpleInteractables" t="Include">
+                <e p="SimpleDestroyer.cs" t="Include" />
+                <e p="SimpleDialogue.cs" t="Include" />
+                <e p="SimpleLever.cs" t="Include" />
+                <e p="SimplePickUp.cs" t="Include" />
+              </e>
+            </e>
             <e p="TriggerReporter.cs" t="Include" />
           </e>
         </e>
