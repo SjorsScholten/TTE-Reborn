@@ -23,3 +23,9 @@ We are using Unity, so:
 - Do you use the same data in a lot of different scripts? Please make use of Scriptable Objects.
 - Avoid spaghetti, it is evil. Make use of Events when you can.
 - Use regions when necessary.
+
+# Versions
+
+Ink: https://github.com/inkle/inky/releases/tag/0.10.0b
+
+Unity: 2018.3.0f2
