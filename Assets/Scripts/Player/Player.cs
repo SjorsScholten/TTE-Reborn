@@ -9,6 +9,8 @@ public class Player : MonoBehaviour {
 
     public InputMaster controls;
 
+    private Vector2 direction;
+
     [Serializable] public class OnMovePlayer : UnityEvent<Vector2> { }
     public OnMovePlayer OnMovePlayerEvent;
 
@@ -16,9 +18,16 @@ public class Player : MonoBehaviour {
         controls.Movement.Move.performed += MovePlayer;
     }
 
-    private void MovePlayer(InputAction.CallbackContext obj) {
-        var direction = obj.ReadValue<Vector2>();
+    private void Update() {
+        DoMove();
+    }
+
+    private void DoMove() {
         OnMovePlayerEvent.Invoke(direction);
+    }
+
+    private void MovePlayer(InputAction.CallbackContext obj) {
+        direction = obj.ReadValue<Vector2>();        
     }
 
     private void OnEnable() {

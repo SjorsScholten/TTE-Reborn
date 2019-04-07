@@ -17,7 +17,7 @@ public class MultidirectionalTransformMovement : MonoBehaviour, ICharacterMoveme
     public void Move(Vector2 direction) {
         var targetSpeed = moveSpeed * direction.magnitude;
         currentSpeed = Mathf.SmoothDamp(currentSpeed, targetSpeed, ref speedSmoothVelocity, speedSmoothTime);
-        var velocity = myTransform.forward * currentSpeed;
+        Vector3 velocity = direction * currentSpeed;
         myTransform.position += velocity * Time.deltaTime;
     }
 }
