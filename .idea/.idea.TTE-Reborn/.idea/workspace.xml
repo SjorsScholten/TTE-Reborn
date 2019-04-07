@@ -1,46 +1,144 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c6ca9e83-5db8-44a9-8a9e-83b11b781c86" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.TTE-Reborn/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.TTE-Reborn/.idea/indexLayout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.TTE-Reborn/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.TTE-Reborn/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.TTE-Reborn/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TTE-Reborn/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Gizmos.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Gizmos/Cinemachine.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Movement/ICharacterMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Movement/ICharacterMovement.cs" afterDir="false" />
-    </list>
+    <list default="true" id="c6ca9e83-5db8-44a9-8a9e-83b11b781c86" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DockManager">
+    <window id="1">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/Assets/Scripts/DungeonGeneration/FloorGenerator.cs">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="135">
+                    <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+                    <folding>
+                      <marker date="1554640262569" expanded="false" signature="6:78" ph="..." />
+                      <marker date="1554640262569" expanded="true" signature="124:178" ph="{...}" />
+                      <marker date="1554640262569" expanded="true" signature="160:176" ph="{...}" />
+                    </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file pinned="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/Assets/Scripts/DungeonGeneration/Triangulation.cs">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="345">
+                    <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+                    <folding>
+                      <marker date="1554640262704" expanded="false" signature="6:78" ph="..." />
+                      <marker date="1554640262704" expanded="true" signature="123:606" ph="{...}" />
+                      <marker date="1554640262704" expanded="true" signature="129:338" ph="/* X_i = points needed to connect ... */" />
+                      <marker date="1554640262704" expanded="true" signature="453:513" ph="{...}" />
+                      <marker date="1554640262704" expanded="true" signature="539:599" ph="{...}" />
+                    </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+  </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/Movement/ICharacterMovement.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
+            <state relative-caret-position="45">
               <caret line="5" selection-start-line="5" selection-end-line="5" />
               <folding>
-                <marker date="1554561382598" expanded="true" signature="56:106" ph="{...}" />
+                <marker date="1554637347338" expanded="true" signature="56:106" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/DungeonGeneration/GenerateFloor.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1215">
+              <caret line="108" column="4" selection-start-line="108" selection-start-column="4" selection-end-line="108" selection-end-column="4" />
+              <folding>
+                <marker date="1554640262908" expanded="false" signature="6:97" ph="..." />
+                <marker date="1554640262908" expanded="true" signature="142:3962" ph="{...}" />
+                <marker date="1554640262908" expanded="true" signature="566:734" ph="{...}" />
+                <marker date="1554640262908" expanded="true" signature="655:728" ph="{...}" />
+                <marker date="1554640262908" expanded="true" signature="771:943" ph="{...}" />
+                <marker date="1554640262908" expanded="true" signature="977:1418" ph="{...}" />
+                <marker date="1554640262908" expanded="true" signature="1104:1412" ph="{...}" />
+                <marker date="1554640262908" expanded="true" signature="1169:1282" ph="{...}" />
+                <marker date="1554640262908" expanded="false" signature="1487:1649" ph="{...}" />
+                <marker date="1554640262908" expanded="true" signature="1515:1624" ph="{...}" />
+                <marker date="1554640262908" expanded="true" signature="1707:1904" ph="{...}" />
+                <marker date="1554640262908" expanded="true" signature="1965:2250" ph="{...}" />
+                <marker date="1554640262908" expanded="true" signature="2305:2584" ph="{...}" />
+                <marker date="1554640262908" expanded="true" signature="2632:3258" ph="{...}" />
+                <marker date="1554640262908" expanded="true" signature="2660:3252" ph="{...}" />
+                <marker date="1554640262908" expanded="true" signature="2748:3248" ph="{...}" />
+                <marker date="1554640262908" expanded="true" signature="2801:3243" ph="{...}" />
+                <marker date="1554640262908" expanded="true" signature="3333:3476" ph="{...}" />
+                <marker date="1554640262908" expanded="true" signature="3545:3960" ph="{...}" />
+                <marker date="1554640262908" expanded="true" signature="3612:3936" ph="{...}" />
+                <marker date="1554640262908" expanded="true" signature="3668:3926" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/DungeonGeneration/Floor.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+              <folding>
+                <marker date="1554640262796" expanded="false" signature="6:78" ph="..." />
+                <marker date="1554640262796" expanded="true" signature="115:123" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/Movement/MultidirectionalTransformMovement.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+            <state relative-caret-position="210">
+              <caret line="21" selection-start-line="21" selection-end-line="21" />
               <folding>
-                <marker date="1554561500937" expanded="false" signature="6:78" ph="..." />
-                <marker date="1554561500937" expanded="true" signature="163:742" ph="{...}" />
-                <marker date="1554561500937" expanded="true" signature="339:395" ph="{...}" />
-                <marker date="1554561500937" expanded="true" signature="450:740" ph="{...}" />
+                <marker date="1554637347346" expanded="false" signature="6:78" ph="..." />
+                <marker date="1554637347346" expanded="true" signature="163:742" ph="{...}" />
+                <marker date="1554637347346" expanded="true" signature="339:395" ph="{...}" />
+                <marker date="1554637347346" expanded="true" signature="450:740" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/Utils/TriggerReporter.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <marker date="1554637347356" expanded="false" signature="6:118" ph="..." />
+                <marker date="1554637347356" expanded="true" signature="165:1597" ph="{...}" />
+                <marker date="1554637347356" expanded="true" signature="718:799" ph="{...}" />
+                <marker date="1554637347356" expanded="true" signature="853:1253" ph="{...}" />
+                <marker date="1554637347356" expanded="true" signature="927:958" ph="{...}" />
+                <marker date="1554637347356" expanded="true" signature="1005:1036" ph="{...}" />
+                <marker date="1554637347356" expanded="true" signature="1109:1167" ph="{...}" />
+                <marker date="1554637347356" expanded="true" signature="1195:1247" ph="{...}" />
+                <marker date="1554637347356" expanded="true" signature="1306:1595" ph="{...}" />
+                <marker date="1554637347356" expanded="true" signature="1380:1411" ph="{...}" />
+                <marker date="1554637347356" expanded="true" signature="1458:1489" ph="{...}" />
+                <marker date="1554637347356" expanded="true" signature="1532:1589" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -52,7 +150,12 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/DungeonGeneration/GenerateFloor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/DungeonGeneration/Floor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utils/TriggerReporter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/DungeonGeneration/Triangulation.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Movement/ICharacterMovement.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/DungeonGeneration/FloorGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Movement/MultidirectionalTransformMovement.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -61,6 +164,10 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Movement/ICharacterMovement.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Movement/MultidirectionalMovement.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Movement/MultidirectionalTransformMovement.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/DungeonGeneration/FloorGenerator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/DungeonGeneration/GenerateFloor.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/DungeonGeneration/Triangulation.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/DungeonGeneration/Floor.cs" />
       </list>
     </option>
   </component>
@@ -70,7 +177,6 @@
     </ignored-facets>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="960" />
     <option name="width" value="960" />
     <option name="height" value="1040" />
   </component>
@@ -79,7 +185,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="FileSystemExplorer" />
       <pane id="AssemblyExplorer" />
       <pane id="UnityExplorer">
         <subPane>
@@ -99,6 +204,12 @@
               <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
               <item name="Movement" type="1045f7f1:UnityExplorerNode" />
             </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
+              <item name="Utils" type="1045f7f1:UnityExplorerNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -107,6 +218,7 @@
       <pane id="SolutionExplorer">
         <option name="show-all-files" value="false" />
       </pane>
+      <pane id="FileSystemExplorer" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -141,6 +253,10 @@
       <option name="pid" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Attach to Unity Editor.Attach to Unity Editor &amp; Play" />
+      <item itemvalue="Attach to Unity Editor.Attach to Unity Editor" />
+    </list>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -157,7 +273,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1788000" />
+    <option name="totallyTimeSpent" value="4219000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -169,26 +285,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="960" y="0" width="960" height="1040" extended-state="0" />
+    <frame x="0" y="0" width="960" height="1040" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Image Layers" />
-      <window_info id="Capture Tool" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info id="Captures" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24777777" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23555556" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Android Profiler" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Performance Profiler" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="bottom" id="NuGet" />
-      <window_info anchor="bottom" id="Logcat" />
-      <window_info anchor="bottom" id="Unit Tests" />
-      <window_info anchor="bottom" id="Database Changes" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Unity" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info id="Captures" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="Image Layers" order="5" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -196,14 +301,25 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="right" id="Device File Explorer" side_tool="true" />
-      <window_info anchor="right" id="Database" />
-      <window_info anchor="right" id="Unit Tests Coverage" />
-      <window_info anchor="right" id="Errors In Solution" />
+      <window_info anchor="bottom" id="Android Profiler" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Performance Profiler" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="NuGet" order="10" />
+      <window_info anchor="bottom" id="Logcat" order="11" />
+      <window_info anchor="bottom" id="Unit Tests" order="12" />
+      <window_info anchor="bottom" id="Database Changes" order="13" />
+      <window_info anchor="bottom" id="Version Control" order="14" />
+      <window_info anchor="bottom" id="Terminal" order="15" />
+      <window_info anchor="bottom" id="Docker" order="16" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Unity" order="17" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Errors In Solution" order="3" />
+      <window_info anchor="right" id="Device File Explorer" order="4" side_tool="true" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="right" id="Unit Tests Coverage" order="7" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -222,32 +338,96 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Movement/MultidirectionalMovement.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Movement/MultidirectionalMovement.cs" />
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/Movement/ICharacterMovement.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
+        <state relative-caret-position="45">
           <caret line="5" selection-start-line="5" selection-end-line="5" />
           <folding>
-            <marker date="1554561382598" expanded="true" signature="56:106" ph="{...}" />
+            <marker date="1554637347338" expanded="true" signature="56:106" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/Movement/MultidirectionalTransformMovement.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+        <state relative-caret-position="210">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
           <folding>
-            <marker date="1554561500937" expanded="false" signature="6:78" ph="..." />
-            <marker date="1554561500937" expanded="true" signature="163:742" ph="{...}" />
-            <marker date="1554561500937" expanded="true" signature="339:395" ph="{...}" />
-            <marker date="1554561500937" expanded="true" signature="450:740" ph="{...}" />
+            <marker date="1554637347346" expanded="false" signature="6:78" ph="..." />
+            <marker date="1554637347346" expanded="true" signature="163:742" ph="{...}" />
+            <marker date="1554637347346" expanded="true" signature="339:395" ph="{...}" />
+            <marker date="1554637347346" expanded="true" signature="450:740" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/DungeonGeneration/GenerateMap.cs">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/DungeonGeneration/Triangulation.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+          <folding>
+            <marker date="1554640262704" expanded="false" signature="6:78" ph="..." />
+            <marker date="1554640262704" expanded="true" signature="123:606" ph="{...}" />
+            <marker date="1554640262704" expanded="true" signature="129:338" ph="/* X_i = points needed to connect ... */" />
+            <marker date="1554640262704" expanded="true" signature="453:513" ph="{...}" />
+            <marker date="1554640262704" expanded="true" signature="539:599" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/DungeonGeneration/GenerateFloor.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1215">
+          <caret line="108" column="4" selection-start-line="108" selection-start-column="4" selection-end-line="108" selection-end-column="4" />
+          <folding>
+            <marker date="1554640262908" expanded="false" signature="6:97" ph="..." />
+            <marker date="1554640262908" expanded="true" signature="142:3962" ph="{...}" />
+            <marker date="1554640262908" expanded="true" signature="566:734" ph="{...}" />
+            <marker date="1554640262908" expanded="true" signature="655:728" ph="{...}" />
+            <marker date="1554640262908" expanded="true" signature="771:943" ph="{...}" />
+            <marker date="1554640262908" expanded="true" signature="977:1418" ph="{...}" />
+            <marker date="1554640262908" expanded="true" signature="1104:1412" ph="{...}" />
+            <marker date="1554640262908" expanded="true" signature="1169:1282" ph="{...}" />
+            <marker date="1554640262908" expanded="false" signature="1487:1649" ph="{...}" />
+            <marker date="1554640262908" expanded="true" signature="1515:1624" ph="{...}" />
+            <marker date="1554640262908" expanded="true" signature="1707:1904" ph="{...}" />
+            <marker date="1554640262908" expanded="true" signature="1965:2250" ph="{...}" />
+            <marker date="1554640262908" expanded="true" signature="2305:2584" ph="{...}" />
+            <marker date="1554640262908" expanded="true" signature="2632:3258" ph="{...}" />
+            <marker date="1554640262908" expanded="true" signature="2660:3252" ph="{...}" />
+            <marker date="1554640262908" expanded="true" signature="2748:3248" ph="{...}" />
+            <marker date="1554640262908" expanded="true" signature="2801:3243" ph="{...}" />
+            <marker date="1554640262908" expanded="true" signature="3333:3476" ph="{...}" />
+            <marker date="1554640262908" expanded="true" signature="3545:3960" ph="{...}" />
+            <marker date="1554640262908" expanded="true" signature="3612:3936" ph="{...}" />
+            <marker date="1554640262908" expanded="true" signature="3668:3926" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/DungeonGeneration/Floor.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+          <folding>
+            <marker date="1554640262796" expanded="false" signature="6:78" ph="..." />
+            <marker date="1554640262796" expanded="true" signature="115:123" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/DungeonGeneration/FloorGenerator.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <marker date="1554640262569" expanded="false" signature="6:78" ph="..." />
+            <marker date="1554640262569" expanded="true" signature="124:178" ph="{...}" />
+            <marker date="1554640262569" expanded="true" signature="160:176" ph="{...}" />
           </folding>
         </state>
       </provider>
