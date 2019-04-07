@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
 
 public interface ICharacterMovement {
-    void Move(Vector2 direction, float speed);
+    void Move(Vector2 direction);
 }
