@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\sjors\.Rider2018.2\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\sjors\.Rider2018.2\system\resharper-host\local\Transient\ReSharperHost\v182\SolutionCaches\_TTE-Reborn.-389653797.00" t="ExcludeRecursive" />
-    <e p="D:\Unity\Projects\TTE-Reborn" t="IncludeRecursive">
+    <e p="C:\Users\sjors\.Rider2018.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\sjors\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_TTE-Reborn.-163070124.00" t="ExcludeRecursive" />
+    <e p="D:\Projects\TTE-Reborn" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
@@ -18,8 +18,20 @@
           <e p="Utils" t="Include">
             <e p="Interactables" t="Include">
               <e p="IActivateable.cs" t="Include" />
+              <e p="IDamageable.cs" t="Include" />
+              <e p="IDestroyable.cs" t="Include" />
               <e p="IInteractable.cs" t="Include" />
+              <e p="SimpleActivateables" t="Include">
+                <e p="SimpleOnOff.cs" t="Include" />
+              </e>
+              <e p="SimpleDamageables" t="Include">
+                <e p="SimpleLivingEntity.cs" t="Include" />
+              </e>
+              <e p="SimpleDestroyables" t="Include">
+                <e p="SimpleDestroyable.cs" t="Include" />
+              </e>
               <e p="SimpleInteractables" t="Include">
+                <e p="SimpleDestroyer.cs" t="Include" />
                 <e p="SimpleDialogue.cs" t="Include" />
                 <e p="SimpleLever.cs" t="Include" />
                 <e p="SimplePickUp.cs" t="Include" />
