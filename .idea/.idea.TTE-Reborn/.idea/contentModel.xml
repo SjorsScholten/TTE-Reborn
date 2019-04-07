@@ -21,6 +21,7 @@
               <e p="IDamageable.cs" t="Include" />
               <e p="IDestroyable.cs" t="Include" />
               <e p="IInteractable.cs" t="Include" />
+              <e p="Interactable.cs" t="Include" />
               <e p="SimpleActivateables" t="Include">
                 <e p="SimpleOnOff.cs" t="Include" />
               </e>
