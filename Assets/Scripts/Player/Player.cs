@@ -28,6 +28,10 @@ public class Player : MonoBehaviour {
 
     private void MovePlayer(InputAction.CallbackContext obj) {
         direction = obj.ReadValue<Vector2>();        
+
+        if (direction == Vector2.zero) {
+            Debug.Log("ja hoor");
+        }
     }
 
     private void OnEnable() {
