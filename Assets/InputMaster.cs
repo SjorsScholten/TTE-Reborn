@@ -25,6 +25,10 @@ public class InputMaster : InputActionAssetReference
     }
     private void Uninitialize()
     {
+        if (m_MovementActionsCallbackInterface != null)
+        {
+            Movement.SetCallbacks(null);
+        }
         m_Movement = null;
         m_Movement_Move = null;
         m_Initialized = false;
@@ -32,8 +36,10 @@ public class InputMaster : InputActionAssetReference
     public void SetAsset(InputActionAsset newAsset)
     {
         if (newAsset == asset) return;
+        var MovementCallbacks = m_MovementActionsCallbackInterface;
         if (m_Initialized) Uninitialize();
         asset = newAsset;
+        Movement.SetCallbacks(MovementCallbacks);
     }
     public override void MakePrivateCopyOfActions()
     {
@@ -41,6 +47,7 @@ public class InputMaster : InputActionAssetReference
     }
     // Movement
     private InputActionMap m_Movement;
+    private IMovementActions m_MovementActionsCallbackInterface;
     private InputAction m_Movement_Move;
     public struct MovementActions
     {
@@ -53,6 +60,22 @@ public class InputMaster : InputActionAssetReference
         public bool enabled { get { return Get().enabled; } }
         public InputActionMap Clone() { return Get().Clone(); }
         public static implicit operator InputActionMap(MovementActions set) { return set.Get(); }
+        public void SetCallbacks(IMovementActions instance)
+        {
+            if (m_Wrapper.m_MovementActionsCallbackInterface != null)
+            {
+                Move.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnMove;
+                Move.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnMove;
+                Move.cancelled -= m_Wrapper.m_MovementActionsCallbackInterface.OnMove;
+            }
+            m_Wrapper.m_MovementActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                Move.started += instance.OnMove;
+                Move.performed += instance.OnMove;
+                Move.cancelled += instance.OnMove;
+            }
+        }
     }
     public MovementActions @Movement
     {
@@ -72,4 +95,8 @@ public class InputMaster : InputActionAssetReference
             return asset.controlSchemes[m_KeyboardSchemeIndex];
         }
     }
+}
+public interface IMovementActions
+{
+    void OnMove(InputAction.CallbackContext context);
 }

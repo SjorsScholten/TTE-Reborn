@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Experimental.Input;
 
-public class Player : MonoBehaviour {
+public class PlayerMovement : MonoBehaviour, IMovementActions {
 
     public InputMaster controls;
 
@@ -15,7 +15,7 @@ public class Player : MonoBehaviour {
     public OnMovePlayer OnMovePlayerEvent;
 
     private void Awake() {
-        controls.Movement.Move.performed += MovePlayer;
+        controls.Movement.SetCallbacks(this);
     }
 
     private void Update() {
@@ -26,12 +26,8 @@ public class Player : MonoBehaviour {
         OnMovePlayerEvent.Invoke(direction);
     }
 
-    private void MovePlayer(InputAction.CallbackContext obj) {
-        direction = obj.ReadValue<Vector2>();        
-
-        if (direction == Vector2.zero) {
-            Debug.Log("ja hoor");
-        }
+    public void OnMove(InputAction.CallbackContext context) {
+        direction = context.ReadValue<Vector2>();
     }
 
     private void OnEnable() {
