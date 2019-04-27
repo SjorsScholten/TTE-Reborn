@@ -4,6 +4,7 @@ ScriptedImporter:
   fileIDToRecycleName:
     11400000: <root>
     11400002: Movement/Move
+    11400004: Cutscenes/Confirm
   externalObjects: {}
   userData: 
   assetBundleName: 

@@ -78,6 +78,36 @@
                     "modifiers": ""
                 }
             ]
+        },
+        {
+            "name": "Cutscenes",
+            "id": "942e2dbf-d005-4070-8418-96ae4a10a6a6",
+            "actions": [
+                {
+                    "name": "Confirm",
+                    "id": "6371c448-7dd5-4f3d-bdf6-13cec8d64d6e",
+                    "expectedControlLayout": "",
+                    "continuous": false,
+                    "passThrough": false,
+                    "processors": "",
+                    "interactions": "",
+                    "bindings": []
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Confirm",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                }
+            ]
         }
     ],
     "controlSchemes": [
