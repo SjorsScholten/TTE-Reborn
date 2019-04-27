@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour, IMovementActions {
             animator.SetBool("Idle", false);
             animator.SetFloat("Horizontal", direction.x);
             animator.SetFloat("Vertical", direction.y);
-            lastDirection = direction;
+            lastDirection = direction; //Save last direction the player has faced.
         }
     }
 
