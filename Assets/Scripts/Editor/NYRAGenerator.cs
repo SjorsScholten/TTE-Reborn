@@ -33,7 +33,7 @@ public static class NYRAGenerator { //Not Your Regular Auto Generator
                     var tags = UnityEditorInternal.InternalEditorUtility.tags;
                     tags.ToList().Sort();
                     foreach (var tag in tags) {
-                        builder.AppendFormat("\t\tpublic static readonly string {0} = \"{1}\";\n", tag, tag);
+                        builder.AppendFormat("\t\tpublic static readonly string {0} = \"{1}\";\n", CleanCSharpName(tag), tag);
                     }
 
                     builder.AppendLine("\t}\n");

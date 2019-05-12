@@ -35,8 +35,7 @@ namespace NYRA {
 
 	public static class SortingLayer {
 		public static readonly string Default = "Default";
-		public static readonly string UI = "UI";
-		public static readonly string[] All = new string[]{ Default, UI };
+		public static readonly string[] All = new string[]{ Default };
 	}
 
 }
