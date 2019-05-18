@@ -100,7 +100,7 @@
                     "path": "<Keyboard>/z",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Keyboard",
                     "action": "Confirm",
                     "chainWithPrevious": false,
                     "isComposite": false,

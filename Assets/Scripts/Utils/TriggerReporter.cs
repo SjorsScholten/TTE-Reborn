@@ -33,7 +33,7 @@ public class TriggerReporter : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (ignoreEnemies && other.CompareTag(Tags.Enemies.ToString())) {
+        if (ignoreEnemies && other.CompareTag(NYRA.Tag.Enemies)) {
             return;
         }
 
@@ -53,7 +53,7 @@ public class TriggerReporter : MonoBehaviour {
     }
 
     private void OnTriggerExit2D(Collider2D other) {
-        if (ignoreEnemies && other.CompareTag(Tags.Enemies.ToString())) {
+        if (ignoreEnemies && other.CompareTag(NYRA.Tag.Enemies)) {
             return;
         }
 
