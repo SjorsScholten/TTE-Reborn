@@ -108,6 +108,48 @@
                     "modifiers": ""
                 }
             ]
+        },
+        {
+            "name": "Inventory",
+            "id": "f58b0675-fd82-4392-8fa6-23e26fc9ff95",
+            "actions": [
+                {
+                    "name": "Tabs",
+                    "id": "4f6af89f-7011-4bd1-9109-f8385bd08a0e",
+                    "expectedControlLayout": "",
+                    "continuous": false,
+                    "passThrough": false,
+                    "processors": "",
+                    "interactions": "",
+                    "bindings": []
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard",
+                    "action": "Tabs",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                },
+                {
+                    "name": "",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard",
+                    "action": "Tabs",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                }
+            ]
         }
     ],
     "controlSchemes": [

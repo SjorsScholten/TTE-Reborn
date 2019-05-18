@@ -1272,7 +1272,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: e3f0a7e0891a0b8469c08a94e69dcf9e, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1346,7 +1346,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300018, guid: 6b88f7d34e953de478e1651549e451f6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2578,7 +2578,7 @@ GameObject:
   - component: {fileID: 2078283261747878867}
   - component: {fileID: 2078283261747878864}
   m_Layer: 5
-  m_Name: Inventory_Canvas
+  m_Name: Inventory_Canvas Olaf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8241,7 +8241,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -238.27, y: 257.2}
+  m_AnchoredPosition: {x: -236, y: 257.21}
   m_SizeDelta: {x: 213.46, y: 41.59}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6060616217266947618
@@ -10132,6 +10132,7 @@ GameObject:
   - component: {fileID: 6805333001662017640}
   - component: {fileID: 6306947001508158990}
   - component: {fileID: 1120719130261693557}
+  - component: {fileID: 8998060750063445567}
   m_Layer: 5
   m_Name: Inventory_Background
   m_TagString: Untagged
@@ -10199,6 +10200,23 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &8998060750063445567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6602371775643056781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20bce154dae398a479b6765fd3383c64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controls:
+    m_Asset: {fileID: 11400000, guid: 60e7f4b391c50224f971cb3a6c3bd4c3, type: 3}
+  Tabs:
+  - {fileID: 8190539416611368430}
+  - {fileID: 529210453106975814}
 --- !u!1 &6602667932876177185
 GameObject:
   m_ObjectHideFlags: 0
@@ -11272,7 +11290,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -39, y: 257.85}
+  m_AnchoredPosition: {x: -34, y: 257.2}
   m_SizeDelta: {x: 213.46, y: 41.59}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4882209852987204756
@@ -11813,7 +11831,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300012, guid: 6b88f7d34e953de478e1651549e451f6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

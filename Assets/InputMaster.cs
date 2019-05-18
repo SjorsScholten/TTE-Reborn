@@ -24,6 +24,9 @@ public class InputMaster : InputActionAssetReference
         // Cutscenes
         m_Cutscenes = asset.GetActionMap("Cutscenes");
         m_Cutscenes_Confirm = m_Cutscenes.GetAction("Confirm");
+        // Inventory
+        m_Inventory = asset.GetActionMap("Inventory");
+        m_Inventory_Tabs = m_Inventory.GetAction("Tabs");
         m_Initialized = true;
     }
     private void Uninitialize()
@@ -40,6 +43,12 @@ public class InputMaster : InputActionAssetReference
         }
         m_Cutscenes = null;
         m_Cutscenes_Confirm = null;
+        if (m_InventoryActionsCallbackInterface != null)
+        {
+            Inventory.SetCallbacks(null);
+        }
+        m_Inventory = null;
+        m_Inventory_Tabs = null;
         m_Initialized = false;
     }
     public void SetAsset(InputActionAsset newAsset)
@@ -47,10 +56,12 @@ public class InputMaster : InputActionAssetReference
         if (newAsset == asset) return;
         var MovementCallbacks = m_MovementActionsCallbackInterface;
         var CutscenesCallbacks = m_CutscenesActionsCallbackInterface;
+        var InventoryCallbacks = m_InventoryActionsCallbackInterface;
         if (m_Initialized) Uninitialize();
         asset = newAsset;
         Movement.SetCallbacks(MovementCallbacks);
         Cutscenes.SetCallbacks(CutscenesCallbacks);
+        Inventory.SetCallbacks(InventoryCallbacks);
     }
     public override void MakePrivateCopyOfActions()
     {
@@ -136,6 +147,46 @@ public class InputMaster : InputActionAssetReference
             return new CutscenesActions(this);
         }
     }
+    // Inventory
+    private InputActionMap m_Inventory;
+    private IInventoryActions m_InventoryActionsCallbackInterface;
+    private InputAction m_Inventory_Tabs;
+    public struct InventoryActions
+    {
+        private InputMaster m_Wrapper;
+        public InventoryActions(InputMaster wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Tabs { get { return m_Wrapper.m_Inventory_Tabs; } }
+        public InputActionMap Get() { return m_Wrapper.m_Inventory; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled { get { return Get().enabled; } }
+        public InputActionMap Clone() { return Get().Clone(); }
+        public static implicit operator InputActionMap(InventoryActions set) { return set.Get(); }
+        public void SetCallbacks(IInventoryActions instance)
+        {
+            if (m_Wrapper.m_InventoryActionsCallbackInterface != null)
+            {
+                Tabs.started -= m_Wrapper.m_InventoryActionsCallbackInterface.OnTabs;
+                Tabs.performed -= m_Wrapper.m_InventoryActionsCallbackInterface.OnTabs;
+                Tabs.cancelled -= m_Wrapper.m_InventoryActionsCallbackInterface.OnTabs;
+            }
+            m_Wrapper.m_InventoryActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                Tabs.started += instance.OnTabs;
+                Tabs.performed += instance.OnTabs;
+                Tabs.cancelled += instance.OnTabs;
+            }
+        }
+    }
+    public InventoryActions @Inventory
+    {
+        get
+        {
+            if (!m_Initialized) Initialize();
+            return new InventoryActions(this);
+        }
+    }
     private int m_KeyboardSchemeIndex = -1;
     public InputControlScheme KeyboardScheme
     {
@@ -154,4 +205,8 @@ public interface IMovementActions
 public interface ICutscenesActions
 {
     void OnConfirm(InputAction.CallbackContext context);
+}
+public interface IInventoryActions
+{
+    void OnTabs(InputAction.CallbackContext context);
 }
