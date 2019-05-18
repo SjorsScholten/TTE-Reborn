@@ -126,27 +126,63 @@
             ],
             "bindings": [
                 {
-                    "name": "",
-                    "path": "<Keyboard>/leftArrow",
+                    "name": "2D Vector",
+                    "path": "2DVector",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Keyboard",
+                    "groups": "",
                     "action": "Tabs",
                     "chainWithPrevious": false,
-                    "isComposite": false,
+                    "isComposite": true,
                     "isPartOfComposite": false,
                     "modifiers": ""
                 },
                 {
-                    "name": "",
-                    "path": "<Keyboard>/rightArrow",
-                    "interactions": "",
+                    "name": "Up",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": ";Keyboard",
                     "action": "Tabs",
                     "chainWithPrevious": false,
                     "isComposite": false,
-                    "isPartOfComposite": false,
+                    "isPartOfComposite": true,
+                    "modifiers": ""
+                },
+                {
+                    "name": "Down",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": ";Keyboard",
+                    "action": "Tabs",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": true,
+                    "modifiers": ""
+                },
+                {
+                    "name": "Left",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": ";Keyboard",
+                    "action": "Tabs",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": true,
+                    "modifiers": ""
+                },
+                {
+                    "name": "Right",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": ";Keyboard",
+                    "action": "Tabs",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": true,
                     "modifiers": ""
                 }
             ]

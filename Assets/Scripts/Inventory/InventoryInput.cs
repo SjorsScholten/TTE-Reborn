@@ -3,18 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.Input;
 
-public class InventoryInput : MonoBehaviour, IInventoryActions {
-    public InputMaster controls;
+public class InventoryInput : InputBase, IInventoryActions {
 
     [SerializeField]
     [Tooltip("Inventory tabs")]
-    private List<GameObject> Tabs;
+    private List<GameObject> tabs;
 
-    private float direction;
+    //Pages script of the current tab
+    private Pages tabPages;
+
+    private Vector2 direction;
     private int index = 0;
 
     void Awake() {
         controls.Inventory.SetCallbacks(this);
+        tabPages = tabs[index].GetComponent<Pages>();
     }
 
     /// <summary>
@@ -22,8 +25,8 @@ public class InventoryInput : MonoBehaviour, IInventoryActions {
     /// </summary>
     /// <param name="context"></param>
     public void OnTabs(InputAction.CallbackContext context) {
-        direction = context.ReadValue<float>();
-        Debug.Log(direction);
+        direction = context.ReadValue<Vector2>();
+        //Debug.Log(direction);
         ChangeTab();
     }
 
@@ -31,40 +34,28 @@ public class InventoryInput : MonoBehaviour, IInventoryActions {
     /// Changes Tab depending on the input
     /// </summary>
     private void ChangeTab() {
-        if (direction < 0) {
-            SetIndex(-1);
+        bool changeTab = false;
+        if (direction.x < 0) {
+            
+            changeTab = true;
+            index = HelperFunctions.GetIndex(index, -1, tabs.Count);
         }
-        else {
-            SetIndex(1);
+        else if (direction.x > 0) {
+            changeTab = true;
+            index = HelperFunctions.GetIndex(index, 1, tabs.Count);
         }
-        Tabs[index].transform.SetAsLastSibling();
-    }
+        else if (direction.y < 0) {
+            tabPages.NextPage(-1);
+        }
+        else if (direction.y > 0) {
+            tabPages.NextPage(1);
+        }
 
-    /// <summary>
-    /// Set new index of Tab list.
-    /// </summary>
-    /// <param name="next"></param>
-    private void SetIndex(int next) {
-        index += next;
-        if (index < 0) {
-            index = Tabs.Count - 1;
+        if(changeTab) {
+            Debug.Log("Change tab   index=" + index);
+            tabs[index].transform.SetAsLastSibling();
+            tabPages = tabs[index].GetComponent<Pages>();
+            tabPages.Setup();
         }
-        else if (index == Tabs.Count) {
-            index = 0;
-        }
-    }
-
-    /// <summary>
-    /// Enable controls
-    /// </summary>
-    private void OnEnable() {
-        controls.Enable();
-    }
-
-    /// <summary>
-    /// Disable controls
-    /// </summary>
-    private void OnDisable() {
-        controls.Disable();
     }
 }
