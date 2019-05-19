@@ -1,12 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Tilemaps;
+﻿using UnityEngine;
 using System.Reflection;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
+# if UNITY_EDITOR
 [CustomEditor(typeof(Grid))]
 public class TilemapSelector : Editor {
 
@@ -78,3 +76,4 @@ public class TilemapSelector : Editor {
     }
 
 }
+#endif
