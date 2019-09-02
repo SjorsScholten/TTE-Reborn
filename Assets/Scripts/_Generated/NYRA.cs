@@ -11,6 +11,8 @@ namespace NYRA {
 		public static readonly string Player = "Player";
 		public static readonly string GameController = "GameController";
 		public static readonly string Enemies = "Enemies";
+		public static readonly string Room = "Room";
+		public static readonly string RoomTilemap = "RoomTilemap";
 	}
 
 	public static class Scene {
@@ -18,6 +20,7 @@ namespace NYRA {
 		public static readonly string SampleScene = "SampleScene";
 		public static readonly string Dialog = "Dialog";
 		public static readonly string MovementAndInput = "MovementAndInput";
+		public static readonly string TileMaps = "TileMaps";
 	}
 
 	public static class Layer {
