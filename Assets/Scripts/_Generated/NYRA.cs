@@ -11,6 +11,7 @@ namespace NYRA {
 		public static readonly string Player = "Player";
 		public static readonly string GameController = "GameController";
 		public static readonly string Enemies = "Enemies";
+		public static readonly string Playable = "Playable";
 	}
 
 	public static class Scene {
@@ -18,6 +19,7 @@ namespace NYRA {
 		public static readonly string SampleScene = "SampleScene";
 		public static readonly string Dialog = "Dialog";
 		public static readonly string MovementAndInput = "MovementAndInput";
+		public static readonly string EnemyTest = "EnemyTest";
 	}
 
 	public static class Layer {
@@ -31,6 +33,10 @@ namespace NYRA {
 		public static readonly LayerMask WaterMask = 1 << 4;
 		public static readonly string UI = "UI";
 		public static readonly LayerMask UIMask = 1 << 5;
+		public static readonly string Wall = "Wall";
+		public static readonly LayerMask WallMask = 1 << 8;
+		public static readonly string Enemy = "Enemy";
+		public static readonly LayerMask EnemyMask = 1 << 9;
 	}
 
 	public static class SortingLayer {
