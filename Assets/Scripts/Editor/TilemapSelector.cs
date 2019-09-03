@@ -8,6 +8,8 @@ using UnityEditor;
 [CustomEditor(typeof(Grid))]
 public class TilemapSelector : Editor {
 
+    string selected;
+
     private void OnSceneGUI() {
         var go = target as Grid;
         var assembly = Assembly.Load(new AssemblyName("UnityEditor"));
@@ -19,10 +21,9 @@ public class TilemapSelector : Editor {
         GUILayout.BeginArea(new Rect(Camera.current.pixelWidth / EditorGUIUtility.pixelsPerPoint - 150, 20, 100, Camera.current.pixelHeight / EditorGUIUtility.pixelsPerPoint - 40));
 
         var rect = EditorGUILayout.BeginVertical();
-        GUI.color = Color.gray;
+        GUI.color = Color.white;
         GUI.Box(rect, GUIContent.none);
 
-        GUI.color = Color.white;
 
         GUILayout.BeginHorizontal();
         GUILayout.FlexibleSpace();
@@ -48,6 +49,8 @@ public class TilemapSelector : Editor {
                     if (paletteWindow != null) {
                         var selectTargetMethod = windowType.GetMethod("SelectTarget", BindingFlags.Instance | BindingFlags.NonPublic);
                         selectTargetMethod.Invoke(paletteWindow, new object[] { 0, child.gameObject });
+                        selected = child.gameObject.name;
+                        Debug.Log(selected);
                     }
                 }
 
@@ -70,6 +73,14 @@ public class TilemapSelector : Editor {
 
         EditorGUILayout.EndVertical();
 
+        GUILayout.EndArea();
+
+        // Starts an area to draw elements
+        GUILayout.BeginArea(new Rect(Camera.current.pixelWidth / EditorGUIUtility.pixelsPerPoint - 300, 20, 200, 100));
+        GUIStyle style = new GUIStyle();
+        style.fontSize = 24;
+        style.normal.textColor = Color.red;
+        GUILayout.Label(selected, style);
         GUILayout.EndArea();
 
         Handles.EndGUI();
