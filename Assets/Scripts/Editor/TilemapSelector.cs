@@ -50,7 +50,6 @@ public class TilemapSelector : Editor {
                         var selectTargetMethod = windowType.GetMethod("SelectTarget", BindingFlags.Instance | BindingFlags.NonPublic);
                         selectTargetMethod.Invoke(paletteWindow, new object[] { 0, child.gameObject });
                         selected = child.gameObject.name;
-                        Debug.Log(selected);
                     }
                 }
 
