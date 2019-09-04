@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemies
+  - Playable
   - Room
   - RoomTilemap
   layers:
@@ -16,8 +17,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Wall
+  - Enemy
   - 
   - 
   - 

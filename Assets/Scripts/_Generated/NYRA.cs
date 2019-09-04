@@ -34,6 +34,10 @@ namespace NYRA {
 		public static readonly LayerMask WaterMask = 1 << 4;
 		public static readonly string UI = "UI";
 		public static readonly LayerMask UIMask = 1 << 5;
+		public static readonly string Wall = "Wall";
+		public static readonly LayerMask WallMask = 1 << 8;
+		public static readonly string Enemy = "Enemy";
+		public static readonly LayerMask EnemyMask = 1 << 9;
 	}
 
 	public static class SortingLayer {
