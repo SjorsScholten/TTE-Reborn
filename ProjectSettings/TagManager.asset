@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Enemies
   - Playable
+  - Room
+  - RoomTilemap
   layers:
   - Default
   - TransparentFX
@@ -42,4 +44,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Foreground
+    uniqueID: 2149759891
+    locked: 0
+  - name: Decoration
+    uniqueID: 3717640291
+    locked: 0
+  - name: Ground
+    uniqueID: 2701673475
+    locked: 0
+  - name: Background
+    uniqueID: 3822196217
     locked: 0

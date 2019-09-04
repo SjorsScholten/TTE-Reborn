@@ -12,12 +12,15 @@ namespace NYRA {
 		public static readonly string GameController = "GameController";
 		public static readonly string Enemies = "Enemies";
 		public static readonly string Playable = "Playable";
+		public static readonly string Room = "Room";
+		public static readonly string RoomTilemap = "RoomTilemap";
 	}
 
 	public static class Scene {
 		public static readonly string Example = "Example";
 		public static readonly string SampleScene = "SampleScene";
 		public static readonly string Dialog = "Dialog";
+		public static readonly string Flocking = "Flocking";
 		public static readonly string MovementAndInput = "MovementAndInput";
 		public static readonly string EnemyTest = "EnemyTest";
 	}
@@ -41,7 +44,11 @@ namespace NYRA {
 
 	public static class SortingLayer {
 		public static readonly string Default = "Default";
-		public static readonly string[] All = new string[]{ Default };
+		public static readonly string Foreground = "Foreground";
+		public static readonly string Decoration = "Decoration";
+		public static readonly string Ground = "Ground";
+		public static readonly string Background = "Background";
+		public static readonly string[] All = new string[]{ Default, Foreground, Decoration, Ground, Background };
 	}
 
 }
