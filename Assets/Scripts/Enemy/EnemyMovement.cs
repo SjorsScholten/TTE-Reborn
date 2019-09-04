@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using System;
 
+[RequireComponent(typeof(CircleCollider2D))]
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField]
@@ -15,6 +16,12 @@ public class EnemyMovement : MonoBehaviour
 
     [SerializeField]
     private Animator animator;
+
+    [SerializeField]
+    private GameObject alertIcon;
+
+    [SerializeField]
+    private float alertTime;
 
     [Serializable] public class OnMoveEnemy : UnityEvent<Vector2> { }
 
@@ -31,10 +38,20 @@ public class EnemyMovement : MonoBehaviour
     private Transform target;
     #endregion
 
+    #region Detection
+    private CircleCollider2D detectionZone;
+    private float alertZone;
+    private float alertTimer;
+    private bool alert;
+    private Transform alertTarget;
+    #endregion
+
     private Vector3 debugDirection;
 
     private void Awake()
     {
+        detectionZone = GetComponent<CircleCollider2D>();
+        alertZone = detectionZone.radius - (detectionZone.radius * 0.15f);
         possibleTargets = new List<Transform>();
         lastDirection = Vector2.down;
     }
@@ -42,8 +59,25 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //updates timer
+        //if timer has reached the max then a target will be set
+        if (alert)
+        {
+            alertTimer += Time.deltaTime;
+            if (alertTimer >= alertTime)
+            {
+                target = alertTarget;
+                DeactivateAlert();
+            }
+        }
+
+        if (possibleTargets.Count == 0)
+        {
+            alertIcon.SetActive(false);
+        }
         if (target != null)
         {
+            alertIcon.SetActive(false);
             TryTarget(target);
 
         }
@@ -81,19 +115,30 @@ public class EnemyMovement : MonoBehaviour
         debugDirection = directionVector3;
 
         //If distance > minDistance then move on
-        if (directionVector3.magnitude > minDistance)
+        float distance = directionVector3.magnitude;
+        if (distance > minDistance)
         {
 
             Vector2 directionV2 = new Vector2(directionVector3.x, directionVector3.y);
 
-            RaycastHit2D hit = Physics2D.Raycast(new Vector2(origin.x, origin.y), directionV2, 10, layerMask.value);
+            RaycastHit2D hit = Physics2D.Raycast(new Vector2(origin.x, origin.y), directionV2, detectionZone.radius, layerMask.value);
 
             //When a playable is found walk in that direction.
-            if (hit.transform.tag == NYRA.Tag.Playable)
+            if (hit == true && hit.transform.tag == NYRA.Tag.Playable)
             {
-                this.direction = directionV2;
-                DoMove();
-                return true;
+                if (target == null && distance > alertZone)
+                {
+                    alertTarget = t;
+                    alert = true;
+                    alertIcon.SetActive(true);
+                }
+                else
+                {
+                    target = t;
+                    this.direction = directionV2;
+                    DoMove();
+                    return true;
+                }
             }
         }
         else
@@ -137,11 +182,28 @@ public class EnemyMovement : MonoBehaviour
         if (other.tag == NYRA.Tag.Playable && possibleTargets.Contains(other.transform))
         {
             possibleTargets.Remove(other.transform);
+
+            if (target == other.transform)
+            {
+                target = null;
+            }
+            else if (alertTarget == other.transform)
+            {
+                DeactivateAlert();
+            }
         }
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.DrawRay(this.transform.position, debugDirection);
+    }
+
+    private void DeactivateAlert()
+    {
+        alert = false;
+        alertTimer = 0;
+        alertIcon.SetActive(false);
+        alertTarget = null;
     }
 }

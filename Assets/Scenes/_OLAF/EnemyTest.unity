@@ -112,6 +112,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &236196182 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5198232499465956063, guid: ce4601763c2e6f74db9b3fd9a2d05099,
+    type: 3}
+  m_PrefabInstance: {fileID: 6058017219096433318}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1044339125
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,7 +327,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!50 &1208952745
 Rigidbody2D:
   serializedVersion: 4
@@ -760,5 +766,10 @@ PrefabInstance:
       propertyPath: minDistance
       value: 0.8
       objectReference: {fileID: 0}
+    - target: {fileID: 6058017218382234503, guid: ce4601763c2e6f74db9b3fd9a2d05099,
+        type: 3}
+      propertyPath: alertIcon
+      value: 
+      objectReference: {fileID: 236196182}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce4601763c2e6f74db9b3fd9a2d05099, type: 3}
