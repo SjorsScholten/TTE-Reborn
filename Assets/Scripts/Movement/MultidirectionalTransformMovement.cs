@@ -10,6 +10,10 @@ public class MultidirectionalTransformMovement : MonoBehaviour, ICharacterMoveme
     private float currentSpeed;
     private Transform myTransform;
 
+    public float MoveSpeed {
+        get { return moveSpeed; }
+    }
+
     private void Awake() {
         myTransform = GetComponent<Transform>();
     }
