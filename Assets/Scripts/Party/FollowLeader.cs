@@ -5,24 +5,39 @@ using UnityEngine;
 public class FollowLeader : MonoBehaviour {
 
     public Transform target;
+    public List<Transform> partyMembers;
 
     [SerializeField] private float distanceRadius;
 
-    private float _maxVelocity;
-    private Vector3 _velocity;
     private Vector3 otherVelocity;
+    private Vector3 lastDirection;
 
     void Start() {
-        _maxVelocity = GetComponent<MultidirectionalTransformMovement>().MoveSpeed;
     }
 
     void Update() {
-        _velocity = (target.position - transform.position).normalized * _maxVelocity;
+        foreach (Transform member in partyMembers) {
+            if (member == target) continue;
 
-        if (Vector2.Distance(target.position, transform.position) > distanceRadius) {
-            _velocity = Vector3.SmoothDamp(_velocity, Vector3.zero, ref otherVelocity, 0.7f);
-            transform.position += _velocity * Time.deltaTime;
-        } 
+            var maxVelocity = member.GetComponent<MultidirectionalTransformMovement>().MoveSpeed;
+            var animator = member.GetComponent<Animator>();
+            var velocity = (target.position - member.position).normalized * maxVelocity;
+
+            if (Vector2.Distance(target.position, member.position) > distanceRadius) {
+                member.position += velocity * Time.deltaTime;
+
+                animator.SetBool("Idle", false);
+                animator.SetFloat("Horizontal", velocity.x);
+                animator.SetFloat("Vertical", velocity.y);
+                lastDirection = velocity;
+            } else {
+                animator.SetBool("Idle", true);
+            }
+        }
+    }
+
+    private Vector3 CalculateSeperation(Transform agent, float speed) {
+        return Vector3.zero;
     }
 
 }
