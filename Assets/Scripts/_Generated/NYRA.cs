@@ -11,6 +11,7 @@ namespace NYRA {
 		public static readonly string Player = "Player";
 		public static readonly string GameController = "GameController";
 		public static readonly string Enemies = "Enemies";
+		public static readonly string Playable = "Playable";
 		public static readonly string Room = "Room";
 		public static readonly string RoomTilemap = "RoomTilemap";
 	}
@@ -19,8 +20,9 @@ namespace NYRA {
 		public static readonly string Example = "Example";
 		public static readonly string SampleScene = "SampleScene";
 		public static readonly string Dialog = "Dialog";
+		public static readonly string Flocking = "Flocking";
 		public static readonly string MovementAndInput = "MovementAndInput";
-		public static readonly string TileMaps = "TileMaps";
+		public static readonly string EnemyTest = "EnemyTest";
 	}
 
 	public static class Layer {
@@ -34,11 +36,19 @@ namespace NYRA {
 		public static readonly LayerMask WaterMask = 1 << 4;
 		public static readonly string UI = "UI";
 		public static readonly LayerMask UIMask = 1 << 5;
+		public static readonly string Wall = "Wall";
+		public static readonly LayerMask WallMask = 1 << 8;
+		public static readonly string Enemy = "Enemy";
+		public static readonly LayerMask EnemyMask = 1 << 9;
 	}
 
 	public static class SortingLayer {
 		public static readonly string Default = "Default";
-		public static readonly string[] All = new string[]{ Default };
+		public static readonly string Foreground = "Foreground";
+		public static readonly string Decoration = "Decoration";
+		public static readonly string Ground = "Ground";
+		public static readonly string Background = "Background";
+		public static readonly string[] All = new string[]{ Default, Foreground, Decoration, Ground, Background };
 	}
 
 }
