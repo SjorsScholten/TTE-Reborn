@@ -284,6 +284,7 @@ GameObject:
   m_Component:
   - component: {fileID: 862796170}
   - component: {fileID: 862796169}
+  - component: {fileID: 862796171}
   m_Layer: 0
   m_Name: Room
   m_TagString: Untagged
@@ -353,6 +354,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &862796171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 862796168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d248c30b04477364699c7db9d4d9403e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1379535810}
+  partyMembers:
+  - {fileID: 1379535810}
+  - {fileID: 1407950850}
+  distanceRadius: 0.8
 --- !u!1 &1026156001
 GameObject:
   m_ObjectHideFlags: 0
@@ -840,7 +858,6 @@ GameObject:
   - component: {fileID: 1407950850}
   - component: {fileID: 1407950849}
   - component: {fileID: 1407950848}
-  - component: {fileID: 1407950847}
   - component: {fileID: 1407950846}
   m_Layer: 0
   m_Name: Slave
@@ -868,20 +885,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1407950847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1407950845}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d248c30b04477364699c7db9d4d9403e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 1379535810}
-  distanceRadius: 1.25
 --- !u!114 &1407950848
 MonoBehaviour:
   m_ObjectHideFlags: 0
