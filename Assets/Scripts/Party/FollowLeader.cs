@@ -1,23 +1,21 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class FollowLeader : MonoBehaviour {
 
-    public Transform target;
     public List<Transform> partyMembers;
 
     [SerializeField] private float distanceRadius;
-
-    private Vector3 otherVelocity;
-    private Vector3 lastDirection;
 
     void Start() {
     }
 
     void Update() {
-        foreach (Transform member in partyMembers) {
-            if (member == target) continue;
+        for (int i = 1; i < partyMembers.Count; i++) {
+            var member = partyMembers[i].transform;
+            var target = partyMembers[i - 1].transform;
 
             var maxVelocity = member.GetComponent<MultidirectionalTransformMovement>().MoveSpeed;
             var animator = member.GetComponent<Animator>();
@@ -25,19 +23,18 @@ public class FollowLeader : MonoBehaviour {
 
             if (Vector2.Distance(target.position, member.position) > distanceRadius) {
                 member.position += velocity * Time.deltaTime;
-
-                animator.SetBool("Idle", false);
-                animator.SetFloat("Horizontal", velocity.x);
-                animator.SetFloat("Vertical", velocity.y);
-                lastDirection = velocity;
-            } else {
-                animator.SetBool("Idle", true);
             }
+
+            AnimateFollower(member, velocity);
         }
     }
 
-    private Vector3 CalculateSeperation(Transform agent, float speed) {
-        return Vector3.zero;
-    }
+    private void AnimateFollower(Transform member, Vector3 velocity) {
+        var animator = member.GetComponent<Animator>();
+        var targetAnimator = partyMembers[0].GetComponent<Animator>();
 
+        animator.SetBool("Idle", targetAnimator.GetBool("Idle"));
+        animator.SetFloat("Horizontal", velocity.x);
+        animator.SetFloat("Vertical", velocity.y);
+    }
 }
