@@ -10,6 +10,7 @@ public class FollowLeader : MonoBehaviour {
     [SerializeField] private float distanceRadius;
 
     void Start() {
+        partyMembers[0].GetComponent<PlayerMovement>().isActive = true;
     }
 
     void Update() {
@@ -21,7 +22,7 @@ public class FollowLeader : MonoBehaviour {
             var animator = member.GetComponent<Animator>();
             var velocity = (target.position - member.position).normalized * maxVelocity;
 
-            if (Vector2.Distance(target.position, member.position) > distanceRadius) {
+            if (Vector2.Distance(target.position, member.position) >= distanceRadius) {               
                 member.position += velocity * Time.deltaTime;
             }
 
