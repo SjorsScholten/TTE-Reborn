@@ -20,22 +20,22 @@ public class FollowLeader : MonoBehaviour {
 
             var maxVelocity = member.GetComponent<MultidirectionalTransformMovement>().MoveSpeed;
             var animator = member.GetComponent<Animator>();
-            var velocity = (target.position - member.position).normalized * maxVelocity;
+            var velocity = target.position - member.position;
 
-            if (Vector2.Distance(target.position, member.position) >= distanceRadius) {               
-                member.position += velocity * Time.deltaTime;
+            if (Vector2.Distance(target.position, member.position) >= distanceRadius) {
+                member.GetComponent<MultidirectionalTransformMovement>().Move(velocity);
+                animator.SetBool("Idle", false);
+            } else {
+                animator.SetBool("Idle", true);
             }
 
-            AnimateFollower(member, velocity);
+            animator.SetFloat("Horizontal", velocity.x);
+            animator.SetFloat("Vertical", velocity.y);
         }
     }
 
     private void AnimateFollower(Transform member, Vector3 velocity) {
         var animator = member.GetComponent<Animator>();
-        var targetAnimator = partyMembers[0].GetComponent<Animator>();
-
-        animator.SetBool("Idle", targetAnimator.GetBool("Idle"));
-        animator.SetFloat("Horizontal", velocity.x);
-        animator.SetFloat("Vertical", velocity.y);
+        var targetAnimator = partyMembers[0].GetComponent<Animator>();        
     }
 }
