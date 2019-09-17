@@ -10,6 +10,12 @@ public enum DamageSource {
     Metal = 1 << 5,
     Earth = 1 << 6,
     Flail = 1 << 7,
-    Punch = 1 << 8,
+    DirectPhysical = 1 << 8,
+    Potion = 1 << 9,
+    Dagger = 1 << 10,
+    Artifact = 1 << 11,
+    AreaOfEffect = 1 << 12,
+    Explosion = 1 << 13,
+    Hazard = 1 << 14,
     Magic = Fire | Water | Wood | Metal | Earth
 }
