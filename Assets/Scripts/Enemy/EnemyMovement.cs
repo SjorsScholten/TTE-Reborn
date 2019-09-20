@@ -27,6 +27,7 @@ public class EnemyMovement : MonoBehaviour
 
     [Header("Events")]
     public OnMoveEnemy OnMoveEnemyEvent;
+    public OnMoveEnemy OnAttack;
 
     #region Walk Direction
     private Vector2 direction;
@@ -116,11 +117,11 @@ public class EnemyMovement : MonoBehaviour
 
         //If distance > minDistance then move on
         float distance = directionVector3.magnitude;
+
+        Vector2 directionV2 = new Vector2(directionVector3.x, directionVector3.y);
+
         if (distance > minDistance)
         {
-
-            Vector2 directionV2 = new Vector2(directionVector3.x, directionVector3.y);
-
             RaycastHit2D hit = Physics2D.Raycast(new Vector2(origin.x, origin.y), directionV2, detectionZone.radius, layerMask.value);
 
             //When a playable is found walk in that direction.
@@ -143,6 +144,7 @@ public class EnemyMovement : MonoBehaviour
         }
         else
         {
+            OnAttack.Invoke(directionV2.normalized);
             return true;
         }
         return false;
@@ -154,10 +156,12 @@ public class EnemyMovement : MonoBehaviour
     /// </summary>
     private void DoMove()
     {
-        OnMoveEnemyEvent.Invoke(direction.normalized);
+        Vector2 normalizedDir = direction.normalized;
+
+        OnMoveEnemyEvent.Invoke(normalizedDir);
         animator.SetBool("Idle", false);
-        animator.SetFloat("Horizontal", direction.x);
-        animator.SetFloat("Vertical", direction.y);
+        animator.SetFloat("Horizontal", normalizedDir.x);
+        animator.SetFloat("Vertical", normalizedDir.y);
         lastDirection = direction;
     }
 
