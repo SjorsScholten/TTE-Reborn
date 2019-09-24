@@ -14,16 +14,12 @@ public class PlayerMovement : MonoBehaviour, IMovementActions {
 
     [SerializeField]
     private Animator animator;
-
-    private Vector2 direction;
     private Vector2 lastDirection;
 
     [Serializable] public class OnMovePlayer : UnityEvent<Vector2> { }
     public OnMovePlayer OnMovePlayerEvent;
 
-    public Vector2 Direction {
-        get { return direction; }
-    }
+    public Vector2 Direction { get; private set; }
 
     private void Awake() {
         controls.Movement.SetCallbacks(this);
@@ -37,28 +33,30 @@ public class PlayerMovement : MonoBehaviour, IMovementActions {
     }
 
     private void DoMove() {
-        OnMovePlayerEvent.Invoke(direction);
+        OnMovePlayerEvent.Invoke(Direction);
     }
 
     public void ForceMove(Vector2 direction) {
-        this.direction = direction;
+        this.Direction = direction;
     }
 
     private void Animate() {
-        if (direction == Vector2.zero) { //Idle
+        if (!isActive) return;
+
+        if (Direction == Vector2.zero) { //Idle
             animator.SetBool("Idle", true);
             animator.SetFloat("Horizontal", lastDirection.x);
             animator.SetFloat("Vertical", lastDirection.y);
         } else { //Walk
             animator.SetBool("Idle", false);
-            animator.SetFloat("Horizontal", direction.x);
-            animator.SetFloat("Vertical", direction.y);
-            lastDirection = direction; //Save last direction the player has faced.
+            animator.SetFloat("Horizontal", Direction.x);
+            animator.SetFloat("Vertical", Direction.y);
+            lastDirection = Direction; //Save last direction the player has faced.
         }
     }
 
     public void OnMove(InputAction.CallbackContext context) {
-        if (isActive) direction = context.ReadValue<Vector2>();
+        if (isActive) Direction = context.ReadValue<Vector2>();
     }
 
     private void OnEnable() {
