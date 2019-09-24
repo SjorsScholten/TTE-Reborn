@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5198232499465956063}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.007, y: 0.916, z: 0.017841699}
+  m_LocalPosition: {x: 0.004, y: 2.25, z: 0.017841699}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6058017218382234502}
@@ -181,10 +181,10 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 311
-  minDistance: 0.6
+  minDistance: 0.8
   animator: {fileID: 6058017218382234555}
-  alertIcon: {fileID: 0}
-  alertTime: 0
+  alertIcon: {fileID: 5198232499465956063}
+  alertTime: 2
   OnMoveEnemyEvent:
     m_PersistentCalls:
       m_Calls:
@@ -230,6 +230,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitbox: {fileID: 6429647323074143723}
+  cooldown: 3
+  attackTime: 0.5
 --- !u!114 &6058017218382234552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,7 +277,7 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.5}
   serializedVersion: 2
   m_Radius: 4
 --- !u!50 &8506797662856309893
@@ -324,7 +326,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6429647323074143723}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6058017218382234502}
@@ -355,8 +357,8 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.3, y: 0}
-      - {x: -1.25, y: 0.7}
-      - {x: -1.5, y: 0.35}
-      - {x: -1.5, y: -0.35}
-      - {x: -1.25, y: -0.7}
+    - - {x: -0.5, y: 0}
+      - {x: -1.5, y: 0.7}
+      - {x: -1.75, y: 0.35}
+      - {x: -1.75, y: -0.35}
+      - {x: -1.5, y: -0.7}

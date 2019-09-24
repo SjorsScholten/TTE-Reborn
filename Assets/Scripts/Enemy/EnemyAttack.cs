@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyAttack : MonoBehaviour
 {
     [SerializeField]
-    private GameObject hitbox;
+    private GameObject hitboxObject;
 
     [SerializeField]
     private float cooldown;
@@ -17,6 +17,13 @@ public class EnemyAttack : MonoBehaviour
     private Direction side;
 
     private bool canAttack = true;
+
+    private Damager damager;
+
+    private void Awake()
+    {
+        damager = hitboxObject.GetComponent<Damager>();
+    }
 
     public void GetDirection(Vector2 direction)
     {
@@ -83,11 +90,11 @@ public class EnemyAttack : MonoBehaviour
                 break;
         }
 
-        hitbox.transform.rotation = Quaternion.Euler(0, 0, rotation);
+        hitboxObject.transform.rotation = Quaternion.Euler(0, 0, rotation);
         canAttack = false;
-        hitbox.SetActive(true);
+        //TODO ATTACK
+        damager.AttackEnemy();
         yield return new WaitForSeconds(attackTime);
-        hitbox.SetActive(false);
         StartCoroutine(Cooldown());
     }
 
