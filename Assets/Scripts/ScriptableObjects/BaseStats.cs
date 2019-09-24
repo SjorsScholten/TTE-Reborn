@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewPartyMember", menuName = "Party/Party Member")]
-public class PartyMemberStats : ScriptableObject {
+[CreateAssetMenu(fileName = "NewBaseStats", menuName = "Stats/Base Stats")]
+public class BaseStats : ScriptableObject {
     public int vitality;
     public int wisdom;
     public int strength;
