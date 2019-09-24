@@ -49,7 +49,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 24
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -95,14 +95,14 @@ TextureImporter:
         y: 32
         width: 24
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d7b188d7031ccfc4d857843a1458d85d
+      spriteID: 0ea09df6e741c6546850311d4fb8a249
       vertices: []
       indices: 
       edges: []
@@ -115,14 +115,14 @@ TextureImporter:
         y: 32
         width: 24
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 38f268b4d9aa9b5449117684063bd1c1
+      spriteID: bc7fad6a0e051de4580437cad9ba1ca4
       vertices: []
       indices: 
       edges: []
@@ -135,14 +135,14 @@ TextureImporter:
         y: 0
         width: 24
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5957337283b460047985e8b2c30e0c5b
+      spriteID: 667b1a8da369e61408940d27216ce731
       vertices: []
       indices: 
       edges: []
@@ -155,14 +155,14 @@ TextureImporter:
         y: 0
         width: 24
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 78fbf3c2a662bdc438f84a4b0aacc19c
+      spriteID: 650cb98e7a90e94468384ce413b39732
       vertices: []
       indices: 
       edges: []
