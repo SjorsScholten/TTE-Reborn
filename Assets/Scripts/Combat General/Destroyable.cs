@@ -6,23 +6,40 @@ using UnityEngine.Events;
 
 public class Destroyable : MonoBehaviour {
 
+    #region parameters
     [SerializeField] private BaseStats stats;
     public BaseStats Stats { get { return stats; } }
 
     [SerializeField] [EnumFlag] private DamageSource immuneToSource;
 
+    [SerializeField] private int health;
+    
     [Serializable] public class OnDestroyed : UnityEvent<Transform> { }
+    [Header("Events")]
     public OnDestroyed OnDestroyedEvent;
 
     [Serializable] public class OnDamaged : UnityEvent { }
     public OnDamaged OnDamagedEvent;
+    #endregion
+
+    private void Awake()
+    {
+        this.health = stats.vitality;
+    }
 
     public bool Damage(int baseDamage, Transform origin, DamageSource source) {
         if (IsImmune(source)) return false;
         int defense = DefenseOrResistance(source);
 
         int damage = baseDamage - defense;
-        
+
+        health -= damage;
+
+        if (health <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+
         //TODO: Health Calculation and Updates
         //Apply Knockback?
         //Damage Effects
@@ -45,5 +62,4 @@ public class Destroyable : MonoBehaviour {
         if ((source & DamageSource.Magic) != 0) return stats.resistance;
         else return stats.defense;
     }
-
 }
