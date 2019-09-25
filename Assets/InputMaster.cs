@@ -24,6 +24,9 @@ public class InputMaster : InputActionAssetReference
         // Cutscenes
         m_Cutscenes = asset.GetActionMap("Cutscenes");
         m_Cutscenes_Confirm = m_Cutscenes.GetAction("Confirm");
+        // Combat
+        m_Combat = asset.GetActionMap("Combat");
+        m_Combat_WeakAttack = m_Combat.GetAction("WeakAttack");
         m_Initialized = true;
     }
     private void Uninitialize()
@@ -40,6 +43,12 @@ public class InputMaster : InputActionAssetReference
         }
         m_Cutscenes = null;
         m_Cutscenes_Confirm = null;
+        if (m_CombatActionsCallbackInterface != null)
+        {
+            Combat.SetCallbacks(null);
+        }
+        m_Combat = null;
+        m_Combat_WeakAttack = null;
         m_Initialized = false;
     }
     public void SetAsset(InputActionAsset newAsset)
@@ -47,10 +56,12 @@ public class InputMaster : InputActionAssetReference
         if (newAsset == asset) return;
         var MovementCallbacks = m_MovementActionsCallbackInterface;
         var CutscenesCallbacks = m_CutscenesActionsCallbackInterface;
+        var CombatCallbacks = m_CombatActionsCallbackInterface;
         if (m_Initialized) Uninitialize();
         asset = newAsset;
         Movement.SetCallbacks(MovementCallbacks);
         Cutscenes.SetCallbacks(CutscenesCallbacks);
+        Combat.SetCallbacks(CombatCallbacks);
     }
     public override void MakePrivateCopyOfActions()
     {
@@ -136,6 +147,46 @@ public class InputMaster : InputActionAssetReference
             return new CutscenesActions(this);
         }
     }
+    // Combat
+    private InputActionMap m_Combat;
+    private ICombatActions m_CombatActionsCallbackInterface;
+    private InputAction m_Combat_WeakAttack;
+    public struct CombatActions
+    {
+        private InputMaster m_Wrapper;
+        public CombatActions(InputMaster wrapper) { m_Wrapper = wrapper; }
+        public InputAction @WeakAttack { get { return m_Wrapper.m_Combat_WeakAttack; } }
+        public InputActionMap Get() { return m_Wrapper.m_Combat; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled { get { return Get().enabled; } }
+        public InputActionMap Clone() { return Get().Clone(); }
+        public static implicit operator InputActionMap(CombatActions set) { return set.Get(); }
+        public void SetCallbacks(ICombatActions instance)
+        {
+            if (m_Wrapper.m_CombatActionsCallbackInterface != null)
+            {
+                WeakAttack.started -= m_Wrapper.m_CombatActionsCallbackInterface.OnWeakAttack;
+                WeakAttack.performed -= m_Wrapper.m_CombatActionsCallbackInterface.OnWeakAttack;
+                WeakAttack.cancelled -= m_Wrapper.m_CombatActionsCallbackInterface.OnWeakAttack;
+            }
+            m_Wrapper.m_CombatActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                WeakAttack.started += instance.OnWeakAttack;
+                WeakAttack.performed += instance.OnWeakAttack;
+                WeakAttack.cancelled += instance.OnWeakAttack;
+            }
+        }
+    }
+    public CombatActions @Combat
+    {
+        get
+        {
+            if (!m_Initialized) Initialize();
+            return new CombatActions(this);
+        }
+    }
     private int m_KeyboardSchemeIndex = -1;
     public InputControlScheme KeyboardScheme
     {
@@ -154,4 +205,8 @@ public interface IMovementActions
 public interface ICutscenesActions
 {
     void OnConfirm(InputAction.CallbackContext context);
+}
+public interface ICombatActions
+{
+    void OnWeakAttack(InputAction.CallbackContext context);
 }
