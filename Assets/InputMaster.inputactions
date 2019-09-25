@@ -108,6 +108,36 @@
                     "modifiers": ""
                 }
             ]
+        },
+        {
+            "name": "Combat",
+            "id": "af8c2b97-32da-46f9-962e-c06d772bba7a",
+            "actions": [
+                {
+                    "name": "WeakAttack",
+                    "id": "b16167f1-3624-4737-969e-6dceaf36817a",
+                    "expectedControlLayout": "",
+                    "continuous": false,
+                    "passThrough": false,
+                    "processors": "",
+                    "interactions": "",
+                    "bindings": []
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "path": "<Keyboard>/z",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "WeakAttack",
+                    "chainWithPrevious": false,
+                    "isComposite": false,
+                    "isPartOfComposite": false,
+                    "modifiers": ""
+                }
+            ]
         }
     ],
     "controlSchemes": [
