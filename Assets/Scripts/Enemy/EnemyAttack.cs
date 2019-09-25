@@ -92,7 +92,6 @@ public class EnemyAttack : MonoBehaviour
 
         hitboxObject.transform.rotation = Quaternion.Euler(0, 0, rotation);
         canAttack = false;
-        //TODO ATTACK
         damager.AttackEnemy();
         yield return new WaitForSeconds(attackTime);
         StartCoroutine(Cooldown());

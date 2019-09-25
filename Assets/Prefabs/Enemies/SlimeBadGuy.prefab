@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 370913197958546218}
   - component: {fileID: 370913197958546219}
   - component: {fileID: 5470007518241636352}
+  - component: {fileID: 2864069831355594368}
+  - component: {fileID: 9194403133067075730}
   m_Layer: 9
   m_Name: SlimeBadGuy
   m_TagString: Enemies
@@ -112,12 +114,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 156cabd03ff2ff74797930e7bf83827b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 0}
+  stats: {fileID: 11400000, guid: 45dc5875b12172d4295452eab9002c7f, type: 2}
   immuneToSource: 0
   health: 0
   OnDestroyedEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9194403133067075730}
+        m_MethodName: Destroy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: Destroyable+OnDestroyed, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   OnDamagedEvent:
@@ -125,3 +138,41 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Destroyable+OnDamaged, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+--- !u!61 &2864069831355594368
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370913197958546216}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.54}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.1}
+    oldSize: {x: 1.5, y: 2}
+    newSize: {x: 1, y: 1.3333334}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.3, y: 1.17}
+  m_EdgeRadius: 0
+--- !u!114 &9194403133067075730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370913197958546216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9fb799f27334cb4295067dd77d96168, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
