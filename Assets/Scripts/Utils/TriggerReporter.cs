@@ -16,7 +16,7 @@ public class TriggerReporter : MonoBehaviour {
     private bool resetOnDisableObject = false;
 
     [SerializeField]
-    private bool ignoreEnemies = true;
+    private LayerMask hitLayers;
 
     [Serializable]
     public class OnTriggerEnter : UnityEvent<Collider2D> { }
@@ -33,7 +33,8 @@ public class TriggerReporter : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (ignoreEnemies && other.CompareTag(NYRA.Tag.Enemies)) {
+        if (hitLayers != (hitLayers | (1 << other.gameObject.layer)))
+        {
             return;
         }
 
@@ -53,7 +54,8 @@ public class TriggerReporter : MonoBehaviour {
     }
 
     private void OnTriggerExit2D(Collider2D other) {
-        if (ignoreEnemies && other.CompareTag(NYRA.Tag.Enemies)) {
+        if (hitLayers != (hitLayers | (1 << other.gameObject.layer)))
+        {
             return;
         }
 

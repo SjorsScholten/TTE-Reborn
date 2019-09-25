@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8be80b7245edf914bae2d29c47f22e7e, type: 3}
-  m_Name: Laurens
+  m_Name: Uwen
   m_EditorClassIdentifier: 
-  vitality: 12
-  wisdom: 10
-  strength: 4
-  defense: 4
-  magic: 3
-  resistance: 6
-  speed: 4
-  luck: 5
+  vitality: 50
+  wisdom: 40
+  strength: 15
+  defense: 12
+  magic: 6
+  resistance: 10
+  speed: 9
+  luck: 3

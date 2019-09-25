@@ -4,29 +4,45 @@ using UnityEngine;
 using UnityEngine.Events;
 using System;
 
-[RequireComponent(typeof(CircleCollider2D))]
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField]
-    private LayerMask layerMask;
-
-    [SerializeField]
-    [Range(0, 3)]
-    private float minDistance;
-
+    [Header("Movement")]
     [SerializeField]
     private Animator animator;
 
     [SerializeField]
-    private GameObject alertIcon;
+    [Tooltip("Range that the enemy will keep from it's target.")]
+    [Range(0, 3)]
+    private float minDistance;
+
+    [Header("Detection")]
 
     [SerializeField]
+    [Tooltip("Layers of the targets.")]
+    private LayerMask layerMask;
+
+    [SerializeField]
+    [Tooltip("Total range of detection.")]
+    private float detectionRadius;
+
+    [SerializeField]
+    [Tooltip("Takes up the outer % of the detection radius.")]
+    [Range(0,0.8f)]
+    private float alertRadiusPercentage;
+
+    [SerializeField]
+    [Tooltip("Time before enemy will go out of alert and aggros the player.")]
     private float alertTime;
+
+    [SerializeField]
+    [Tooltip("GameObject used to show that the enemy is on alert.")]
+    private GameObject alertIcon;
 
     [Serializable] public class OnMoveEnemy : UnityEvent<Vector2> { }
 
     [Header("Events")]
     public OnMoveEnemy OnMoveEnemyEvent;
+    public OnMoveEnemy OnAttack;
 
     #region Walk Direction
     private Vector2 direction;
@@ -34,31 +50,30 @@ public class EnemyMovement : MonoBehaviour
     #endregion
 
     #region Targets
-    private List<Transform> possibleTargets;
-    private Transform target;
+    private Collider2D[] possibleTargets;
+    private Collider2D target;
     #endregion
 
     #region Detection
-    private CircleCollider2D detectionZone;
     private float alertZone;
     private float alertTimer;
     private bool alert;
-    private Transform alertTarget;
+    private Collider2D alertTarget;
     #endregion
 
     private Vector3 debugDirection;
 
     private void Awake()
     {
-        detectionZone = GetComponent<CircleCollider2D>();
-        alertZone = detectionZone.radius - (detectionZone.radius * 0.15f);
-        possibleTargets = new List<Transform>();
+        alertZone = detectionRadius - (detectionRadius * alertRadiusPercentage);
         lastDirection = Vector2.down;
     }
 
     // Update is called once per frame
     void Update()
     {
+        UpdateTargets();
+
         //updates timer
         //if timer has reached the max then a target will be set
         if (alert)
@@ -71,7 +86,7 @@ public class EnemyMovement : MonoBehaviour
             }
         }
 
-        if (possibleTargets.Count == 0)
+        if (possibleTargets.Length == 0)
         {
             alertIcon.SetActive(false);
         }
@@ -83,9 +98,9 @@ public class EnemyMovement : MonoBehaviour
         }
         else
         {
-            if (possibleTargets.Count > 0)
+            if (possibleTargets.Length > 0)
             {
-                foreach (Transform t in possibleTargets)
+                foreach (Collider2D t in possibleTargets)
                 {
                     if (TryTarget(t))
                     {
@@ -105,23 +120,36 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    private bool TryTarget(Transform t)
+    private void UpdateTargets()
+    {
+        possibleTargets = Physics2D.OverlapCircleAll(this.transform.position, detectionRadius, layerMask);
+        if (Array.IndexOf(possibleTargets, target) == -1)
+        {
+            target = null;
+        }
+        else if (Array.IndexOf(possibleTargets, alertTarget) == -1)
+        {
+            DeactivateAlert();
+        }
+    }
+
+    private bool TryTarget(Collider2D t)
     {
         //Set positions
         Vector3 origin = this.transform.position;
-        Vector3 directionVector3 = t.position - origin;
+        Vector3 directionVector3 = t.transform.position - origin;
 
         //Debug
         debugDirection = directionVector3;
 
         //If distance > minDistance then move on
         float distance = directionVector3.magnitude;
+
+        Vector2 directionV2 = new Vector2(directionVector3.x, directionVector3.y);
+
         if (distance > minDistance)
         {
-
-            Vector2 directionV2 = new Vector2(directionVector3.x, directionVector3.y);
-
-            RaycastHit2D hit = Physics2D.Raycast(new Vector2(origin.x, origin.y), directionV2, detectionZone.radius, layerMask.value);
+            RaycastHit2D hit = Physics2D.Raycast(new Vector2(origin.x, origin.y), directionV2, detectionRadius, layerMask.value);
 
             //When a playable is found walk in that direction.
             if (hit == true && hit.transform.tag == NYRA.Tag.Playable)
@@ -143,10 +171,10 @@ public class EnemyMovement : MonoBehaviour
         }
         else
         {
+            OnAttack.Invoke(directionV2.normalized);
             return true;
         }
         return false;
-
     }
 
     /// <summary>
@@ -154,44 +182,13 @@ public class EnemyMovement : MonoBehaviour
     /// </summary>
     private void DoMove()
     {
-        OnMoveEnemyEvent.Invoke(direction.normalized);
+        Vector2 normalizedDir = direction.normalized;
+
+        OnMoveEnemyEvent.Invoke(normalizedDir);
         animator.SetBool("Idle", false);
-        animator.SetFloat("Horizontal", direction.x);
-        animator.SetFloat("Vertical", direction.y);
+        animator.SetFloat("Horizontal", normalizedDir.x);
+        animator.SetFloat("Vertical", normalizedDir.y);
         lastDirection = direction;
-    }
-
-    /// <summary>
-    /// If Collision with Playable then set target
-    /// </summary>
-    /// <param name="other"></param>
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if(other.tag == NYRA.Tag.Playable && !possibleTargets.Contains(other.transform))
-        {
-            possibleTargets.Add(other.transform);
-        }
-    }
-
-    /// <summary>
-    /// If Playable leaves then set target to null
-    /// </summary>
-    /// <param name="other"></param>
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.tag == NYRA.Tag.Playable && possibleTargets.Contains(other.transform))
-        {
-            possibleTargets.Remove(other.transform);
-
-            if (target == other.transform)
-            {
-                target = null;
-            }
-            else if (alertTarget == other.transform)
-            {
-                DeactivateAlert();
-            }
-        }
     }
 
     private void OnDrawGizmos()
