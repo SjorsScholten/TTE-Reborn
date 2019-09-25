@@ -21,9 +21,12 @@ public class PlayerMovement : MonoBehaviour, IMovementActions {
 
     public Vector2 Direction { get; private set; }
 
+    private PlayerAttack playerAttack;
+
     private void Awake() {
         controls.Movement.SetCallbacks(this);
         lastDirection = Vector2.down;
+        playerAttack = GetComponent<PlayerAttack>();
     }
 
     private void Update() {
@@ -34,6 +37,7 @@ public class PlayerMovement : MonoBehaviour, IMovementActions {
 
     private void DoMove() {
         OnMovePlayerEvent.Invoke(Direction);
+        playerAttack.RotateAttacks(lastDirection);
     }
 
     public void ForceMove(Vector2 direction) {
@@ -60,10 +64,10 @@ public class PlayerMovement : MonoBehaviour, IMovementActions {
     }
 
     private void OnEnable() {
-        controls.Enable();
+        controls.Movement.Enable();
     }
 
     private void OnDisable() {
-        controls.Disable();
+        controls.Movement.Disable();
     }
 }
