@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Experimental.Input;
 
 public class PlayerAttack : MonoBehaviour, ICombatActions {
@@ -32,7 +33,6 @@ public class PlayerAttack : MonoBehaviour, ICombatActions {
                 rotation = 270;
                 break;
         }
-
         attackContainer.localRotation = Quaternion.Euler(0, 0, rotation);
     }
 
