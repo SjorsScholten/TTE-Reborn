@@ -93,6 +93,9 @@ public class EnemyAttack : MonoBehaviour
         hitboxObject.transform.rotation = Quaternion.Euler(0, 0, rotation);
         canAttack = false;
         //todo kijk of tie aanvalt
+        yield return new WaitForEndOfFrame();
+        Debug.Log("Attack");
+        damager.DamageCollisions();
         yield return new WaitForSeconds(attackTime);
         StartCoroutine(Cooldown());
     }

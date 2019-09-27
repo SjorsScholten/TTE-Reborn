@@ -90,6 +90,9 @@ GameObject:
   - component: {fileID: 2241654798952769798}
   - component: {fileID: 2241654798952769799}
   - component: {fileID: 240861151}
+  - component: {fileID: 115541868}
+  - component: {fileID: 115541864}
+  - component: {fileID: 115541865}
   m_Layer: 0
   m_Name: Hitbox
   m_TagString: Untagged
@@ -162,6 +165,80 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!50 &115541868
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2241654798952769797}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &115541864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2241654798952769797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5761c533644d8ac408f3fd7799c4aed7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onlyTriggerOnce: 0
+  disableAfter: 0
+  resetOnDisableObject: 0
+  hitLayers:
+    serializedVersion: 2
+    m_Bits: 512
+  onTriggerEnterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 115541865}
+        m_MethodName: OnEnter
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: TriggerReporter+OnTriggerEnter, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onTriggerExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: TriggerReporter+OnTriggerExit, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+--- !u!114 &115541865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2241654798952769797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b25c06214febd454b9c3fc1aab7b6843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageSource: 1
+  baseDamage: 15
 --- !u!1 &2241654800007665457
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,8 +281,9 @@ GameObject:
   - component: {fileID: 2241654800137577074}
   - component: {fileID: 2241654800137577073}
   - component: {fileID: 2241654800137577072}
-  - component: {fileID: 2241654800137576975}
   - component: {fileID: 6699788444523506279}
+  - component: {fileID: 2531787443770519665}
+  - component: {fileID: 2241654800137576975}
   - component: {fileID: 2241654800137577075}
   - component: {fileID: 2241654800137577077}
   - component: {fileID: 2241654800137577076}
@@ -311,19 +389,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: PlayerMovement+OnMovePlayer, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
---- !u!114 &2241654800137576975
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2241654800137576974}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b55fb5fe38121d54691e996245cbbdcb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 3.5
 --- !u!114 &6699788444523506279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -340,6 +405,55 @@ MonoBehaviour:
     m_Asset: {fileID: 11400000, guid: 60e7f4b391c50224f971cb3a6c3bd4c3, type: 3}
   weakAttackAnimator: {fileID: 240861151}
   attackContainer: {fileID: 2241654800007665458}
+--- !u!114 &2531787443770519665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2241654800137576974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 156cabd03ff2ff74797930e7bf83827b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 11400000, guid: b907c191cabc1a14488cc09ffc92968d, type: 2}
+  immuneToSource: 0
+  health: 0
+  OnDestroyedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Destroyable+OnDestroyed, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnDamagedEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: UpdateBar
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Destroyable+OnDamaged, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+--- !u!114 &2241654800137576975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2241654800137576974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b55fb5fe38121d54691e996245cbbdcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 3.5
 --- !u!95 &2241654800137577075
 Animator:
   serializedVersion: 3
