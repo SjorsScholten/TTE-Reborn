@@ -12,13 +12,13 @@ public class Destroyable : MonoBehaviour {
 
     [SerializeField] [EnumFlag] private DamageSource immuneToSource;
 
-    [SerializeField] private int health;
+    public int health;
     
     [Serializable] public class OnDestroyed : UnityEvent<Transform> { }
     [Header("Events")]
     public OnDestroyed OnDestroyedEvent;
 
-    [Serializable] public class OnDamaged : UnityEvent { }
+    [Serializable] public class OnDamaged : UnityEvent<int> { }
     public OnDamaged OnDamagedEvent;
     #endregion
 
@@ -45,7 +45,7 @@ public class Destroyable : MonoBehaviour {
         //Damage Effects
         //Check If Dead
 
-        OnDamagedEvent.Invoke();
+        OnDamagedEvent.Invoke(health);
 
         return true;
     }
