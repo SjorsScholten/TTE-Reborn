@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 300002273}
   - component: {fileID: 300002276}
   - component: {fileID: 300002275}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: AttackHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 300002271}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.052, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 370913197958546229}
@@ -49,7 +49,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.05
+  m_Radius: 1.5
 --- !u!114 &300002273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,6 +141,9 @@ GameObject:
   - component: {fileID: 356326688}
   - component: {fileID: 356326689}
   - component: {fileID: 356326690}
+  - component: {fileID: 356326691}
+  - component: {fileID: 356326692}
+  - component: {fileID: 356326693}
   m_Layer: 9
   m_Name: SlimeBadGuy
   m_TagString: Playable
@@ -265,7 +268,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 356326689}
-        m_MethodName: Hurt
+        m_MethodName: Stun
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -290,7 +293,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.54}
+  m_Offset: {x: 0, y: 0.25}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.1}
@@ -301,7 +304,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.3, y: 1.17}
+  m_Size: {x: 1.25, y: 0.5}
   m_EdgeRadius: 0
 --- !u!114 &9194403133067075730
 MonoBehaviour:
@@ -341,8 +344,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idle: {fileID: 356326688}
-  movement: {fileID: 0}
-  attack: {fileID: 0}
+  movement: {fileID: 356326692}
+  attack: {fileID: 356326693}
   animations: {fileID: 11400000, guid: 47a234061dd45e7478ccf972264d3e89, type: 2}
   aggro: {fileID: 356326690}
   stunTimer: 0.25
@@ -360,5 +363,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 0}
   aggroRadius: 3
-  deAggroRadius: 3.5
-  requiresLOS: 1
+  deAggroRadius: 4.5
+  requiresLOS: 0
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 2048
+--- !u!114 &356326691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370913197958546216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b55fb5fe38121d54691e996245cbbdcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 2
+--- !u!114 &356326692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370913197958546216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b419e7aa1c695834aa869a4614c1ece0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 0}
+--- !u!114 &356326693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370913197958546216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5744d67ba8f1f2548a21fcdbd84e4e32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 0}
+  cooldown: 1.2
+  radius: 1.5
