@@ -423,6 +423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a17edb2f129b0f4bb512967b8700a5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy: {fileID: 0}
 --- !u!114 &356326689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -439,6 +440,8 @@ MonoBehaviour:
   movement: {fileID: 0}
   attack: {fileID: 0}
   animations: {fileID: 11400000, guid: 47a234061dd45e7478ccf972264d3e89, type: 2}
+  aggro: {fileID: 0}
+  stunTimer: 0.25
 --- !u!1 &589526697
 GameObject:
   m_ObjectHideFlags: 0
@@ -1128,6 +1131,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5470007518241636352, guid: 80ee2631b30d6ce44ae64f1a0ff9b3bb,
+        type: 3}
+      propertyPath: OnDamagedEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5470007518241636352, guid: 80ee2631b30d6ce44ae64f1a0ff9b3bb,
+        type: 3}
+      propertyPath: OnDamagedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5470007518241636352, guid: 80ee2631b30d6ce44ae64f1a0ff9b3bb,
+        type: 3}
+      propertyPath: OnDamagedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5470007518241636352, guid: 80ee2631b30d6ce44ae64f1a0ff9b3bb,
+        type: 3}
+      propertyPath: OnDamagedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 356326689}
+    - target: {fileID: 5470007518241636352, guid: 80ee2631b30d6ce44ae64f1a0ff9b3bb,
+        type: 3}
+      propertyPath: OnDamagedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Hurt
+      objectReference: {fileID: 0}
+    - target: {fileID: 5470007518241636352, guid: 80ee2631b30d6ce44ae64f1a0ff9b3bb,
+        type: 3}
+      propertyPath: OnDamagedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 300002274, guid: 80ee2631b30d6ce44ae64f1a0ff9b3bb, type: 3}
       propertyPath: m_IsTrigger

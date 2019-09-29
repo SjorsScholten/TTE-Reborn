@@ -4,14 +4,10 @@ using UnityEngine;
 
 public class IdleBehaviour : MonoBehaviour {
 
-    protected Animator animator;
-
-    void Awake() {
-        animator = GetComponent<Animator>();
-    }
+    [HideInInspector] public EnemyController enemy;
 
     public virtual void Idle(string animation) {
-        animator.Play(animation);
+        enemy.Animator.Play(animation);
     }
 
 }

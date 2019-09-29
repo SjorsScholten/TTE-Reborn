@@ -37,6 +37,8 @@ public class Destroyable : MonoBehaviour {
 
         health -= damage;
 
+        OnDamagedEvent.Invoke(health);
+
         if (health <= 0)
         {
             Destroy(this.gameObject);
@@ -46,8 +48,6 @@ public class Destroyable : MonoBehaviour {
         //Apply Knockback?
         //Damage Effects
         //Check If Dead
-
-        OnDamagedEvent.Invoke(health);
 
         return true;
     }
