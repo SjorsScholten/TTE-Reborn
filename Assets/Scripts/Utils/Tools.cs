@@ -43,14 +43,25 @@ public class Tools : MonoBehaviour {
     }
 
     /// <summary>
+    /// Returns the defense based on the source of the damage.
+    /// </summary>
+    /// <param name="source"></param>
+    /// <param name="stats"></param>
+    /// <returns></returns>
+    public static int GetDefense(DamageSource source, BaseStats stats) {
+        if ((source & DamageSource.Magic) != 0) return stats.resistance;
+        else return stats.defense;
+    }
+
+    /// <summary>
     /// Returns the base damage output based on the source of the damage.
     /// </summary>
     /// <param name="source"></param>
     /// <param name="stats"></param>
     /// <returns></returns>
     public static int GetDamage(DamageSource source, BaseStats stats) {
-        if ((source & DamageSource.Magic) != 0) return stats.resistance;
-        else return stats.defense;
+        if ((source & DamageSource.Magic) != 0) return stats.magic;
+        else return stats.strength;
     }
 
 }
