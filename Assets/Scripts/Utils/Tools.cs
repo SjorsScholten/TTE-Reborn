@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Tools : MonoBehaviour {
 
+    /// <summary>
+    /// Converts a Vector2 to a Direction Enum.
+    /// </summary>
+    /// <param name="vector"></param>
+    /// <returns></returns>
     public static Direction ConvertVector2ToDirection(Vector2 vector) {
         Direction side;
 
@@ -35,6 +40,17 @@ public class Tools : MonoBehaviour {
         } else {
             return side;
         }
+    }
+
+    /// <summary>
+    /// Returns the base damage output based on the source of the damage.
+    /// </summary>
+    /// <param name="source"></param>
+    /// <param name="stats"></param>
+    /// <returns></returns>
+    public static int GetDamage(DamageSource source, BaseStats stats) {
+        if ((source & DamageSource.Magic) != 0) return stats.resistance;
+        else return stats.defense;
     }
 
 }
