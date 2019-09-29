@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour {
@@ -14,7 +15,7 @@ public class EnemyController : MonoBehaviour {
     [SerializeField] private AttackBehaviour attack;
 
     [Header("Animations")]
-    [SerializeField] private EnemyAnimations animations;
+    public EnemyAnimations animations;
 
     [Header("Aggro Behaviour")]
     [SerializeField] private AggroBehaviour aggro;
@@ -24,13 +25,19 @@ public class EnemyController : MonoBehaviour {
 
     public Animator Animator { get; private set; }
     public EntityState EnemyState { get; private set; }
+    public Transform Target { get; private set; }
+    public AnimationClip Clip { get; private set; }
+    public bool Attacking { get { return attack.IsAttacking; } }
 
     private void Awake() {
         Animator = GetComponent<Animator>();
-        EnemyState = EntityState.Idle;
+        Clip = Animator.runtimeAnimatorController.animationClips.Single(x => animations.attackAnimation == x.name);
 
+        EnemyState = EntityState.Idle;
         idle.enemy = this;
         aggro.enemy = this;
+        movement.enemy = this;
+        attack.enemy = this;
     }
 
     private void Update() {
@@ -47,26 +54,44 @@ public class EnemyController : MonoBehaviour {
             case EntityState.Stun:
                 //Nothing, being stunned is called from an event
                 break;
-            default:
-                EnemyState = EntityState.Idle;
-                break;
         }
     }
 
+    public void ForceAggro() {
+        EnemyState = EntityState.Aggro;
+    }
+
     private void Idle() {
-        idle.Idle(animations.idleAnimation);
-        Transform target = aggro.LookForTarget();
-        if (target != null) {
+        idle.Idle();
+        Target = aggro.LookForTarget();
+        if (Target != null) {
             EnemyState = EntityState.Aggro;
         }
     }
 
     private void Aggro() {
-        //Movement and checking for deaggro (aggro.TargetStillInRange)
+        if (Target != null) {
+            movement.Move(Target);
+
+            if (!aggro.TargetStillInRange(Target)) {
+                EnemyState = EntityState.Idle;
+                return;
+            }
+
+            if (attack.AllowedToAttack()) {
+                EnemyState = EntityState.Attack;
+                return;
+            }
+        }
+        else {
+            EnemyState = EntityState.Idle;
+        }
     }
 
     private void Attack() {
-        //Actually attack the player and stop moving while attacking
+        if (!Attacking) {
+            StartCoroutine(attack.Routine());
+        }
     }
 
     public void Stun() {

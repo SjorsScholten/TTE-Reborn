@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class StandStillIdle : IdleBehaviour {
-    public override void Idle(string animation) {
-        enemy.Animator.Play(animation);
+    public override void Idle() {
+        enemy.Animator.Play(enemy.animations.idleAnimation);
     }
 }

@@ -2,17 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovementBehaviour : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+public abstract class MovementBehaviour : MonoBehaviour {
+
+    [HideInInspector] public EnemyController enemy;
+
+    protected MultidirectionalTransformMovement mtm;
+
+    private void Awake() {
+        mtm = GetComponent<MultidirectionalTransformMovement>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public abstract void Move(Transform target);
 }

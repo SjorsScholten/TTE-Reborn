@@ -29,15 +29,16 @@ public class AggroCircle : AggroBehaviour {
         return nearestTarget;
     }
 
-    public override void TargetStillInRange() {
-        throw new System.NotImplementedException();
+    public override bool TargetStillInRange(Transform target) {
+        //if (!requiresLOS && !HasLOS(target)) return false;
+        return Vector3.Distance(target.position, transform.position) <= deAggroRadius;
     }
 
     private void OnDrawGizmos() {
         float aggroDistance = aggroRadius;
         float deAggroDistance = deAggroRadius;
         Vector3 lastPositionAggro = transform.position + transform.right * aggroDistance;
-        Vector3 lastPositionDeAggro = transform.position + transform.right * aggroDistance;
+        Vector3 lastPositionDeAggro = transform.position + transform.right * deAggroDistance;
         for (var i = 10; i <= 360; i += 10) {
             Vector3 nextPositionAggro = transform.position + Quaternion.Euler(0, 0, i) * transform.right * aggroDistance;
             Vector3 nextPositionDeAggro = transform.position + Quaternion.Euler(0, 0, i) * transform.right * deAggroDistance;

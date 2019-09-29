@@ -5,11 +5,11 @@ using UnityEngine;
 public class Tools : MonoBehaviour {
 
     /// <summary>
-    /// Converts a Vector2 to a Direction Enum.
+    /// Converts a Vector to a Direction Enum.
     /// </summary>
     /// <param name="vector"></param>
     /// <returns></returns>
-    public static Direction ConvertVector2ToDirection(Vector2 vector) {
+    public static Direction ConvertVectorToDirection(Vector2 vector) {
         Direction side;
 
         if (vector.y > 0) {

@@ -6,5 +6,5 @@ public abstract class IdleBehaviour : MonoBehaviour {
 
     [HideInInspector] public EnemyController enemy;
 
-    public abstract void Idle(string animation);
+    public abstract void Idle();
 }

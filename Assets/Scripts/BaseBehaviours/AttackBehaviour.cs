@@ -2,17 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackBehaviour : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+public abstract class AttackBehaviour : MonoBehaviour {
+
+    [HideInInspector] public EnemyController enemy;
+
+    [SerializeField] protected float cooldown;
+
+    protected bool isOnCooldown;
+
+    protected TimedVariable timerCooldown = new TimedVariable();
+
+    public bool IsAttacking { get; protected set; }
+
+    private void Awake() {
+        timerCooldown.time = cooldown;
+        timerCooldown.triggerAction = () => {
+            timerCooldown.Reset();
+            isOnCooldown = false;
+            Debug.Log("Fired Timer Cooldown Reset");
+        };
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void Update() {
+        if (isOnCooldown) timerCooldown.StepFrame();
     }
+
+    public abstract IEnumerator Routine();
+    public abstract bool AllowedToAttack();
 }

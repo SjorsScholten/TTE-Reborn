@@ -7,5 +7,5 @@ public abstract class AggroBehaviour : MonoBehaviour {
     [HideInInspector] public EnemyController enemy;
 
     public abstract Transform LookForTarget();
-    public abstract void TargetStillInRange();
+    public abstract bool TargetStillInRange(Transform target);
 }

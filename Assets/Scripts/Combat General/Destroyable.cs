@@ -29,7 +29,7 @@ public class Destroyable : MonoBehaviour {
 
     public bool Damage(int baseDamage, Transform origin, DamageSource source) {
         if (IsImmune(source)) return false;
-        int defense = Tools.GetDefense(source, stats);
+        int defense = Tools.GetDefense(source, stats) / 2;
 
         int damage = baseDamage - defense;
 

@@ -16,7 +16,7 @@ public class PlayerAttack : MonoBehaviour, ICombatActions {
     }
 
     public void RotateAttacks(Vector2 direction) {
-        Direction side = Tools.ConvertVector2ToDirection(direction);
+        Direction side = Tools.ConvertVectorToDirection(direction);
         float rotation = 0;
 
         switch (side) {
