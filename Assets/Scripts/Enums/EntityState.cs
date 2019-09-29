@@ -1,6 +1,6 @@
 ﻿public enum EntityState {
     Idle,
-    Move,
+    Aggro,
     Attack,
     Stun
 }

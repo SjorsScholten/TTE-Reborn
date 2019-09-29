@@ -2,12 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IdleBehaviour : MonoBehaviour {
+public abstract class IdleBehaviour : MonoBehaviour {
 
     [HideInInspector] public EnemyController enemy;
 
-    public virtual void Idle(string animation) {
-        enemy.Animator.Play(animation);
-    }
-
+    public abstract void Idle(string animation);
 }

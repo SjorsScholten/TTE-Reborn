@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour {
 
-    [Header("Idle Settings")]
+    [Header("Idle Behaviour")]
     [SerializeField] private IdleBehaviour idle;
 
-    [Header("Movement Settings")]
+    [Header("Movement Behaviour")]
     [SerializeField] private MovementBehaviour movement;
 
-    [Header("Attack Settings")]
+    [Header("Attack Behaviour")]
     [SerializeField] private AttackBehaviour attack;
 
     [Header("Animations")]
     [SerializeField] private EnemyAnimations animations;
 
-    [Header("Aggro Settings")]
+    [Header("Aggro Behaviour")]
     [SerializeField] private AggroBehaviour aggro;
 
     [Header("Stun Settings")]
@@ -30,6 +30,7 @@ public class EnemyController : MonoBehaviour {
         EnemyState = EntityState.Idle;
 
         idle.enemy = this;
+        aggro.enemy = this;
     }
 
     private void Update() {
@@ -37,13 +38,17 @@ public class EnemyController : MonoBehaviour {
             case EntityState.Idle:
                 idle.Idle(animations.idleAnimation);
                 break;
-            case EntityState.Move:
+            case EntityState.Aggro:
+                //Movement
                 break;
             case EntityState.Attack:
+                //Attack, No Movement
                 break;
             case EntityState.Stun:
+                //Nothing, Enemy is stunned
                 break;
             default:
+                EnemyState = EntityState.Idle;
                 break;
         }
     }
@@ -53,6 +58,9 @@ public class EnemyController : MonoBehaviour {
     }
 
     private IEnumerator StunRoutine() {
+        //TODO: Knockback based on damager position.
+        //Might be better to do that in Destroyable script.
+
         Animator.Play(animations.hurtAnimation);
         EnemyState = EntityState.Stun;
         yield return new WaitForSecondsRealtime(stunTimer);

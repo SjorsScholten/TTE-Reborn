@@ -2,17 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AggroBehaviour : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+public abstract class AggroBehaviour : MonoBehaviour {
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [HideInInspector] public EnemyController enemy;
+
+    public abstract void LookForTarget();
+    public abstract void TargetStillInRange();
 }
