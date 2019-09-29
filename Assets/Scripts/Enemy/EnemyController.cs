@@ -36,16 +36,16 @@ public class EnemyController : MonoBehaviour {
     private void Update() {
         switch (EnemyState) {
             case EntityState.Idle:
-                idle.Idle(animations.idleAnimation);
+                Idle();
                 break;
             case EntityState.Aggro:
-                //Movement
+                Aggro();
                 break;
             case EntityState.Attack:
-                //Attack, No Movement
+                Attack();
                 break;
             case EntityState.Stun:
-                //Nothing, Enemy is stunned
+                //Nothing, being stunned is called from an event
                 break;
             default:
                 EnemyState = EntityState.Idle;
@@ -53,7 +53,23 @@ public class EnemyController : MonoBehaviour {
         }
     }
 
-    public void Hurt() {
+    private void Idle() {
+        idle.Idle(animations.idleAnimation);
+        Transform target = aggro.LookForTarget();
+        if (target != null) {
+            EnemyState = EntityState.Aggro;
+        }
+    }
+
+    private void Aggro() {
+        //Movement and checking for deaggro (aggro.TargetStillInRange)
+    }
+
+    private void Attack() {
+        //Actually attack the player and stop moving while attacking
+    }
+
+    public void Stun() {
         StartCoroutine(StunRoutine());
     }
 

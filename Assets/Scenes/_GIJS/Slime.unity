@@ -1017,6 +1017,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5470007518241636352, guid: 80ee2631b30d6ce44ae64f1a0ff9b3bb,
+        type: 3}
+      propertyPath: OnDamagedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Stun
+      objectReference: {fileID: 0}
+    - target: {fileID: 356326690, guid: 80ee2631b30d6ce44ae64f1a0ff9b3bb, type: 3}
+      propertyPath: requiresLOS
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 356326690, guid: 80ee2631b30d6ce44ae64f1a0ff9b3bb, type: 3}
+      propertyPath: layerMask.m_Bits
+      value: 2048
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80ee2631b30d6ce44ae64f1a0ff9b3bb, type: 3}
 --- !u!1001 &1983259905

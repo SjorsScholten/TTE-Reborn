@@ -7,9 +7,26 @@ public class AggroCircle : AggroBehaviour {
     [SerializeField] private float aggroRadius;
     [SerializeField] private float deAggroRadius;
     [SerializeField] private bool requiresLOS;
+    [SerializeField] private LayerMask layerMask;
 
-    public override void LookForTarget() {
-        throw new System.NotImplementedException();
+    public override Transform LookForTarget() {
+        var targets = Physics2D.OverlapCircleAll(transform.position, aggroRadius, layerMask);
+
+        Transform nearestTarget = null;
+        foreach (var t in targets) {
+            //if (requiresLOS&& !HasLOS(t.transform)) continue;
+            if (nearestTarget != null) {
+                if (Vector3.Distance(nearestTarget.position, transform.position) >
+                    Vector3.Distance(t.transform.position, transform.position)) {
+                    nearestTarget = t.transform;
+                }
+            }
+            else {
+                nearestTarget = t.transform;
+            }
+        }
+
+        return nearestTarget;
     }
 
     public override void TargetStillInRange() {
