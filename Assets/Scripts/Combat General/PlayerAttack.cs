@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Experimental.Input;
+using UnityEngine.InputSystem;
 
-public class PlayerAttack : MonoBehaviour, ICombatActions {
+public class PlayerAttack : MonoBehaviour, PlayerControls.ICombatActions {
 
-    [SerializeField] private InputMaster controls;
+    private PlayerControls input;
 
     [SerializeField] private Animator weakAttackAnimator;
     [SerializeField] private Transform attackContainer;
 
     void Awake() {
-        controls.Combat.SetCallbacks(this);
+        input = new PlayerControls();
+        input.Combat.SetCallbacks(this);
     }
 
     public void RotateAttacks(Vector2 direction) {
@@ -48,10 +49,10 @@ public class PlayerAttack : MonoBehaviour, ICombatActions {
     }
 
     private void OnEnable() {
-        controls.Combat.Enable();
+        input.Combat.Enable();
     }
 
     private void OnDisable() {
-        controls.Combat.Disable();
+        input.Combat.Disable();
     }
 }

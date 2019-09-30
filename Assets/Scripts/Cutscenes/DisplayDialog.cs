@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using System.Linq;
-using UnityEngine.Experimental.Input;
+using UnityEngine.InputSystem;
 
-public class DisplayDialog : MonoBehaviour, ICutscenesActions
+public class DisplayDialog : MonoBehaviour
 {
-    public InputMaster controls;
+    //public InputMaster controls;
     public TextAsset inkJSON;
 
     [Header("Settings")]
@@ -26,15 +26,15 @@ public class DisplayDialog : MonoBehaviour, ICutscenesActions
     private bool lineCompleted;
 
     private void Awake() {
-        controls.Cutscenes.SetCallbacks(this);
+        //controls.Cutscenes.SetCallbacks(this);
     }
 
     private void OnEnable() {
-        controls.Enable();
+        //controls.Enable();
     }
 
     private void OnDisable() {
-        controls.Disable();
+        //controls.Disable();
     }
 
     private void Start() {
