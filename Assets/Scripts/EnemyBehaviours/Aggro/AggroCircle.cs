@@ -6,11 +6,28 @@ public class AggroCircle : AggroBehaviour {
 
     [SerializeField] private float aggroRadius;
     [SerializeField] private float deAggroRadius;
-    [SerializeField] private bool requiresLOS;
+    [SerializeField] [Tooltip("Line of Sight")] private bool requiresLOS;
     [SerializeField] private LayerMask layerMask;
+    [SerializeField] private GameObject alertIcon;
 
     public override Transform LookForTarget() {
         var targets = Physics2D.OverlapCircleAll(transform.position, aggroRadius, layerMask);
+
+        if (targets.Length == 0)
+        {
+            if (Physics2D.OverlapCircleAll(transform.position, deAggroRadius, layerMask).Length > 0)
+            {
+                alertIcon.SetActive(true);
+            }
+            else
+            {
+                alertIcon.SetActive(false);
+            }
+        }
+        else
+        {
+            alertIcon.SetActive(false);
+        }
 
         Transform nearestTarget = null;
         foreach (var t in targets) {
