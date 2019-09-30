@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Experimental.Input;
+using UnityEngine.InputSystem;
 
-public class PlayerAttack : MonoBehaviour, ICombatActions {
+public class PlayerAttack : MonoBehaviour, InputMaster.ICombatActions {
 
     [SerializeField] private InputMaster controls;
 
@@ -12,7 +12,7 @@ public class PlayerAttack : MonoBehaviour, ICombatActions {
     [SerializeField] private Transform attackContainer;
 
     void Awake() {
-        controls.Combat.SetCallbacks(this);
+        //controls.Combat.SetCallbacks(this);
     }
 
     public void RotateAttacks(Vector2 direction) {
@@ -48,10 +48,10 @@ public class PlayerAttack : MonoBehaviour, ICombatActions {
     }
 
     private void OnEnable() {
-        controls.Combat.Enable();
+        //controls.Combat.Enable();
     }
 
     private void OnDisable() {
-        controls.Combat.Disable();
+        //controls.Combat.Disable();
     }
 }

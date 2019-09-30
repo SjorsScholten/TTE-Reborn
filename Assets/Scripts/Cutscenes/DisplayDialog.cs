@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using System.Linq;
-using UnityEngine.Experimental.Input;
+using UnityEngine.InputSystem;
+using static InputMaster;
 
 public class DisplayDialog : MonoBehaviour, ICutscenesActions
 {

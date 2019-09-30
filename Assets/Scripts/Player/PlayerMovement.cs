@@ -3,14 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Experimental.Input;
+using UnityEngine.InputSystem;
 using System.Linq;
 
-public class PlayerMovement : MonoBehaviour, IMovementActions {
+public class PlayerMovement : MonoBehaviour, InputMaster.IMovementActions {
 
     [HideInInspector] public bool isActive;
 
-    public InputMaster controls;
+    //public InputMaster controls;
 
     [SerializeField]
     private Animator animator;
@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour, IMovementActions {
     private PlayerAttack playerAttack;
 
     private void Awake() {
-        controls.Movement.SetCallbacks(this);
+        //controls.Movement.SetCallbacks(this);
         lastDirection = Vector2.down;
         playerAttack = GetComponent<PlayerAttack>();
     }
@@ -64,10 +64,10 @@ public class PlayerMovement : MonoBehaviour, IMovementActions {
     }
 
     private void OnEnable() {
-        controls.Movement.Enable();
+        //controls.Movement.Enable();
     }
 
     private void OnDisable() {
-        controls.Movement.Disable();
+        //controls.Movement.Disable();
     }
 }

@@ -98,6 +98,10 @@ public class EnemyController : MonoBehaviour {
         StartCoroutine(StunRoutine());
     }
 
+    public void Mario() {
+        Debug.Log("wat de fak");
+    }
+
     private IEnumerator StunRoutine() {
         //TODO: Knockback based on damager position.
         //Might be better to do that in Destroyable script.
