@@ -61,7 +61,6 @@ public class PlayerMovement : MonoBehaviour, PlayerControls.IMovementActions {
     }
 
     public void OnMove(InputAction.CallbackContext context) {
-        Debug.Log(context.ReadValue<Vector2>());
         if (isActive) Direction = context.ReadValue<Vector2>();
     }
 
