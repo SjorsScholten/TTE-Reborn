@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Experimental.Input;
+using UnityEngine.UI;
 
 public class PlayerAttack : MonoBehaviour, ICombatActions {
 
@@ -11,8 +12,29 @@ public class PlayerAttack : MonoBehaviour, ICombatActions {
     [SerializeField] private Animator weakAttackAnimator;
     [SerializeField] private Transform attackContainer;
 
+    [SerializeField] private Image cooldownImage;
+
+    private float animationLength;
+    private float cooldownTimer;
+    private bool cooldown = false;
+
     void Awake() {
         controls.Combat.SetCallbacks(this);
+    }
+
+    void Update()
+    {
+        if (cooldown)
+        {
+            cooldownTimer -= Time.deltaTime;
+            if (cooldownTimer <= 0)
+            {
+                cooldown = false;
+                cooldownTimer = 0;
+            }
+
+            cooldownImage.fillAmount = cooldownTimer / animationLength;
+        }
     }
 
     public void RotateAttacks(Vector2 direction) {
@@ -43,8 +65,10 @@ public class PlayerAttack : MonoBehaviour, ICombatActions {
     IEnumerator WeakAttackRoutine() {
         weakAttackAnimator.SetBool("Attack", true);
         yield return new WaitForEndOfFrame();
+        animationLength = weakAttackAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.length;
+        cooldownTimer = animationLength;
+        cooldown = true;
         weakAttackAnimator.SetBool("Attack", false);
-        
     }
 
     private void OnEnable() {
