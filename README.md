@@ -28,4 +28,4 @@ We are using Unity, so:
 
 Ink: https://github.com/inkle/inky/releases/tag/0.10.0b
 
-Unity: 2018.3.0f2
+Unity 2019.2.6f1
