@@ -15,9 +15,9 @@ MonoBehaviour:
   enemy: {fileID: 370913197958546216, guid: 80ee2631b30d6ce44ae64f1a0ff9b3bb, type: 3}
   idleAnimation: SlimeIdle
   walkAnimation: SlimeMove
-  attackAnimation: SlimeIdle
+  attackAnimation: SlimeAttack
   hurtAnimation: SlimeHurt
   choiceIndexIdle: 0
   choiceIndexWalk: 1
-  choiceIndexAttack: 0
+  choiceIndexAttack: 3
   choiceIndexHurt: 2

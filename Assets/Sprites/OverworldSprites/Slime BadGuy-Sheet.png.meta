@@ -23,6 +23,19 @@ TextureImporter:
     21300036: Slime BadGuy-Sheet_18
     21300038: Slime BadGuy-Sheet_19
     21300040: Slime BadGuy-Sheet_20
+    21300042: Slime BadGuy-Sheet_21
+    21300044: Slime BadGuy-Sheet_22
+    21300046: Slime BadGuy-Sheet_23
+    21300048: Slime BadGuy-Sheet_24
+    21300050: Slime BadGuy-Sheet_25
+    21300052: Slime BadGuy-Sheet_26
+    21300054: Slime BadGuy-Sheet_27
+    21300056: Slime BadGuy-Sheet_28
+    21300058: Slime BadGuy-Sheet_29
+    21300060: Slime BadGuy-Sheet_30
+    21300062: Slime BadGuy-Sheet_31
+    21300064: Slime BadGuy-Sheet_32
+    21300066: Slime BadGuy-Sheet_33
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -109,7 +122,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 128
+        y: 192
         width: 24
         height: 32
       alignment: 9
@@ -119,7 +132,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a0a5f4d77a02e5b43b8b9a276c15f10e
+      spriteID: a0695fac59e433446975c44dcdd288ce
       vertices: []
       indices: 
       edges: []
@@ -129,7 +142,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 24
-        y: 128
+        y: 192
         width: 24
         height: 32
       alignment: 9
@@ -139,7 +152,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf16e1962e6f9864b9c1c5cc1fd445bc
+      spriteID: 39ec84ec969857649a3ad2726b632e0d
       vertices: []
       indices: 
       edges: []
@@ -149,7 +162,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 128
+        y: 192
         width: 24
         height: 32
       alignment: 9
@@ -159,7 +172,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7434638282075f1439998f8f969f1f42
+      spriteID: 5e29d5571c392d64dbfdb3597fbeb5bd
       vertices: []
       indices: 
       edges: []
@@ -169,7 +182,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 72
-        y: 128
+        y: 192
         width: 24
         height: 32
       alignment: 9
@@ -179,7 +192,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 963084a44c615f942873546541f4b7e6
+      spriteID: 071f9bced44f03c4e82ce6678652cdf4
       vertices: []
       indices: 
       edges: []
@@ -189,6 +202,126 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
+        y: 192
+        width: 24
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5f74bf2a078a1343b53b6efd90a7193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slime BadGuy-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 160
+        width: 24
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba1e91b33201fe74ea6761d52db3c2b3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slime BadGuy-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 160
+        width: 24
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e3fc0416a955a64b91ce7081e0da039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slime BadGuy-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 160
+        width: 24
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a705d32bc522014fa13fc48dc5656b1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slime BadGuy-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 160
+        width: 24
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34be890dfefff3f48980715e41a00ee7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slime BadGuy-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 160
+        width: 24
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61c791384ecada04680fb1aab096ccf2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slime BadGuy-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 128
         width: 24
         height: 32
@@ -199,127 +332,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c8598cbf8e819ae4fab33d97944063c3
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Slime BadGuy-Sheet_5
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 96
-        width: 24
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7fdc6d348db80c24ab31fc7ce7fd2095
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Slime BadGuy-Sheet_6
-      rect:
-        serializedVersion: 2
-        x: 24
-        y: 96
-        width: 24
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d7916fee688964d489f4372d3aabbd69
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Slime BadGuy-Sheet_7
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 96
-        width: 24
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0c3dd02e0daac0546a7fbe35ef0fdd06
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Slime BadGuy-Sheet_8
-      rect:
-        serializedVersion: 2
-        x: 72
-        y: 96
-        width: 24
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 12e495b39f19de64bb9dfe5ad2045650
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Slime BadGuy-Sheet_9
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 96
-        width: 24
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3b5519c9ad3e8ff48900f1fef25b7b4a
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Slime BadGuy-Sheet_10
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 64
-        width: 24
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 52584c1dcd293f64fa41c2ff20741b49
+      spriteID: 8bb64309f1f9c674f90ad679bccb3fcd
       vertices: []
       indices: 
       edges: []
@@ -329,6 +342,186 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 24
+        y: 128
+        width: 24
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef4df1740f1649d448b23d072867c353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slime BadGuy-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 128
+        width: 24
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83195088eaa4b7742b88e0d656c96dca
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slime BadGuy-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 128
+        width: 24
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c956d29ed1a1f64abeca380322ac7f5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slime BadGuy-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 128
+        width: 24
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2db1e173b419b77409c4be0a94edea4b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slime BadGuy-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 24
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01cb2e5d41ab3bd4b99eaafce63cbf09
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slime BadGuy-Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 96
+        width: 24
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2dab4cdcc48517341885b0e78fb6aadb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slime BadGuy-Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 96
+        width: 24
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c7958c88507951468bf6fe6cb571b96
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slime BadGuy-Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 96
+        width: 24
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f911703c3cea8d043b0e48f7445872d4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slime BadGuy-Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 96
+        width: 24
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b32ec7010684fa4468b9cef5b1456afb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slime BadGuy-Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 64
         width: 24
         height: 32
@@ -339,13 +532,33 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 115ce7452860dd24da925d46b5792ee2
+      spriteID: 4378d25ee8d8bf74d8a8e00daf25fbcf
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Slime BadGuy-Sheet_12
+      name: Slime BadGuy-Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 64
+        width: 24
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 018e7ef981af57240a2876e16c0f7606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slime BadGuy-Sheet_22
       rect:
         serializedVersion: 2
         x: 48
@@ -359,13 +572,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8d384afd31694354997f882a1bbb28b0
+      spriteID: d4556a0ea577d364d8c1a7c2dc33a875
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Slime BadGuy-Sheet_13
+      name: Slime BadGuy-Sheet_23
       rect:
         serializedVersion: 2
         x: 72
@@ -379,13 +592,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0ffe3d5157af4af4a961fd490f3d9fbe
+      spriteID: d478f3ece3b231a47b08b9a969b8e724
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Slime BadGuy-Sheet_14
+      name: Slime BadGuy-Sheet_24
       rect:
         serializedVersion: 2
         x: 96
@@ -399,13 +612,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 520372af53e464448b7a0031757bb257
+      spriteID: f3ab240891054134c8e3be6aaee6fde0
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Slime BadGuy-Sheet_15
+      name: Slime BadGuy-Sheet_25
       rect:
         serializedVersion: 2
         x: 0
@@ -419,13 +632,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8dbdaee8049149f4c9982bb96fa2820a
+      spriteID: 7678b07a382a8a345abafa70b74656f2
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Slime BadGuy-Sheet_16
+      name: Slime BadGuy-Sheet_26
       rect:
         serializedVersion: 2
         x: 24
@@ -439,13 +652,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9fc3c1c86d5dc644b98e54ffcf6404db
+      spriteID: 1e92829a3c9be4e488d93a59de58d402
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Slime BadGuy-Sheet_17
+      name: Slime BadGuy-Sheet_27
       rect:
         serializedVersion: 2
         x: 48
@@ -459,13 +672,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e4a02a2dbcfa0ea4996a2310bc7587d3
+      spriteID: c60f3800eeec2704985dc7be44394ed7
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Slime BadGuy-Sheet_18
+      name: Slime BadGuy-Sheet_28
       rect:
         serializedVersion: 2
         x: 72
@@ -479,13 +692,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: efd001cf6f0b61e46893aff30e205b50
+      spriteID: 1c6b81882e187064bbac5dc0a49da692
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Slime BadGuy-Sheet_19
+      name: Slime BadGuy-Sheet_29
       rect:
         serializedVersion: 2
         x: 96
@@ -499,13 +712,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2dd455784da63e549847dd6b3674334b
+      spriteID: 90ff6c104c4c9f1499f724182d4603e3
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Slime BadGuy-Sheet_20
+      name: Slime BadGuy-Sheet_30
       rect:
         serializedVersion: 2
         x: 0
@@ -519,7 +732,67 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bcf034d2ac803ab44a643f2778546618
+      spriteID: ae640140a10127343bbb7655bec67937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slime BadGuy-Sheet_31
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 0
+        width: 24
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1a2bc64aa8a0de41ae836458a38f7c3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slime BadGuy-Sheet_32
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 24
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc41c873697297c448370ded9981b6c5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slime BadGuy-Sheet_33
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 0
+        width: 24
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c701dd720b704244a1683925ba39ca2
       vertices: []
       indices: 
       edges: []

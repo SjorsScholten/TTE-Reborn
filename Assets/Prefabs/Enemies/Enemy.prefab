@@ -439,7 +439,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageSource: 256
-  baseDamage: 15
+  stats: {fileID: 11400000, guid: 431b0b1243c61bd4492648f4cb2b0f01, type: 2}
 --- !u!114 &3821844161231237259
 MonoBehaviour:
   m_ObjectHideFlags: 0

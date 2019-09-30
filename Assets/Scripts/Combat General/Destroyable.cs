@@ -29,11 +29,15 @@ public class Destroyable : MonoBehaviour {
 
     public bool Damage(int baseDamage, Transform origin, DamageSource source) {
         if (IsImmune(source)) return false;
-        int defense = DefenseOrResistance(source);
+        int defense = Tools.GetDefense(source, stats) / 2;
 
         int damage = baseDamage - defense;
 
+        if (damage <= 0) damage = 1;
+
         health -= damage;
+
+        OnDamagedEvent.Invoke(health);
 
         if (health <= 0)
         {
@@ -45,8 +49,6 @@ public class Destroyable : MonoBehaviour {
         //Damage Effects
         //Check If Dead
 
-        OnDamagedEvent.Invoke(health);
-
         return true;
     }
 
@@ -56,10 +58,5 @@ public class Destroyable : MonoBehaviour {
 
     private bool IsImmune(DamageSource source) {
         return immuneToSource.HasFlag(source);
-    }
-
-    private int DefenseOrResistance(DamageSource source) {
-        if ((source & DamageSource.Magic) != 0) return stats.resistance;
-        else return stats.defense;
     }
 }

@@ -10,7 +10,7 @@ public class Damager : MonoBehaviour
     private DamageSource damageSource;
 
     [SerializeField]
-    private int baseDamage;
+    private BaseStats stats;
 
     private List<Collider2D> collisions;
 
@@ -20,9 +20,11 @@ public class Damager : MonoBehaviour
     }
 
     public void OnEnter(Collider2D collision)
-    {
+    {        
         Destroyable destroyable = collision.GetComponent<Destroyable>();
-        destroyable.Damage(baseDamage, this.transform, damageSource);
+
+        int damage = Tools.GetDamage(damageSource, stats);
+        destroyable.Damage(damage, this.transform, damageSource);
     }
 
     public void DamageCollisions()
