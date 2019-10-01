@@ -110,6 +110,33 @@ public class PlayerControls : IInputActionCollection
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Debug"",
+            ""id"": ""c8beb6c6-cbfa-42d1-9753-0ec1247c7c58"",
+            ""actions"": [
+                {
+                    ""name"": ""ReloadScene"",
+                    ""type"": ""Button"",
+                    ""id"": ""f4154212-d0d2-4838-be86-195af5d0be9e"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""c0a6180e-5104-4383-9a18-60a651161394"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ReloadScene"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -132,6 +159,9 @@ public class PlayerControls : IInputActionCollection
         // Combat
         m_Combat = asset.FindActionMap("Combat", throwIfNotFound: true);
         m_Combat_WeakAttack = m_Combat.FindAction("WeakAttack", throwIfNotFound: true);
+        // Debug
+        m_Debug = asset.FindActionMap("Debug", throwIfNotFound: true);
+        m_Debug_ReloadScene = m_Debug.FindAction("ReloadScene", throwIfNotFound: true);
     }
 
     ~PlayerControls()
@@ -243,6 +273,39 @@ public class PlayerControls : IInputActionCollection
         }
     }
     public CombatActions @Combat => new CombatActions(this);
+
+    // Debug
+    private readonly InputActionMap m_Debug;
+    private IDebugActions m_DebugActionsCallbackInterface;
+    private readonly InputAction m_Debug_ReloadScene;
+    public struct DebugActions
+    {
+        private PlayerControls m_Wrapper;
+        public DebugActions(PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @ReloadScene => m_Wrapper.m_Debug_ReloadScene;
+        public InputActionMap Get() { return m_Wrapper.m_Debug; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(DebugActions set) { return set.Get(); }
+        public void SetCallbacks(IDebugActions instance)
+        {
+            if (m_Wrapper.m_DebugActionsCallbackInterface != null)
+            {
+                ReloadScene.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnReloadScene;
+                ReloadScene.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnReloadScene;
+                ReloadScene.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnReloadScene;
+            }
+            m_Wrapper.m_DebugActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                ReloadScene.started += instance.OnReloadScene;
+                ReloadScene.performed += instance.OnReloadScene;
+                ReloadScene.canceled += instance.OnReloadScene;
+            }
+        }
+    }
+    public DebugActions @Debug => new DebugActions(this);
     private int m_PlayerSchemeIndex = -1;
     public InputControlScheme PlayerScheme
     {
@@ -259,5 +322,9 @@ public class PlayerControls : IInputActionCollection
     public interface ICombatActions
     {
         void OnWeakAttack(InputAction.CallbackContext context);
+    }
+    public interface IDebugActions
+    {
+        void OnReloadScene(InputAction.CallbackContext context);
     }
 }
