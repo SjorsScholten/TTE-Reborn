@@ -94,7 +94,7 @@ public class PlayerControls : IInputActionCollection
                     ""id"": ""b993ec96-6523-4c01-b348-23108490172d"",
                     ""expectedControlType"": """",
                     ""processors"": """",
-                    ""interactions"": """"
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [

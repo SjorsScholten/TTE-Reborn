@@ -66,9 +66,11 @@ public class PlayerAttack : MonoBehaviour, PlayerControls.ICombatActions {
     IEnumerator WeakAttackRoutine() {
         weakAttackAnimator.SetBool("Attack", true);
         yield return new WaitForEndOfFrame();
-        animationLength = weakAttackAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.length;
-        cooldownTimer = animationLength;
-        cooldown = true;
+        if (cooldown == false) {
+            animationLength = weakAttackAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.length;
+            cooldownTimer = animationLength;
+            cooldown = true;
+        }
         weakAttackAnimator.SetBool("Attack", false);
     }
 
