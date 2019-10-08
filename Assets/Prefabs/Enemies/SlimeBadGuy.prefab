@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 356326693}
   m_Layer: 9
   m_Name: SlimeBadGuy
-  m_TagString: Playable
+  m_TagString: Enemies
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
