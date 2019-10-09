@@ -6,7 +6,8 @@ using System;
 
 public class GeneralTab : Tab
 {
-    string objectName = "";
+    private string objectName = "";
+    private string path = "Assets/Prefabs/Enemies/";
 
     public GeneralTab()
     {
@@ -62,18 +63,30 @@ public class GeneralTab : Tab
     /// </summary>
     private void SavePrefab()
     {
+        GameObject obj = Selection.activeObject as GameObject;
         try
         {
-            GameObject obj = Selection.activeObject as GameObject;
-
-            string path2 = PrefabUtility.GetPrefabAssetPathOfNearestInstanceRoot(obj);
-
-            PrefabUtility.SaveAsPrefabAsset(obj, path2);
-            AssetDatabase.RenameAsset(path2, objectName);
+            if (obj != null)
+            {
+                string path2 = PrefabUtility.GetPrefabAssetPathOfNearestInstanceRoot(obj);
+                Debug.Log(path2);
+                PrefabUtility.SaveAsPrefabAsset(obj, path2);
+                AssetDatabase.RenameAsset(path2, objectName);
+                Debug.Log("Prefab Saved");
+            }
         }
         catch (Exception)
         {
-            Debug.Log("Geen prefab gevonden.");
+            Debug.Log("Nieuwe Prefab wordt gemaakt.");
+            try
+            {
+                path += obj.name + ".prefab";
+                PrefabUtility.SaveAsPrefabAsset(obj, path);
+            }
+            catch (Exception e)
+            {
+                Debug.Log(e.Message);
+            }            
         }
     }
 }

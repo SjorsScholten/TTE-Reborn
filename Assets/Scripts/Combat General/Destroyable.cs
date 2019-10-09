@@ -8,7 +8,7 @@ public class Destroyable : MonoBehaviour {
 
     #region parameters
     [SerializeField] private BaseStats stats;
-    public BaseStats Stats { get { return stats; } }
+    public BaseStats Stats { get { return stats; } set { stats = value; } }
 
     [SerializeField] [EnumFlag] private DamageSource immuneToSource;
 

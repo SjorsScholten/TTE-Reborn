@@ -9,6 +9,7 @@ public class EnemyEditor : EditorWindow
     private int currentTab;
     private Tab[] tabs;
     private string[] tabNames;
+    private GameObject currentSelected;
     private GameObject selected;
 
     private void OnEnable()
@@ -78,7 +79,11 @@ public class EnemyEditor : EditorWindow
     {
         if (CheckIfEnemy())
         {
-            tabs[currentTab].OnSelectionChanged(selected);
+            Debug.Log("Repaint");
+            for (int i = 0; i < tabs.Length - 1; i++)
+            {
+                tabs[i].OnSelectionChanged(selected);
+            }
             Repaint();
         }
     }
@@ -86,8 +91,9 @@ public class EnemyEditor : EditorWindow
     private bool CheckIfEnemy()
     {
         selected = Selection.activeGameObject;
-        if (selected != null && selected.CompareTag(NYRA.Tag.Enemies))
+        if (selected != null && selected != currentSelected && selected.CompareTag(NYRA.Tag.Enemies))
         {
+            currentSelected = selected;
             return true;
         }
         return false;
