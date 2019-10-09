@@ -39,7 +39,7 @@ public class Destroyable : MonoBehaviour {
 
     private void Awake() {
         this.health = stats.vitality;
-        invinsibilityTimer.time = iFrames;
+        invinsibilityTimer.time = iFrames + stunTimer;
         invinsibilityTimer.triggerAction += () => {
             invinsibilityTimer.Reset();
             GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);

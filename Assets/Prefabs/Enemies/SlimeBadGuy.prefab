@@ -299,9 +299,9 @@ MonoBehaviour:
   immuneToSource: 0
   health: 0
   receivesKnockback: 1
-  knockbackMultiplier: 1.5
-  stunTimer: 0.25
-  iFrames: 2.5
+  knockbackMultiplier: 0.6
+  stunTimer: 0.35
+  iFrames: 4.25
   OnDestroyedEvent:
     m_PersistentCalls:
       m_Calls:
