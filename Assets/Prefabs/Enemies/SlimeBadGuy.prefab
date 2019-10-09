@@ -298,8 +298,10 @@ MonoBehaviour:
   stats: {fileID: 11400000, guid: 45dc5875b12172d4295452eab9002c7f, type: 2}
   immuneToSource: 0
   health: 0
+  receivesKnockback: 1
   knockbackMultiplier: 1.5
   stunTimer: 0.25
+  iFrames: 2.5
   OnDestroyedEvent:
     m_PersistentCalls:
       m_Calls:

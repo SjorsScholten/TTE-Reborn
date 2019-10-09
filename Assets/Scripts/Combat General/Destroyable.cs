@@ -5,6 +5,9 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class Destroyable : MonoBehaviour {
+    [Serializable] public class OnDestroyed : UnityEvent<Transform> { }
+    [Serializable] public class OnDamaged : UnityEvent<int> { }
+    [Serializable] public class OnKnockback : UnityEvent<float> { }
 
     #region parameters
     [Header("Stats")]
@@ -22,25 +25,37 @@ public class Destroyable : MonoBehaviour {
     [SerializeField] private float knockbackMultiplier;
     [SerializeField] private float stunTimer;
 
-    [Serializable] public class OnDestroyed : UnityEvent<Transform> { }
+    [Header("I-Frames")]
+    [SerializeField] private float iFrames;
+
+    private TimedVariable invinsibilityTimer = new TimedVariable();
+    private bool isInvinsible;
+
     [Header("Events")]
-
     public OnDestroyed OnDestroyedEvent;
-
-    [Serializable] public class OnDamaged : UnityEvent<int> { }
     public OnDamaged OnDamagedEvent;
-
-    [Serializable] public class OnKnockback : UnityEvent<float> { }
     public OnKnockback OnKnockbackEvent;
     #endregion
 
-    private void Awake()
-    {
+    private void Awake() {
         this.health = stats.vitality;
+        invinsibilityTimer.time = iFrames;
+        invinsibilityTimer.triggerAction += () => {
+            invinsibilityTimer.Reset();
+            GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+            isInvinsible = false;
+        };
+    }
+
+    private void Update() {
+        if (isInvinsible) {
+            invinsibilityTimer.StepFrame();
+        }
     }
 
     public bool Damage(int baseDamage, Transform origin, DamageSource source) {
         if (IsImmune(source)) return false;
+        if (isInvinsible) return false;
 
         return TakeDamage(baseDamage, origin, source);
     }
@@ -60,13 +75,15 @@ public class Destroyable : MonoBehaviour {
         if (health <= 0) {
             DestroyDestroyable();
         }
-  
+
         return true;
     }
 
     private Vector3 velocity;
     private IEnumerator ApplyKnockback(Transform origin) {
         OnKnockbackEvent.Invoke(stunTimer);
+        isInvinsible = true;
+        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.4f); //DEBUG PROGRAMMER ART
 
         if (receivesKnockback) {
             Vector3 direction = (transform.position - origin.position).normalized;
