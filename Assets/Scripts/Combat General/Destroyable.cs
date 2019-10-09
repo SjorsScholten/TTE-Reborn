@@ -52,9 +52,9 @@ public class Destroyable : MonoBehaviour {
         StartCoroutine(ApplyKnockback(origin));
 
         if (health <= 0) {
-            Destroy(this.gameObject);
+            DestroyDestroyable();
         }
-
+  
         return true;
     }
 
