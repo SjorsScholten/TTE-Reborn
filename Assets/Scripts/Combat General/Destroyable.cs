@@ -7,18 +7,24 @@ using UnityEngine.Events;
 public class Destroyable : MonoBehaviour {
 
     #region parameters
+    [Header("Stats")]
+
     [SerializeField] private BaseStats stats;
     public BaseStats Stats { get { return stats; } }
 
     [SerializeField] [EnumFlag] private DamageSource immuneToSource;
 
-    public int health;
+    [HideInInspector] public int health;
 
+    [Header("Knockback & Stun")]
+
+    [SerializeField] private bool receivesKnockback = true;
     [SerializeField] private float knockbackMultiplier;
     [SerializeField] private float stunTimer;
 
     [Serializable] public class OnDestroyed : UnityEvent<Transform> { }
     [Header("Events")]
+
     public OnDestroyed OnDestroyedEvent;
 
     [Serializable] public class OnDamaged : UnityEvent<int> { }
@@ -60,16 +66,18 @@ public class Destroyable : MonoBehaviour {
 
     private Vector3 velocity;
     private IEnumerator ApplyKnockback(Transform origin) {
-        Vector3 direction = (transform.position - origin.position).normalized;
-        direction *= knockbackMultiplier;
-        float time = 0;
-
         OnKnockbackEvent.Invoke(stunTimer);
 
-        while (time <= stunTimer) {
-            transform.position = Vector3.SmoothDamp(transform.position, transform.position + direction, ref velocity, stunTimer);
-            yield return null;
-            time += Time.deltaTime;
+        if (receivesKnockback) {
+            Vector3 direction = (transform.position - origin.position).normalized;
+            direction *= knockbackMultiplier;
+            float time = 0;
+
+            while (time <= stunTimer) {
+                transform.position = Vector3.SmoothDamp(transform.position, transform.position + direction, ref velocity, stunTimer);
+                yield return null;
+                time += Time.deltaTime;
+            }
         }
     }
 

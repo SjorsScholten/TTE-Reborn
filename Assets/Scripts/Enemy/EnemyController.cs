@@ -96,8 +96,6 @@ public class EnemyController : MonoBehaviour {
     }
 
     private IEnumerator StunRoutine(float stunTimer) {
-        //TODO: Knockback based on damager position.
-        //Might be better to do that in Destroyable script.
         Animator.Play(animations.hurtAnimation);
         EnemyState = EntityState.Stun;
         yield return new WaitForSecondsRealtime(stunTimer);
