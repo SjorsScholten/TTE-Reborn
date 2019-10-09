@@ -19,7 +19,6 @@ public abstract class AttackBehaviour : MonoBehaviour {
         timerCooldown.triggerAction = () => {
             timerCooldown.Reset();
             isOnCooldown = false;
-            Debug.Log("Fired Timer Cooldown Reset");
         };
     }
 

@@ -20,9 +20,6 @@ public class EnemyController : MonoBehaviour {
     [Header("Aggro Behaviour")]
     [SerializeField] private AggroBehaviour aggro;
 
-    [Header("Stun Settings")]
-    [SerializeField] private float stunTimer;
-
     public Animator Animator { get; private set; }
     public EntityState EnemyState { get; private set; }
     public Transform Target { get; private set; }
@@ -94,17 +91,16 @@ public class EnemyController : MonoBehaviour {
         }
     }
 
-    public void Stun() {
-        StartCoroutine(StunRoutine());
+    public void Stun(float stunTimer) {
+        StartCoroutine(StunRoutine(stunTimer));
     }
 
-    private IEnumerator StunRoutine() {
+    private IEnumerator StunRoutine(float stunTimer) {
         //TODO: Knockback based on damager position.
         //Might be better to do that in Destroyable script.
-
         Animator.Play(animations.hurtAnimation);
         EnemyState = EntityState.Stun;
         yield return new WaitForSecondsRealtime(stunTimer);
-        EnemyState = EntityState.Idle;
+        EnemyState = EntityState.Aggro;
     }
 }

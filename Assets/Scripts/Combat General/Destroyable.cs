@@ -13,13 +13,19 @@ public class Destroyable : MonoBehaviour {
     [SerializeField] [EnumFlag] private DamageSource immuneToSource;
 
     public int health;
-    
+
+    [SerializeField] private float knockbackMultiplier;
+    [SerializeField] private float stunTimer;
+
     [Serializable] public class OnDestroyed : UnityEvent<Transform> { }
     [Header("Events")]
     public OnDestroyed OnDestroyedEvent;
 
     [Serializable] public class OnDamaged : UnityEvent<int> { }
     public OnDamaged OnDamagedEvent;
+
+    [Serializable] public class OnKnockback : UnityEvent<float> { }
+    public OnKnockback OnKnockbackEvent;
     #endregion
 
     private void Awake()
@@ -29,6 +35,11 @@ public class Destroyable : MonoBehaviour {
 
     public bool Damage(int baseDamage, Transform origin, DamageSource source) {
         if (IsImmune(source)) return false;
+
+        return TakeDamage(baseDamage, origin, source);
+    }
+
+    private bool TakeDamage(int baseDamage, Transform origin, DamageSource source) {
         int defense = Tools.GetDefense(source, stats) / 2;
 
         int damage = baseDamage - defense;
@@ -38,18 +49,28 @@ public class Destroyable : MonoBehaviour {
         health -= damage;
 
         OnDamagedEvent.Invoke(health);
+        StartCoroutine(ApplyKnockback(origin));
 
-        if (health <= 0)
-        {
+        if (health <= 0) {
             Destroy(this.gameObject);
         }
 
-        //TODO: Health Calculation and Updates
-        //Apply Knockback?
-        //Damage Effects
-        //Check If Dead
-
         return true;
+    }
+
+    private Vector3 velocity;
+    private IEnumerator ApplyKnockback(Transform origin) {
+        Vector3 direction = (transform.position - origin.position).normalized;
+        direction *= knockbackMultiplier;
+        float time = 0;
+
+        OnKnockbackEvent.Invoke(stunTimer);
+
+        while (time <= stunTimer) {
+            transform.position = Vector3.SmoothDamp(transform.position, transform.position + direction, ref velocity, stunTimer);
+            yield return null;
+            time += Time.deltaTime;
+        }
     }
 
     private void DestroyDestroyable() {
