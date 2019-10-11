@@ -25,9 +25,8 @@ public class Behaviour
         {
             if (t.IsSubclassOf(superClass))
             {
-                // found a subclass, add to list or something
+                // Found a subclass, add to list
                 behaviours.Add(t.Name, t);
-                Debug.Log("Super: " + superClass.Name + ", Add: " + t.Name);
             }
         }
     }
@@ -50,7 +49,6 @@ public class Behaviour
     {
         current = behaviours.Values.ToList()[index];
         currentIndex = index;
-        Debug.Log(index + " " + current);
     }
 }
 
@@ -91,7 +89,7 @@ public class BehaviourTab : Tab
             //Set selected
             if (current != behaviour.currentIndex)
             {
-                DestoryScript(i);
+                DestroyScript(i);
                 behaviour.SetCurrentSelected(current);
                 controller.gameObject.AddComponent(behaviour.current);
                 SetRefference(i);
@@ -103,75 +101,23 @@ public class BehaviourTab : Tab
     /// <summary>
     /// Get scripts.
     /// </summary>
-    /// <param name="selection"></param>
+    /// <param name="selection">Current selected GameObject</param>
     public override void OnSelectionChanged(GameObject selection)
     {
         controller = selection.GetComponent<EnemyController>();
 
         if (controller != null)
         {
+            int behaviourIndex = 0;
             //Set pre selected
-            #region Idle
-            IdleBehaviour idle = controller.idle;
-            if (idle != null)
-            {
-                Debug.Log("Idle is not null");
-                behaviours[0].SetCurrentSelected(idle.GetType());
-            }
-            else
-            {
-                Debug.Log("Idle is null");
-                behaviours[0].SetCurrentSelected(0);
-                Type t = behaviours[0].current;
-                controller.gameObject.AddComponent(t);
-                SetRefference(0);
-            }
-            #endregion
 
-            #region Movement
-            MovementBehaviour movement = controller.movement;
-            if (movement != null)
-            {
-                behaviours[1].SetCurrentSelected(movement.GetType());
-            }
-            else
-            {
-                behaviours[1].SetCurrentSelected(null);
-                Type t = behaviours[1].current;
-                controller.gameObject.AddComponent(t);
-                SetRefference(1);
-            }
-            #endregion
-
-            #region Attack
-            AttackBehaviour attack = controller.attack;
-            if (attack != null)
-            {
-                behaviours[2].SetCurrentSelected(attack.GetType());
-            }
-            else
-            {
-                behaviours[2].SetCurrentSelected(null);
-                Type t = behaviours[2].current;
-                controller.gameObject.AddComponent(t);
-                SetRefference(2);
-            }
-            #endregion
-
-            #region Aggro
-            AggroBehaviour aggro = controller.aggro;
-            if (attack != null)
-            {
-                behaviours[3].SetCurrentSelected(aggro.GetType());
-            }
-            else
-            {
-                behaviours[3].SetCurrentSelected(null);
-                Type t = behaviours[3].current;
-                controller.gameObject.AddComponent(t);
-                SetRefference(3);
-            }
-            #endregion
+            AddScript(controller.idle, behaviourIndex);
+            behaviourIndex++;
+            AddScript(controller.movement, behaviourIndex);
+            behaviourIndex++;
+            AddScript(controller.attack ,behaviourIndex);
+            behaviourIndex++;
+            AddScript(controller.aggro ,behaviourIndex);
         }
     }
 
@@ -185,6 +131,10 @@ public class BehaviourTab : Tab
         return list.Keys.ToArray();
     }
 
+    /// <summary>
+    /// Set References in the Controllers
+    /// </summary>
+    /// <param name="behaviourIndex">index of behaviour</param>
     private void SetRefference(int behaviourIndex)
     {
         switch (behaviourIndex)
@@ -204,7 +154,11 @@ public class BehaviourTab : Tab
         }
     }
 
-    private void DestoryScript(int behaviourIndex)
+    /// <summary>
+    /// Destory script based on the behaviourIndex
+    /// </summary>
+    /// <param name="behaviourIndex">index of behaviour</param>
+    private void DestroyScript(int behaviourIndex)
     {
          switch (behaviourIndex)
         {
@@ -220,6 +174,27 @@ public class BehaviourTab : Tab
             case 3:
                 UnityEngine.Object.DestroyImmediate(controller.GetComponent<AggroBehaviour>());
                 break;
+        }
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="type">Current Behaviour found on the controller</param>
+    /// <param name="behaviourIndex">index of behaviour</param>
+    private void AddScript<T>(T type, int behaviourIndex)
+    {
+        if (type != null)
+        {
+            behaviours[behaviourIndex].SetCurrentSelected(type.GetType());
+        }
+        else
+        {
+            behaviours[behaviourIndex].SetCurrentSelected(0);
+            Type t = behaviours[behaviourIndex].current;
+            controller.gameObject.AddComponent(t);
+            SetRefference(behaviourIndex);
         }
     }
 }
