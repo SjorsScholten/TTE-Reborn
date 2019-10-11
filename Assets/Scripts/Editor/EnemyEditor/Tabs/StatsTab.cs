@@ -19,7 +19,7 @@ public class StatsTab : Tab
         {
             //UI Code here
             stats = EditorGUILayout.ObjectField("Stats Object", stats, typeof(BaseStats), true) as BaseStats;
-
+            SaveStats();
             GUILayout.Space(5);
 
             stats.vitality = EditorGUILayout.IntField("Vitality", stats.vitality);
@@ -30,11 +30,6 @@ public class StatsTab : Tab
             stats.resistance = EditorGUILayout.IntField("Resistance", stats.resistance);
             stats.speed = EditorGUILayout.IntField("Speed", stats.speed);
             stats.luck = EditorGUILayout.IntField("Luck", stats.luck);
-
-            if (GUILayout.Button("Save Stats to Object"))
-            {
-                SaveStats();
-            }
         }
     }
 

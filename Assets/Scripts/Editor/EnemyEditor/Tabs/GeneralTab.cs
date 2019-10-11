@@ -8,6 +8,10 @@ public class GeneralTab : Tab
 {
     private string objectName = "";
     private string path = "Assets/Prefabs/Enemies/";
+    private GameObject selection;
+
+    private EnemyAnimations animations;
+    private EnemyController controller;
 
     public GeneralTab()
     {
@@ -18,11 +22,13 @@ public class GeneralTab : Tab
     {
         //UI Code here
         objectName = EditorGUILayout.TextField("Name of Object", objectName);
+        ChangeName();
 
-        if (GUILayout.Button("Change name"))
-        {
-            ChangeName();
-        }
+        GUILayout.Space(5);
+
+        EditorGUILayout.LabelField("Animations", EditorStyles.boldLabel);
+        animations = EditorGUILayout.ObjectField("Animations", animations, typeof(EnemyAnimations), false) as EnemyAnimations;
+        ChangeAnimation();
 
         GUILayout.Space(5);
 
@@ -35,6 +41,12 @@ public class GeneralTab : Tab
     public override void OnSelectionChanged(GameObject selection)
     {
         objectName = selection.name;
+        this.selection = selection;
+        controller = selection.GetComponent<EnemyController>();
+        if (controller != null)
+        {
+            animations = controller.animations;
+        }
     }
 
     /// <summary>
@@ -43,50 +55,55 @@ public class GeneralTab : Tab
     /// </summary>
     private void ChangeName()
     {
-        try
+        if (selection != null)
         {
-            GameObject obj = Selection.activeObject as GameObject;
-            obj.name = objectName;
+            selection.name = objectName;
         }
-        catch (NullReferenceException)
+    }
+
+    private void ChangeAnimation()
+    {
+        if (selection != null && controller != null)
         {
-            Debug.Log("No object has been selected");
-        }
-        catch (Exception)
-        {
-            Debug.Log("Name is empty");
+            controller.animations = animations;
         }
     }
 
     /// <summary>
-    /// Saves the prefab.
+    /// Saves and creates the prefab.
     /// </summary>
     private void SavePrefab()
     {
         GameObject obj = Selection.activeObject as GameObject;
-        try
+        GameObject prefab = null;
+
+        if (obj != null)
         {
-            if (obj != null)
-            {
-                string path2 = PrefabUtility.GetPrefabAssetPathOfNearestInstanceRoot(obj);
-                Debug.Log(path2);
-                PrefabUtility.SaveAsPrefabAsset(obj, path2);
-                AssetDatabase.RenameAsset(path2, objectName);
-                Debug.Log("Prefab Saved");
-            }
-        }
-        catch (Exception)
-        {
-            Debug.Log("Nieuwe Prefab wordt gemaakt.");
             try
             {
-                path += obj.name + ".prefab";
-                PrefabUtility.SaveAsPrefabAsset(obj, path);
+                //Save existing prefab and rename it.
+                string path2 = PrefabUtility.GetPrefabAssetPathOfNearestInstanceRoot(obj);
+                prefab = PrefabUtility.SaveAsPrefabAsset(obj, path2);
+                AssetDatabase.RenameAsset(path2, objectName);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Debug.Log(e.Message);
-            }            
+                //Create new prefab
+                try
+                {
+                    prefab = PrefabUtility.SaveAsPrefabAsset(obj, path + obj.name + ".prefab");
+                    Debug.Log("Gemaakt");
+
+                    //Replace old object with prefab and select it
+                    GameObject select = PrefabUtility.InstantiatePrefab(prefab, obj.transform.parent) as GameObject;
+                    GameObject.DestroyImmediate(obj, true);
+                    Selection.SetActiveObjectWithContext(select, null);
+                }
+                catch (Exception e)
+                {
+                    Debug.Log(e.Message);
+                }
+            }
         }
     }
 }

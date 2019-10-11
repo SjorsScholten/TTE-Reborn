@@ -80,8 +80,9 @@ public class EnemyEditor : EditorWindow
         if (CheckIfEnemy())
         {
             Debug.Log("Repaint");
-            for (int i = 0; i < tabs.Length - 1; i++)
+            for (int i = 0; i <= tabs.Length - 1; i++)
             {
+                Debug.Log(tabs[i].TabName);
                 tabs[i].OnSelectionChanged(selected);
             }
             Repaint();

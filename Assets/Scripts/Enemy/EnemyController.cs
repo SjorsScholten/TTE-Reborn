@@ -6,19 +6,19 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour {
 
     [Header("Idle Behaviour")]
-    [SerializeField] private IdleBehaviour idle;
+    public IdleBehaviour idle;
 
     [Header("Movement Behaviour")]
-    [SerializeField] private MovementBehaviour movement;
+    public MovementBehaviour movement;
 
     [Header("Attack Behaviour")]
-    [SerializeField] private AttackBehaviour attack;
-
-    [Header("Animations")]
-    public EnemyAnimations animations;
+    public AttackBehaviour attack;
 
     [Header("Aggro Behaviour")]
-    [SerializeField] private AggroBehaviour aggro;
+    public AggroBehaviour aggro;
+
+    [Header("Animations")]
+    public EnemyAnimations animations;    
 
     [Header("Stun Settings")]
     [SerializeField] private float stunTimer;
