@@ -77,25 +77,27 @@ public class BehaviourTab : Tab
     /// </summary>
     public override void DisplayTab()
     {
-        //UI Code here
-        for (int i = 0; i < behaviours.Count; i++)
+        if (controller != null)
         {
-            Behaviour behaviour = behaviours[i];
-            EditorGUILayout.LabelField(behaviour.name + " Behaviour", EditorStyles.boldLabel);
-            int current = EditorGUILayout.Popup(behaviour.name, behaviour.currentIndex, GetNames(ref behaviour.behaviours));            
-
-            GUILayout.Space(5);
-
-            //Set selected
-            if (current != behaviour.currentIndex)
+            //UI Code here
+            for (int i = 0; i < behaviours.Count; i++)
             {
-                DestroyScript(i);
-                behaviour.SetCurrentSelected(current);
-                controller.gameObject.AddComponent(behaviour.current);
-                SetRefference(i);
+                Behaviour behaviour = behaviours[i];
+                EditorGUILayout.LabelField(behaviour.name + " Behaviour", EditorStyles.boldLabel);
+                int current = EditorGUILayout.Popup(behaviour.name, behaviour.currentIndex, GetNames(ref behaviour.behaviours));
+
+                GUILayout.Space(5);
+
+                //Set selected
+                if (current != behaviour.currentIndex)
+                {
+                    DestroyScript(i);
+                    behaviour.SetCurrentSelected(current);
+                    controller.gameObject.AddComponent(behaviour.current);
+                    SetRefference(i);
+                }
             }
         }
-        
     }
 
     /// <summary>

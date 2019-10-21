@@ -11,6 +11,7 @@ public class GeneralTab : Tab
 
     private EnemyAnimations animations;
     private EnemyController controller;
+    private MultidirectionalTransformMovement movement;
 
     public GeneralTab()
     {
@@ -25,9 +26,19 @@ public class GeneralTab : Tab
 
         GUILayout.Space(5);
 
-        EditorGUILayout.LabelField("Animations", EditorStyles.boldLabel);
-        animations = EditorGUILayout.ObjectField("Animations", animations, typeof(EnemyAnimations), false) as EnemyAnimations;
-        ChangeAnimation();
+        if (movement != null)
+        {
+            movement.MoveSpeed = EditorGUILayout.FloatField("Speed", movement.MoveSpeed);
+            GUILayout.Space(5);
+        }
+
+        if (controller != null)
+        {
+            EditorGUILayout.LabelField("Animations", EditorStyles.boldLabel);
+
+            animations = EditorGUILayout.ObjectField("Animations", animations, typeof(EnemyAnimations), false) as EnemyAnimations;
+            ChangeAnimation();
+        }
     }
 
     public override void OnSelectionChanged(GameObject selection)
@@ -39,6 +50,7 @@ public class GeneralTab : Tab
         {
             animations = controller.animations;
         }
+        movement = selection.GetComponent<MultidirectionalTransformMovement>();
     }
 
     /// <summary>

@@ -9,7 +9,6 @@ public class EnemyEditor : EditorWindow
     private int currentTab;
     private Tab[] tabs;
     private string[] tabNames;
-    private GameObject currentSelected;
     private GameObject selected;
 
     private string path = "Assets/Prefabs/Enemies/";
@@ -102,9 +101,8 @@ public class EnemyEditor : EditorWindow
     private bool CheckIfEnemy()
     {
         selected = Selection.activeGameObject;
-        if (selected != null && selected != currentSelected && selected.CompareTag(NYRA.Tag.Enemies))
+        if (selected != null && selected.CompareTag(NYRA.Tag.Enemies))
         {
-            currentSelected = selected;
             return true;
         }
         return false;

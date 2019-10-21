@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 356326691}
   - component: {fileID: 356326692}
   - component: {fileID: 1823804746}
-  - component: {fileID: 5235702126717260870}
+  - component: {fileID: 5583752255553682404}
   m_Layer: 9
   m_Name: SlimeBadGuy
   m_TagString: Enemies
@@ -391,7 +391,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idle: {fileID: 356326688}
   movement: {fileID: 356326692}
-  attack: {fileID: 1823804746}
+  attack: {fileID: 0}
   aggro: {fileID: 356326690}
   animations: {fileID: 11400000, guid: 47a234061dd45e7478ccf972264d3e89, type: 2}
   stunTimer: 0.25
@@ -455,7 +455,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 0}
   cooldown: 0
---- !u!114 &5235702126717260870
+--- !u!114 &5583752255553682404
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

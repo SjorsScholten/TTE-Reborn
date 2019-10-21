@@ -15,19 +15,22 @@ public class StatsTab : Tab
 
     public override void DisplayTab()
     {
-        stats = EditorGUILayout.ObjectField("Stats Object", stats, typeof(BaseStats), true) as BaseStats;
-        SaveStats();
-        GUILayout.Space(5);
-        if (stats != null)
-        {     
-            stats.vitality = EditorGUILayout.IntField("Vitality", stats.vitality);
-            stats.wisdom = EditorGUILayout.IntField("Wisdom", stats.wisdom);
-            stats.strength = EditorGUILayout.IntField("Strength", stats.strength);
-            stats.defense = EditorGUILayout.IntField("Defense", stats.defense);
-            stats.magic = EditorGUILayout.IntField("Magic", stats.magic);
-            stats.resistance = EditorGUILayout.IntField("Resistance", stats.resistance);
-            stats.speed = EditorGUILayout.IntField("Speed", stats.speed);
-            stats.luck = EditorGUILayout.IntField("Luck", stats.luck);
+        if (destroyable != null)
+        {
+            stats = EditorGUILayout.ObjectField("Stats Object", stats, typeof(BaseStats), true) as BaseStats;
+            SaveStats();
+            if (stats != null)
+            {
+                stats.vitality = EditorGUILayout.IntField("Vitality", stats.vitality);
+                stats.wisdom = EditorGUILayout.IntField("Wisdom", stats.wisdom);
+                stats.strength = EditorGUILayout.IntField("Strength", stats.strength);
+                stats.defense = EditorGUILayout.IntField("Defense", stats.defense);
+                stats.magic = EditorGUILayout.IntField("Magic", stats.magic);
+                stats.resistance = EditorGUILayout.IntField("Resistance", stats.resistance);
+                stats.speed = EditorGUILayout.IntField("Speed", stats.speed);
+                stats.luck = EditorGUILayout.IntField("Luck", stats.luck);
+            }
+            GUILayout.Space(5);
         }
     }
 

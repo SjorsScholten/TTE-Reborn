@@ -17,11 +17,11 @@ public class AggroCircle : AggroBehaviour {
         {
             if (Physics2D.OverlapCircleAll(transform.position, deAggroRadius, layerMask).Length > 0)
             {
-                alertIcon.SetActive(true);
+                ActivateAlert(true);
             }
             else
             {
-                alertIcon.SetActive(false);
+                ActivateAlert(false);
             }
         }
         else
@@ -66,6 +66,13 @@ public class AggroCircle : AggroBehaviour {
             lastPositionAggro = nextPositionAggro;
             lastPositionDeAggro = nextPositionDeAggro;
         }
+    }
 
+    private void ActivateAlert(bool activate)
+    {
+        if (alertIcon != null)
+        {
+            alertIcon.SetActive(activate);
+        }
     }
 }
