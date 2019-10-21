@@ -12,6 +12,8 @@ public class EnemyEditor : EditorWindow
     private GameObject currentSelected;
     private GameObject selected;
 
+    private string path = "Assets/Prefabs/Enemies/";
+
     private void OnEnable()
     {
         //Gets tabs
@@ -67,6 +69,14 @@ public class EnemyEditor : EditorWindow
                 break;
         }
 
+        GUILayout.FlexibleSpace();
+
+        if (GUILayout.Button("Save Prefab"))
+        {
+            SavePrefab();
+        }
+        GUILayout.Space(10);
+
         //Checks if a tab is changed
         if (previousTab != currentTab)
         {
@@ -98,5 +108,43 @@ public class EnemyEditor : EditorWindow
             return true;
         }
         return false;
+    }
+
+    /// <summary>
+    /// Saves and creates the prefab.
+    /// </summary>
+    private void SavePrefab()
+    {
+        GameObject obj = Selection.activeObject as GameObject;
+        GameObject prefab = null;
+
+        if (obj != null)
+        {
+            try
+            {
+                //Save existing prefab and rename it.
+                string path2 = PrefabUtility.GetPrefabAssetPathOfNearestInstanceRoot(obj);
+                prefab = PrefabUtility.SaveAsPrefabAsset(obj, path2);
+                AssetDatabase.RenameAsset(path2, obj.name);
+            }
+            catch (Exception)
+            {
+                //Create new prefab
+                try
+                {
+                    prefab = PrefabUtility.SaveAsPrefabAsset(obj, path + obj.name + ".prefab");
+                    Debug.Log("Gemaakt");
+
+                    //Replace old object with prefab and select it
+                    GameObject select = PrefabUtility.InstantiatePrefab(prefab, obj.transform.parent) as GameObject;
+                    GameObject.DestroyImmediate(obj, true);
+                    Selection.SetActiveObjectWithContext(select, null);
+                }
+                catch (Exception e)
+                {
+                    Debug.Log(e.Message);
+                }
+            }
+        }
     }
 }

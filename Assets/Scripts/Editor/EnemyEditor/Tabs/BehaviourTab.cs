@@ -110,7 +110,6 @@ public class BehaviourTab : Tab
         {
             int behaviourIndex = 0;
             //Set pre selected
-
             AddScript(controller.idle, behaviourIndex);
             behaviourIndex++;
             AddScript(controller.movement, behaviourIndex);

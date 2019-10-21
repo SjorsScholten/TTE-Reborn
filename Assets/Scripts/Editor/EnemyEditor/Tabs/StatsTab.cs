@@ -15,13 +15,11 @@ public class StatsTab : Tab
 
     public override void DisplayTab()
     {
+        stats = EditorGUILayout.ObjectField("Stats Object", stats, typeof(BaseStats), true) as BaseStats;
+        SaveStats();
+        GUILayout.Space(5);
         if (stats != null)
-        {
-            //UI Code here
-            stats = EditorGUILayout.ObjectField("Stats Object", stats, typeof(BaseStats), true) as BaseStats;
-            SaveStats();
-            GUILayout.Space(5);
-
+        {     
             stats.vitality = EditorGUILayout.IntField("Vitality", stats.vitality);
             stats.wisdom = EditorGUILayout.IntField("Wisdom", stats.wisdom);
             stats.strength = EditorGUILayout.IntField("Strength", stats.strength);

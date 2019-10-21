@@ -10,9 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 3315470602353108687}
   - component: {fileID: 4477265144274517569}
+  - component: {fileID: 650123869131612103}
+  - component: {fileID: 8140398761147118441}
   m_Layer: 0
-  m_Name: Marno met een N
-  m_TagString: Enemies
+  m_Name: _TestEnemy1
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52,3 +54,40 @@ MonoBehaviour:
   OnDamagedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!95 &650123869131612103
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6027554554937676956}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8f67ab2a63c13244cabd088e542916fd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8140398761147118441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6027554554937676956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89af3d100a69ffe4f85216bb374dc58c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idle: {fileID: 0}
+  movement: {fileID: 0}
+  attack: {fileID: 0}
+  aggro: {fileID: 0}
+  animations: {fileID: 0}
+  stunTimer: 0

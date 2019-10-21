@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class EnemyController : MonoBehaviour {
 
     [Header("Idle Behaviour")]
@@ -31,6 +32,7 @@ public class EnemyController : MonoBehaviour {
 
     private void Awake() {
         Animator = GetComponent<Animator>();
+        
         Clip = Animator.runtimeAnimatorController.animationClips.Single(x => animations.attackAnimation == x.name);
 
         EnemyState = EntityState.Idle;
