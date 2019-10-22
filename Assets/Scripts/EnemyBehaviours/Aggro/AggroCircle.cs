@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class AggroCircle : AggroBehaviour {
 
-    [SerializeField] private float aggroRadius;
-    [SerializeField] private float deAggroRadius;
+    [SerializeField] private float aggroRadius = 3;
+    [SerializeField] private float deAggroRadius = 4.5f;
     [SerializeField] [Tooltip("Line of Sight")] private bool requiresLOS;
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private GameObject alertIcon;

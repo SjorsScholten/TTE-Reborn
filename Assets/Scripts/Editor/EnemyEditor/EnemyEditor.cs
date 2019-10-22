@@ -122,6 +122,7 @@ public class EnemyEditor : EditorWindow
             {
                 //Save existing prefab and rename it.
                 string path2 = PrefabUtility.GetPrefabAssetPathOfNearestInstanceRoot(obj);
+                PrefabUtility.ApplyPrefabInstance(obj, InteractionMode.UserAction);
                 prefab = PrefabUtility.SaveAsPrefabAsset(obj, path2);
                 AssetDatabase.RenameAsset(path2, obj.name);
             }
