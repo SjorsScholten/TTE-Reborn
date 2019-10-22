@@ -5,12 +5,11 @@ using UnityEngine;
 public class Damager : MonoBehaviour
 {
 
-    [SerializeField]
-    [EnumFlag]
-    private DamageSource damageSource;
+    [SerializeField] [EnumFlag] private DamageSource damageSource;
 
-    [SerializeField]
-    private BaseStats stats;
+    [SerializeField] private BaseStats stats;
+
+    [SerializeField] private Transform parent;
 
     private List<Collider2D> collisions;
 
@@ -24,7 +23,7 @@ public class Damager : MonoBehaviour
         Destroyable destroyable = collision.GetComponent<Destroyable>();
 
         int damage = Tools.GetDamage(damageSource, stats);
-        destroyable.Damage(damage, this.transform, damageSource);
+        destroyable.Damage(damage, parent, damageSource);
     }
 
     public void DamageCollisions()

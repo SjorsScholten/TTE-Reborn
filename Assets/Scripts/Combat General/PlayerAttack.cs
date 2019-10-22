@@ -18,6 +18,8 @@ public class PlayerAttack : MonoBehaviour, PlayerControls.ICombatActions {
     private float cooldownTimer;
     private bool cooldown = false;
 
+    public bool IsAttacking { get { return cooldown; } }
+
     void Awake() {
         input = new PlayerControls();
         input.Combat.SetCallbacks(this);
