@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class Room : MonoBehaviour {
 
-    public void Shout() {
-        Debug.Log(gameObject.name);
+    public void RoomEnter() {
         StartCoroutine(Transition());
     }
 
