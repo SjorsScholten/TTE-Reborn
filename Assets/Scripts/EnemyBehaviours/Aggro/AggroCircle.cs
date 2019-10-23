@@ -26,7 +26,10 @@ public class AggroCircle : AggroBehaviour {
         }
         else
         {
-            alertIcon.SetActive(false);
+            if (alertIcon != null)
+            {
+                alertIcon.SetActive(false);
+            }
         }
 
         Transform nearestTarget = null;
