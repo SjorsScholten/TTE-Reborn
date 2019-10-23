@@ -115,6 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageSource: 256
   stats: {fileID: 11400000, guid: 45dc5875b12172d4295452eab9002c7f, type: 2}
+  parent: {fileID: 370913197958546229}
 --- !u!50 &300002276
 Rigidbody2D:
   serializedVersion: 4
@@ -296,6 +297,10 @@ MonoBehaviour:
   stats: {fileID: 11400000, guid: 45dc5875b12172d4295452eab9002c7f, type: 2}
   immuneToSource: 0
   health: 0
+  receivesKnockback: 1
+  knockbackMultiplier: 0.6
+  stunTimer: 0.35
+  iFrames: 4.25
   OnDestroyedEvent:
     m_PersistentCalls:
       m_Calls:
@@ -312,15 +317,18 @@ MonoBehaviour:
         m_CallState: 2
   OnDamagedEvent:
     m_PersistentCalls:
+      m_Calls: []
+  OnKnockbackEvent:
+    m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 356326689}
         m_MethodName: Stun
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 0
+          m_FloatArgument: 0.25
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -379,8 +387,6 @@ MonoBehaviour:
   movement: {fileID: 356326692}
   attack: {fileID: 943518129458820656}
   aggro: {fileID: 356326690}
-  animations: {fileID: 11400000, guid: 47a234061dd45e7478ccf972264d3e89, type: 2}
-  stunTimer: 0.25
 --- !u!114 &356326690
 MonoBehaviour:
   m_ObjectHideFlags: 0

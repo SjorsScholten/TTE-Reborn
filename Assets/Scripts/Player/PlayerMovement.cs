@@ -37,6 +37,8 @@ public class PlayerMovement : MonoBehaviour, PlayerControls.IMovementActions {
     }
 
     private void DoMove() {
+        if (playerAttack.IsAttacking) return;
+
         OnMovePlayerEvent.Invoke(Direction);
         playerAttack.RotateAttacks(lastDirection);
     }
@@ -48,7 +50,8 @@ public class PlayerMovement : MonoBehaviour, PlayerControls.IMovementActions {
     private void Animate() {
         if (!isActive) return;
 
-        if (Direction == Vector2.zero) { //Idle
+        if (Direction == Vector2.zero || playerAttack.IsAttacking) { //Idle 
+            //|| Remove playerAttack.IsAttacking here when attack animation is actually on the player sprites.
             animator.SetBool("Idle", true);
             animator.SetFloat("Horizontal", lastDirection.x);
             animator.SetFloat("Vertical", lastDirection.y);
