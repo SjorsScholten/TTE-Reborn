@@ -86,8 +86,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -577327005
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -7093138620872258357, guid: c619704b363c2c644b8282776bf25c82,
     type: 3}
@@ -301,7 +301,7 @@ MonoBehaviour:
   receivesKnockback: 1
   knockbackMultiplier: 0.6
   stunTimer: 0.35
-  iFrames: 4.25
+  iFrames: 3.9
   OnDestroyedEvent:
     m_PersistentCalls:
       m_Calls:

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vitality: 35
   wisdom: 60
-  strength: 20
+  strength: 15
   defense: 8
   magic: 13
   resistance: 14
