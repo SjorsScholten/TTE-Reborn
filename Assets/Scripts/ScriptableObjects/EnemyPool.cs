@@ -6,4 +6,5 @@ using UnityEngine;
 public class EnemyPool : ScriptableObject {
     public string tag;
     public GameObject prefab;
+    public int size;
 }

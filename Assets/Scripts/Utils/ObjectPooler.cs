@@ -1,16 +1,17 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectPooler : MonoBehaviourSingleton<ObjectPooler> {
 
     public Dictionary<string, Queue<GameObject>> poolDictionary;
-    public List<Pool> pools;
+    public List<EnemyPool> pools;
 
     void Start() {
         poolDictionary = new Dictionary<string, Queue<GameObject>>();
 
-        foreach (Pool pool in pools) {
+        foreach (EnemyPool pool in pools) {
             Queue <GameObject> objects = new Queue<GameObject>();
 
             for (int i = 0; i < pool.size; i++) {
@@ -24,23 +25,31 @@ public class ObjectPooler : MonoBehaviourSingleton<ObjectPooler> {
     }
 
     public GameObject SpawnFromPool(string tag, Transform parent, Vector3 position, Quaternion rotation) {
-        GameObject obj = poolDictionary[tag].Dequeue();
+        try {
+            GameObject obj = poolDictionary[tag].Dequeue();
 
-        obj.transform.SetParent(parent);
-        obj.SetActive(true);
-        obj.transform.position = position;
-        obj.transform.rotation = rotation;
+            obj.transform.SetParent(parent);
+            obj.SetActive(true);
+            obj.transform.position = position;
+            obj.transform.rotation = rotation;
 
-        poolDictionary[tag].Enqueue(obj);
+            poolDictionary[tag].Enqueue(obj);
 
-        return obj;
+            return obj;
+        }
+        catch(NullReferenceException e) {
+            return null;
+        }     
     }
 
-}
+    public void Despawn(GameObject obj) {
+        StartCoroutine(WaitFrameBeforeHierachyMove(obj));
+    }
 
-[System.Serializable]
-public class Pool {
-    public string tag;
-    public GameObject prefab;
-    public int size;
+    private IEnumerator WaitFrameBeforeHierachyMove(GameObject obj) {
+        yield return null;
+        obj.transform.SetParent(this.transform);
+        obj.SetActive(false);
+    }
+
 }
