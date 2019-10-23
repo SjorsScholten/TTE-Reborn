@@ -1,16 +1,31 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Room : MonoBehaviour {
-    // Start is called before the first frame update
-    void Start() {
-        
+
+    public void Shout() {
+        Debug.Log(gameObject.name);
+        StartCoroutine(Transition());
     }
 
-    // Update is called once per frame
-    void Update() {
+    private IEnumerator Transition() {
+        CameraFollow cameraInstance = CameraFollow.Instance;
 
+        cameraInstance.roomBounds = this;
+        cameraInstance.IsFollowing = false;
+
+        PlayerMovement player = cameraInstance.GetComponent<FollowLeader>().partyMembers[0].GetComponent<PlayerMovement>();
+        player.isActive = false;        
+
+        Vector3 destination = cameraInstance.GetDestination();
+        Tween cameraTween = cameraInstance.transform.DOMove(destination, .5f);
+        yield return cameraTween.WaitForCompletion();
+
+        player.isActive = true;
+        player.ForceMove(Vector2.zero);
+        cameraInstance.IsFollowing = true;
     }
 
     private void OnDrawGizmos() {
