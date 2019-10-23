@@ -306,7 +306,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 9194403133067075730}
-        m_MethodName: Destroy
+        m_MethodName: DespawnFromPool
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -371,6 +371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9fb799f27334cb4295067dd77d96168, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectToDestroy: {fileID: 370913197958546216}
 --- !u!114 &356326688
 MonoBehaviour:
   m_ObjectHideFlags: 0

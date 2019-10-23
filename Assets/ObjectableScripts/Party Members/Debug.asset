@@ -9,9 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93e8042076209ea4fbc8baf95f6610e0, type: 3}
-  m_Name: Goober
+  m_Script: {fileID: 11500000, guid: 8be80b7245edf914bae2d29c47f22e7e, type: 3}
+  m_Name: Debug
   m_EditorClassIdentifier: 
-  tag: slime
-  prefab: {fileID: 370913197958546216, guid: 80ee2631b30d6ce44ae64f1a0ff9b3bb, type: 3}
-  size: 15
+  vitality: 35
+  wisdom: 60
+  strength: 20
+  defense: 8
+  magic: 13
+  resistance: 14
+  speed: 9
+  luck: 4

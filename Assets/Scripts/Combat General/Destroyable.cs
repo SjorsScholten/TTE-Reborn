@@ -37,7 +37,7 @@ public class Destroyable : MonoBehaviour {
     public OnKnockback OnKnockbackEvent;
     #endregion
 
-    private void Awake() {
+    private void OnEnable() {
         this.health = stats.vitality;
         invinsibilityTimer.time = iFrames + stunTimer;
         invinsibilityTimer.triggerAction += () => {
@@ -99,6 +99,7 @@ public class Destroyable : MonoBehaviour {
     }
 
     private void DestroyDestroyable() {
+        invinsibilityTimer.SkipToEnd();
         OnDestroyedEvent.Invoke(transform);
     }
 

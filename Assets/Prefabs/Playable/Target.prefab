@@ -235,7 +235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageSource: 1
-  stats: {fileID: 11400000, guid: b907c191cabc1a14488cc09ffc92968d, type: 2}
+  stats: {fileID: 11400000, guid: 15490afe36e24744dbfa125e46447ffe, type: 2}
   parent: {fileID: 2241654798952769798}
 --- !u!1 &2241654800007665457
 GameObject:
@@ -411,7 +411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 156cabd03ff2ff74797930e7bf83827b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: b907c191cabc1a14488cc09ffc92968d, type: 2}
+  stats: {fileID: 11400000, guid: 15490afe36e24744dbfa125e46447ffe, type: 2}
   immuneToSource: 0
   health: 0
   receivesKnockback: 1

@@ -29,12 +29,15 @@ public class EnemyController : MonoBehaviour {
     private void Awake() {
         Animator = GetComponent<Animator>();
         Clip = Animator.runtimeAnimatorController.animationClips.Single(x => animations.attackAnimation == x.name);
-
-        EnemyState = EntityState.Idle;
+     
         idle.enemy = this;
         aggro.enemy = this;
         movement.enemy = this;
         attack.enemy = this;
+    }
+
+    private void OnEnable() {
+        EnemyState = EntityState.Idle;
     }
 
     private void Update() {

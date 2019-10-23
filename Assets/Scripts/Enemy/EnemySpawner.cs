@@ -18,6 +18,8 @@ public class EnemySpawner : MonoBehaviour {
     }
 
     private void OnDisable() {
-        if (spawned) pooler.Despawn(spawned);       
+        if (spawned) {
+            pooler.Despawn(spawned);
+        }
     }
 }
