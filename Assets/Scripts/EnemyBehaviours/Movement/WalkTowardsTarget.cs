@@ -9,8 +9,6 @@ public class WalkTowardsTarget : MovementBehaviour {
         Vector3 velocity = target.position - transform.position;
         mtm.Move(velocity.normalized);
 
-        Direction direction = Tools.ConvertVectorToDirection(velocity);
-
         if (velocity.normalized.x <= 0) {
             GetComponent<SpriteRenderer>().flipX = true;
         }

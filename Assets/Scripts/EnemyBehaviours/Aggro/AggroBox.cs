@@ -8,12 +8,11 @@ public class AggroBox : AggroBehaviour
     [SerializeField] private float aggroRadius = 5;
     [SerializeField] private float deAggroRadius = 8;
     [SerializeField] [Tooltip("Line of Sight")] private bool requiresLOS;
-    [SerializeField] private LayerMask layerMask;
     [SerializeField] private GameObject alertIcon;
 
     public override Transform LookForTarget()
     {
-        var targets = Physics2D.OverlapBoxAll(transform.position, new Vector2(aggroRadius, aggroRadius), layerMask);
+        var targets = Physics2D.OverlapBoxAll(transform.position, new Vector2(aggroRadius, aggroRadius), 0, layerMask);
 
         if (targets.Length == 0)
         {
@@ -28,7 +27,11 @@ public class AggroBox : AggroBehaviour
         }
         else
         {
-            alertIcon.SetActive(false);
+            Debug.Log(targets[0].name);
+            if (alertIcon != null)
+            {
+                alertIcon.SetActive(false);
+            }
         }
 
         Transform nearestTarget = null;

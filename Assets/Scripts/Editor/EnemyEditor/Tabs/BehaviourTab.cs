@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using System;
 using System.Linq;
+using System.Reflection;
 
 public class Behaviour
 {
@@ -150,7 +151,9 @@ public class BehaviourTab : Tab
                 controller.attack = controller.GetComponent<AttackBehaviour>();
                 break;
             case 3:
-                controller.aggro = controller.GetComponent<AggroBehaviour>();
+                AggroBehaviour behaviour = controller.GetComponent<AggroBehaviour>();
+                behaviour.layerMask = NYRA.Layer.PlayerMask;
+                controller.aggro = behaviour;
                 break;
         }
     }

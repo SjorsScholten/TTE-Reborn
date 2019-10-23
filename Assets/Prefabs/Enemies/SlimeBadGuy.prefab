@@ -184,13 +184,12 @@ GameObject:
   - component: {fileID: 370913197958546219}
   - component: {fileID: 5470007518241636352}
   - component: {fileID: 2864069831355594368}
-  - component: {fileID: 9194403133067075730}
   - component: {fileID: 356326688}
   - component: {fileID: 356326689}
   - component: {fileID: 356326690}
   - component: {fileID: 356326691}
   - component: {fileID: 356326692}
-  - component: {fileID: 3486131770240515424}
+  - component: {fileID: 943518129458820656}
   m_Layer: 9
   m_Name: SlimeBadGuy
   m_TagString: Enemies
@@ -300,7 +299,7 @@ MonoBehaviour:
   OnDestroyedEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9194403133067075730}
+      - m_Target: {fileID: 0}
         m_MethodName: Destroy
         m_Mode: 1
         m_Arguments:
@@ -351,18 +350,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.25, y: 0.5}
   m_EdgeRadius: 0
---- !u!114 &9194403133067075730
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 370913197958546216}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9fb799f27334cb4295067dd77d96168, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &356326688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -390,7 +377,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idle: {fileID: 356326688}
   movement: {fileID: 356326692}
-  attack: {fileID: 3486131770240515424}
+  attack: {fileID: 943518129458820656}
   aggro: {fileID: 356326690}
   animations: {fileID: 11400000, guid: 47a234061dd45e7478ccf972264d3e89, type: 2}
   stunTimer: 0.25
@@ -407,12 +394,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 0}
-  aggroRadius: 3
-  deAggroRadius: 4.5
-  requiresLOS: 0
   layerMask:
     serializedVersion: 2
     m_Bits: 2048
+  aggroRadius: 3
+  deAggroRadius: 4.5
+  requiresLOS: 0
   alertIcon: {fileID: 5347029954744862445}
 --- !u!114 &356326691
 MonoBehaviour:
@@ -440,7 +427,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 0}
---- !u!114 &3486131770240515424
+--- !u!114 &943518129458820656
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -449,11 +436,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 370913197958546216}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b49df464c11499459d592b505a7f7f8, type: 3}
+  m_Script: {fileID: 11500000, guid: 5744d67ba8f1f2548a21fcdbd84e4e32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 0}
   cooldown: 0
+  radius: 0
 --- !u!1 &5347029954744862445
 GameObject:
   m_ObjectHideFlags: 0
