@@ -5,8 +5,20 @@ using UnityEngine;
 
 public class Room : MonoBehaviour {
 
+    [SerializeField] private GameObject toggledContents;
+
+    private void Awake() {
+        toggledContents.SetActive(false);
+    }
+
     public void RoomEnter() {
+        toggledContents.SetActive(true);
+
         StartCoroutine(Transition());
+    }
+
+    public void RoomExit() {
+        toggledContents.SetActive(false);
     }
 
     private IEnumerator Transition() {
