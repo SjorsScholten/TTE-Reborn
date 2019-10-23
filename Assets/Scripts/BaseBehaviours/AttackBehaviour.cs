@@ -6,7 +6,7 @@ public abstract class AttackBehaviour : MonoBehaviour {
 
     [HideInInspector] public EnemyController enemy;
 
-    [SerializeField] protected float cooldown;
+    [SerializeField] protected float cooldown = 1;
 
     protected bool isOnCooldown;
 

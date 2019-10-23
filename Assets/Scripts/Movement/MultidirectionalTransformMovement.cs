@@ -11,7 +11,7 @@ public class MultidirectionalTransformMovement : MonoBehaviour, ICharacterMoveme
     private Transform myTransform;
 
     public float MoveSpeed {
-        get { return moveSpeed; }
+        get { return moveSpeed; } set { moveSpeed = value; }
     }
 
     private void Awake() {
