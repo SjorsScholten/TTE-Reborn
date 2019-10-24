@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour {
@@ -11,6 +12,7 @@ public class EnemySpawner : MonoBehaviour {
 
     private void Awake() {
         pooler = ObjectPooler.Instance;
+        GetComponent<SpriteRenderer>().enabled = false;
     }
 
     private void OnEnable() {
@@ -22,4 +24,16 @@ public class EnemySpawner : MonoBehaviour {
             pooler.Despawn(spawned);
         }
     }
+
+#if UNITY_EDITOR
+    private void OnDrawGizmos() {
+        GUIStyle style = new GUIStyle();
+        style.normal.textColor = Color.red;
+        style.fontSize = 15;
+        style.fontStyle = FontStyle.Bold;
+
+        Handles.Label(transform.position, enemyObject.name, style);
+
+    }
+#endif
 }
