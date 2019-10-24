@@ -70,10 +70,18 @@ public class EnemyEditor : EditorWindow
 
         GUILayout.FlexibleSpace();
 
+        GUILayout.BeginHorizontal();
+        if (GUILayout.Button("Create Basic Enemy"))
+        {
+            CreateBasicEnemy();
+        }
+
         if (GUILayout.Button("Save Prefab"))
         {
             SavePrefab();
         }
+        GUILayout.EndHorizontal();
+
         GUILayout.Space(10);
 
         //Checks if a tab is changed
@@ -145,5 +153,22 @@ public class EnemyEditor : EditorWindow
                 }
             }
         }
+    }
+
+    private void CreateBasicEnemy()
+    {
+        GameObject enemy = new GameObject("New Enemy");
+        enemy.AddComponent<Destroyable>();
+        enemy.AddComponent<EnemyController>();
+        enemy.AddComponent<MultidirectionalTransformMovement>();
+        enemy.AddComponent<SimpleDestroyable>();
+        enemy.AddComponent<BoxCollider2D>();
+
+        enemy.tag = NYRA.Tag.Enemies;
+        enemy.layer = LayerMask.NameToLayer(NYRA.Layer.Enemy);
+
+        selected = enemy;
+        Selection.SetActiveObjectWithContext(enemy, null);
+        tabs[currentTab].OnSelectionChanged(selected);
     }
 }
