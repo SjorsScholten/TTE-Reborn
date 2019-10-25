@@ -301,7 +301,7 @@ MonoBehaviour:
   immuneToSource: 0
   health: 0
   receivesKnockback: 1
-  knockbackMultiplier: 3.4
+  knockbackMultiplier: 6
   stunTimer: 0.35
   iFrames: 3.9
   OnDestroyedEvent:
