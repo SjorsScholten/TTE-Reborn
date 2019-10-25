@@ -24,12 +24,14 @@ public class Destroyable : MonoBehaviour {
     [SerializeField] private bool receivesKnockback = true;
     [SerializeField] private float knockbackMultiplier;
     [SerializeField] private float stunTimer;
+    public bool IsStunned { get; private set; }
 
     [Header("I-Frames")]
     [SerializeField] private float iFrames;
 
     private TimedVariable invinsibilityTimer = new TimedVariable();
     private bool isInvinsible;
+    private Rigidbody2D rb2d;
 
     [Header("Events")]
     public OnDestroyed OnDestroyedEvent;
@@ -38,6 +40,7 @@ public class Destroyable : MonoBehaviour {
     #endregion
 
     private void OnEnable() {
+        rb2d = GetComponent<Rigidbody2D>();
         this.health = stats.vitality;
         invinsibilityTimer.time = iFrames + stunTimer;
         invinsibilityTimer.triggerAction += () => {
@@ -89,12 +92,15 @@ public class Destroyable : MonoBehaviour {
             Vector3 direction = (transform.position - origin.position).normalized;
             direction *= knockbackMultiplier;
             float time = 0;
+            IsStunned = true;
 
-            while (time <= stunTimer) {
-                transform.position = Vector3.SmoothDamp(transform.position, transform.position + direction, ref velocity, stunTimer);
+            while (time <= stunTimer) {               
+                rb2d.MovePosition(transform.position + direction * Time.deltaTime);
                 yield return null;
                 time += Time.deltaTime;
             }
+
+            IsStunned = false;
         }
     }
 

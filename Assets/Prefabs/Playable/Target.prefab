@@ -415,7 +415,7 @@ MonoBehaviour:
   immuneToSource: 0
   health: 0
   receivesKnockback: 1
-  knockbackMultiplier: 1.5
+  knockbackMultiplier: 5
   stunTimer: 0.25
   iFrames: 2.5
   OnDestroyedEvent:
@@ -482,8 +482,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
-  m_Mass: 0.0001
-  m_LinearDrag: 0
+  m_Mass: 1
+  m_LinearDrag: 200
   m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
