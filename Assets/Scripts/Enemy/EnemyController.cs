@@ -40,7 +40,7 @@ public class EnemyController : MonoBehaviour {
         EnemyState = EntityState.Idle;
     }
 
-    private void Update() {
+    private void FixedUpdate() {
         switch (EnemyState) {
             case EntityState.Idle:
                 Idle();

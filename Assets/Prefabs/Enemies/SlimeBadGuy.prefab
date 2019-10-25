@@ -192,6 +192,7 @@ GameObject:
   - component: {fileID: 356326691}
   - component: {fileID: 356326692}
   - component: {fileID: 356326693}
+  - component: {fileID: 2537425342273971421}
   m_Layer: 9
   m_Name: SlimeBadGuy
   m_TagString: Playable
@@ -463,6 +464,27 @@ MonoBehaviour:
   enemy: {fileID: 0}
   cooldown: 1.2
   radius: 1.5
+--- !u!50 &2537425342273971421
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370913197958546216}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 1
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &5347029954744862445
 GameObject:
   m_ObjectHideFlags: 0

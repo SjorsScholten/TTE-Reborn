@@ -1,5 +1,6 @@
 ﻿//using UnityEngine;
 //using System.Reflection;
+//using System.Linq;
 //#if UNITY_EDITOR
 //using UnityEditor;
 //#endif
@@ -13,8 +14,10 @@
 //    private void OnSceneGUI() {
 //        var go = target as Grid;
 //        var assembly = Assembly.Load(new AssemblyName("UnityEditor"));
-//        var windowType = assembly.GetType("UnityEditor.GridPaintPaletteWindow");
-//        var paletteWindow = UnityEditor.EditorWindow.GetWindow(windowType, false, "Tile Palette", false);
+//        var windowType = assembly.GetTypes().Single(x => x.Name == "GridPalette");
+
+//        var paletteWindow = (EditorWindow) EditorWindow.GetWindow(typeof(EditorWindow), true, "Tile Palette", false);
+//        //var windowType = paletteWindow.GetType();
 
 //        Handles.BeginGUI();
 
@@ -48,6 +51,10 @@
 
 //                    if (paletteWindow != null) {
 //                        var selectTargetMethod = windowType.GetMethod("SelectTarget", BindingFlags.Instance | BindingFlags.NonPublic);
+//                        Debug.Log(windowType.GetMethods().Length);
+//                        foreach (MethodInfo method in windowType.GetMethods()) {
+//                            Debug.Log(method.Name);
+//                        }
 //                        selectTargetMethod.Invoke(paletteWindow, new object[] { 0, child.gameObject });
 //                        selected = child.gameObject.name;
 //                    }
