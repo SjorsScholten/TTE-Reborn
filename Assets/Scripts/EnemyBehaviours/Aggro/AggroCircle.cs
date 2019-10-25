@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class AggroCircle : AggroBehaviour {
 
-    [SerializeField] private float aggroRadius;
-    [SerializeField] private float deAggroRadius;
+    [SerializeField] private float aggroRadius = 3;
+    [SerializeField] private float deAggroRadius = 4.5f;
     [SerializeField] [Tooltip("Line of Sight")] private bool requiresLOS;
-    [SerializeField] private LayerMask layerMask;
+    
     [SerializeField] private GameObject alertIcon;
 
     public override Transform LookForTarget() {
@@ -17,16 +17,19 @@ public class AggroCircle : AggroBehaviour {
         {
             if (Physics2D.OverlapCircleAll(transform.position, deAggroRadius, layerMask).Length > 0)
             {
-                alertIcon.SetActive(true);
+                ActivateAlert(true);
             }
             else
             {
-                alertIcon.SetActive(false);
+                ActivateAlert(false);
             }
         }
         else
         {
-            alertIcon.SetActive(false);
+            if (alertIcon != null)
+            {
+                alertIcon.SetActive(false);
+            }
         }
 
         Transform nearestTarget = null;
@@ -66,6 +69,13 @@ public class AggroCircle : AggroBehaviour {
             lastPositionAggro = nextPositionAggro;
             lastPositionDeAggro = nextPositionDeAggro;
         }
+    }
 
+    private void ActivateAlert(bool activate)
+    {
+        if (alertIcon != null)
+        {
+            alertIcon.SetActive(activate);
+        }
     }
 }

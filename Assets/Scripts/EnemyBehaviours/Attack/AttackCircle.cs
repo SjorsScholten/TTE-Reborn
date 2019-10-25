@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AttackCircle : AttackBehaviour {
 
-    [SerializeField] private float radius;
+    [SerializeField] private float radius = 2;
 
     public override bool AllowedToAttack() {
         return !isOnCooldown &&

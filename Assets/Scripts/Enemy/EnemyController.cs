@@ -3,22 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator), typeof(SpriteRenderer))]
 public class EnemyController : MonoBehaviour {
 
     [Header("Idle Behaviour")]
-    [SerializeField] private IdleBehaviour idle;
+    public IdleBehaviour idle;
 
     [Header("Movement Behaviour")]
-    [SerializeField] private MovementBehaviour movement;
+    public MovementBehaviour movement;
 
     [Header("Attack Behaviour")]
-    [SerializeField] private AttackBehaviour attack;
-
-    [Header("Animations")]
-    public EnemyAnimations animations;
+    public AttackBehaviour attack;
 
     [Header("Aggro Behaviour")]
-    [SerializeField] private AggroBehaviour aggro;
+    public AggroBehaviour aggro;
+
+    [Header("Animations")]
+    public EnemyAnimations animations;    
 
     public Animator Animator { get; private set; }
     public EntityState EnemyState { get; private set; }
@@ -28,6 +29,7 @@ public class EnemyController : MonoBehaviour {
 
     private void Awake() {
         Animator = GetComponent<Animator>();
+        
         Clip = Animator.runtimeAnimatorController.animationClips.Single(x => animations.attackAnimation == x.name);
      
         idle.enemy = this;

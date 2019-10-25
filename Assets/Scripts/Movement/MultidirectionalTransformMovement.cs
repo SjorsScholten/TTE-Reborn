@@ -12,7 +12,7 @@ public class MultidirectionalTransformMovement : MonoBehaviour, ICharacterMoveme
     private Rigidbody2D rb2d;
 
     public float MoveSpeed {
-        get { return moveSpeed; }
+        get { return moveSpeed; } set { moveSpeed = value; }
     }
 
     private void Awake() {

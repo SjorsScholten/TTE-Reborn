@@ -185,7 +185,6 @@ GameObject:
   - component: {fileID: 370913197958546219}
   - component: {fileID: 5470007518241636352}
   - component: {fileID: 2864069831355594368}
-  - component: {fileID: 9194403133067075730}
   - component: {fileID: 356326688}
   - component: {fileID: 356326689}
   - component: {fileID: 356326690}
@@ -195,7 +194,7 @@ GameObject:
   - component: {fileID: 2537425342273971421}
   m_Layer: 9
   m_Name: SlimeBadGuy
-  m_TagString: Playable
+  m_TagString: Enemies
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -400,9 +399,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idle: {fileID: 356326688}
   movement: {fileID: 356326692}
-  attack: {fileID: 356326693}
-  animations: {fileID: 11400000, guid: 47a234061dd45e7478ccf972264d3e89, type: 2}
+  attack: {fileID: 943518129458820656}
   aggro: {fileID: 356326690}
+  animations: {fileID: 11400000, guid: 47a234061dd45e7478ccf972264d3e89, type: 2}
 --- !u!114 &356326690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -416,12 +415,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 0}
-  aggroRadius: 3
-  deAggroRadius: 4.5
-  requiresLOS: 0
   layerMask:
     serializedVersion: 2
     m_Bits: 2048
+  aggroRadius: 3
+  deAggroRadius: 4.5
+  requiresLOS: 0
   alertIcon: {fileID: 5347029954744862445}
 --- !u!114 &356326691
 MonoBehaviour:
@@ -449,7 +448,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 0}
---- !u!114 &356326693
+--- !u!114 &943518129458820656
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
