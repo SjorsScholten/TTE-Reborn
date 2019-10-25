@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour, PlayerControls.IMovementActions {
         playerAttack = GetComponent<PlayerAttack>();
     }
 
-    private void Update() {
+    private void FixedUpdate() {
         DoMove();
 
         Animate();
