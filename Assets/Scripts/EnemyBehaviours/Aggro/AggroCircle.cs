@@ -7,8 +7,6 @@ public class AggroCircle : AggroBehaviour {
     [SerializeField] private float aggroRadius = 3;
     [SerializeField] private float deAggroRadius = 4.5f;
     [SerializeField] [Tooltip("Line of Sight")] private bool requiresLOS;
-    
-    [SerializeField] private GameObject alertIcon;
 
     public override Transform LookForTarget() {
         var targets = Physics2D.OverlapCircleAll(transform.position, aggroRadius, layerMask);

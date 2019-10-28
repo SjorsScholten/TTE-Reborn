@@ -162,13 +162,30 @@ public class EnemyEditor : EditorWindow
         enemy.AddComponent<EnemyController>();
         enemy.AddComponent<MultidirectionalTransformMovement>();
         enemy.AddComponent<SimpleDestroyable>();
-        enemy.AddComponent<BoxCollider2D>();
+        BoxCollider2D boxCollider = enemy.AddComponent<BoxCollider2D>();
+        boxCollider.offset = new Vector2(0, 0.25f);
+        boxCollider.size = new Vector2(1.25f, 0.5f);
 
         enemy.tag = NYRA.Tag.Enemies;
         enemy.layer = LayerMask.NameToLayer(NYRA.Layer.Enemy);
 
+        GameObject attackHitbox = Resources.Load("prefabs/AttackHitbox") as GameObject;
+        attackHitbox = Instantiate(attackHitbox);
+        attackHitbox.transform.parent = enemy.transform;
+        attackHitbox.name = attackHitbox.name.Replace("(Clone)", "");
+        GameObject alertIcon = Resources.Load("prefabs/AlertIcon") as GameObject;
+        alertIcon = Instantiate(alertIcon);
+        alertIcon.transform.parent = enemy.transform;
+        alertIcon.name = alertIcon.name.Replace("(Clone)", "");
+
         selected = enemy;
         Selection.SetActiveObjectWithContext(enemy, null);
         tabs[currentTab].OnSelectionChanged(selected);
+
+        Damager damager = attackHitbox.GetComponent<Damager>();
+        if (damager != null)
+        {
+            damager.SetParent(enemy.transform);
+        }
     }
 }
