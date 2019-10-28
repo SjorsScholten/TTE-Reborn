@@ -17,12 +17,11 @@ public class Damager : MonoBehaviour {
     }
 
     public void OnEnter(Collider2D collision) {
-        if (collision.isTrigger) {
-            Destroyable destroyable = collision.GetComponent<Destroyable>();
+        Destroyable destroyable = collision.GetComponent<Destroyable>();
 
-            int damage = Tools.GetDamage(damageSource, stats);
-            destroyable.Damage(damage, parent, damageSource);
-        }
+        int damage = Tools.GetDamage(damageSource, stats);
+        destroyable.Damage(damage, parent, damageSource);
+
 
     }
 

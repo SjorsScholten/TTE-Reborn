@@ -9,7 +9,7 @@ public class WalkTowardsTarget : MovementBehaviour {
         Vector3 velocity = target.position - transform.position;
         mtm.Move(velocity.normalized);
 
-        if (velocity.normalized.x <= 0) {
+        if (mtm.Rigidbody.velocity.normalized.x <= 0.01f) {
             GetComponent<SpriteRenderer>().flipX = true;
         }
         else {
