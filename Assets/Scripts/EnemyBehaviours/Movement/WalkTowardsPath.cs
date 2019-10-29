@@ -12,9 +12,9 @@ public class WalkTowardsPath : MovementBehaviour {
         Vector2 velocity = enemy.pathfinding.Direction;
         mtm.Move(velocity.normalized);
 
-        if (velocity.normalized.x <= 0) {
+        if (velocity.normalized.x <= 0.01f) {
             GetComponent<SpriteRenderer>().flipX = true;
-        } else {
+        } else if (velocity.normalized.x >= -0.01f) {
             GetComponent<SpriteRenderer>().flipX = false;
         }
     }
