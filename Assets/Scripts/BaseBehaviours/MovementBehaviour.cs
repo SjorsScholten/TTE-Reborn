@@ -8,7 +8,7 @@ public abstract class MovementBehaviour : MonoBehaviour {
 
     protected MultidirectionalTransformMovement mtm;
 
-    private void Awake() {
+    private void OnEnable() {
         mtm = GetComponent<MultidirectionalTransformMovement>();
     }
 

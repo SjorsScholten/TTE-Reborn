@@ -20,24 +20,25 @@ public class PlayerMovement : MonoBehaviour, PlayerControls.IMovementActions {
     public Vector2 Direction { get; private set; }
 
     private PlayerAttack playerAttack;
-
     private PlayerControls input;
+    private Destroyable destroyable;
 
     private void Awake() {
         input = new PlayerControls();
         input.Movement.SetCallbacks(this);
         lastDirection = Vector2.down;
         playerAttack = GetComponent<PlayerAttack>();
+        destroyable = GetComponent<Destroyable>();
     }
 
-    private void Update() {
+    private void FixedUpdate() {
         DoMove();
 
         Animate();
     }
 
     private void DoMove() {
-        if (playerAttack.IsAttacking) return;
+        if (playerAttack.IsAttacking || destroyable.IsStunned) return;
 
         OnMovePlayerEvent.Invoke(Direction);
         playerAttack.RotateAttacks(lastDirection);

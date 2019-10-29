@@ -14,12 +14,14 @@ public abstract class AttackBehaviour : MonoBehaviour {
 
     public bool IsAttacking { get; protected set; }
 
-    private void Awake() {
+    private void OnEnable() {
         timerCooldown.time = cooldown;
         timerCooldown.triggerAction = () => {
             timerCooldown.Reset();
             isOnCooldown = false;
         };
+        IsAttacking = false;
+        isOnCooldown = false;
     }
 
     private void Update() {

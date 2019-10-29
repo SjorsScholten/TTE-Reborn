@@ -27,19 +27,25 @@ public class EnemyController : MonoBehaviour {
     public AnimationClip Clip { get; private set; }
     public bool Attacking { get { return attack.IsAttacking; } }
 
+    [Header("Pathfinding")]
+    public PathfindingAI pathfinding;
+
     private void Awake() {
         Animator = GetComponent<Animator>();
         
         Clip = Animator.runtimeAnimatorController.animationClips.Single(x => animations.attackAnimation == x.name);
-
-        EnemyState = EntityState.Idle;
+     
         idle.enemy = this;
         aggro.enemy = this;
         movement.enemy = this;
         attack.enemy = this;
     }
 
-    private void Update() {
+    private void OnEnable() {
+        EnemyState = EntityState.Idle;
+    }
+
+    private void FixedUpdate() {
         switch (EnemyState) {
             case EntityState.Idle:
                 Idle();
@@ -63,9 +69,11 @@ public class EnemyController : MonoBehaviour {
     private void Idle() {
         idle.Idle();
         Target = aggro.LookForTarget();
-        if (Target != null) {
+        if (Target != null) {  
             EnemyState = EntityState.Aggro;
         }
+
+        if (pathfinding) pathfinding.Target = this.Target;
     }
 
     private void Aggro() {

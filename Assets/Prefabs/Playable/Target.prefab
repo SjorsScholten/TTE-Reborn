@@ -66,8 +66,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -2145207405
-  m_SortingLayer: 4
+  m_SortingLayerID: -577327005
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5372b06d4ecde0540a15d17e6c6c3504, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -235,7 +235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageSource: 1
-  stats: {fileID: 11400000, guid: b907c191cabc1a14488cc09ffc92968d, type: 2}
+  stats: {fileID: 11400000, guid: 15490afe36e24744dbfa125e46447ffe, type: 2}
   parent: {fileID: 2241654798952769798}
 --- !u!1 &2241654800007665457
 GameObject:
@@ -284,7 +284,7 @@ GameObject:
   - component: {fileID: 2241654800137576975}
   - component: {fileID: 2241654800137577075}
   - component: {fileID: 2241654800137577077}
-  - component: {fileID: 2241654800137577076}
+  - component: {fileID: 1099221177}
   m_Layer: 11
   m_Name: Target
   m_TagString: Playable
@@ -411,11 +411,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 156cabd03ff2ff74797930e7bf83827b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: b907c191cabc1a14488cc09ffc92968d, type: 2}
+  stats: {fileID: 11400000, guid: 15490afe36e24744dbfa125e46447ffe, type: 2}
   immuneToSource: 0
   health: 0
   receivesKnockback: 1
-  knockbackMultiplier: 1.5
+  knockbackMultiplier: 5
   stunTimer: 0.25
   iFrames: 2.5
   OnDestroyedEvent:
@@ -478,21 +478,21 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2241654800137576974}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_LinearDrag: 200
+  m_AngularDrag: 0
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!61 &2241654800137577076
-BoxCollider2D:
+  m_Constraints: 4
+--- !u!58 &1099221177
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -504,16 +504,6 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.3}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.1}
-    oldSize: {x: 1.5, y: 2}
-    newSize: {x: 0.48, y: 0.56}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: 0, y: 0.24906874}
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.75}
-  m_EdgeRadius: 0
+  m_Radius: 0.44906855
