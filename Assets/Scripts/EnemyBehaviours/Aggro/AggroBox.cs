@@ -7,7 +7,6 @@ public class AggroBox : AggroBehaviour
 
     [SerializeField] private float aggroRadius = 5;
     [SerializeField] private float deAggroRadius = 8;
-    [SerializeField] [Tooltip("Line of Sight")] private bool requiresLOS;
 
     public override Transform LookForTarget()
     {

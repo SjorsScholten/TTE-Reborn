@@ -6,8 +6,12 @@ public abstract class AggroBehaviour : MonoBehaviour {
 
     [HideInInspector] public EnemyController enemy;
 
+    [Tooltip("Line of Sight")] public bool requiresLOS;
     public LayerMask layerMask;
+    public LayerMask LOSMask;
     public GameObject alertIcon;
+
+    private Transform debugtarget;
 
     public abstract Transform LookForTarget();
     public abstract bool TargetStillInRange(Transform target);
@@ -22,5 +26,22 @@ public abstract class AggroBehaviour : MonoBehaviour {
                 return;
             }
         }
+    }
+
+    public bool HasLOS(Transform target, float distance)
+    {
+        Tools.DrawDebugRay(transform.position, target.position, Color.white);
+
+        RaycastHit2D hit = Physics2D.Raycast(this.transform.position, (target.position - transform.position).normalized, distance, LOSMask);
+        
+        if (hit)
+        {
+            Debug.Log(hit.transform.name);
+            if (hit.transform.CompareTag(NYRA.Tag.Playable))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
