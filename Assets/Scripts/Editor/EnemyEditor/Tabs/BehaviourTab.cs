@@ -170,7 +170,10 @@ public class BehaviourTab : Tab
                 UnityEngine.Object.DestroyImmediate(controller.GetComponent<IdleBehaviour>());
                 break;
             case 1:
-                UnityEngine.Object.DestroyImmediate(controller.GetComponent<MovementBehaviour>());
+                MovementBehaviour behaviour = controller.GetComponent<MovementBehaviour>();
+                List<Type> types = behaviour.OnDestroy();
+                UnityEngine.Object.DestroyImmediate(behaviour);
+                DestroyTypes(types);
                 break;
             case 2:
                 UnityEngine.Object.DestroyImmediate(controller.GetComponent<AttackBehaviour>());
@@ -178,6 +181,17 @@ public class BehaviourTab : Tab
             case 3:
                 UnityEngine.Object.DestroyImmediate(controller.GetComponent<AggroBehaviour>());
                 break;
+        }
+    }
+
+    private void DestroyTypes(List<Type> types)
+    {
+        if (types != null)
+        {
+            foreach (Type type in types)
+            {
+                UnityEngine.Object.DestroyImmediate(controller.GetComponent(type));
+            }
         }
     }
 

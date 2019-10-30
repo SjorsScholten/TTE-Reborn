@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class StandStill : MovementBehaviour
 {
@@ -19,4 +20,6 @@ public class StandStill : MovementBehaviour
             GetComponent<SpriteRenderer>().flipX = false;
         }
     }
+
+    public override List<Type> OnDestroy(){ return null; }
 }

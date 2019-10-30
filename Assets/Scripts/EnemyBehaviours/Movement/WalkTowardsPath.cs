@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 [RequireComponent(typeof(PathfindingAI))]
 public class WalkTowardsPath : MovementBehaviour {
@@ -19,4 +20,12 @@ public class WalkTowardsPath : MovementBehaviour {
         }
     }
 
+    public override List<Type> OnDestroy()
+    {
+        return new List<Type>()
+        {
+            typeof(PathfindingAI),
+            typeof(Seeker)
+        };
+    }
 }
