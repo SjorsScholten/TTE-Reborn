@@ -35,7 +35,7 @@ public class AttackProjectile : AttackBehaviour
             Vector3 direction = (target - transform.position).normalized;
             enemy.Animator.Play(enemy.animations.attackAnimation);
 
-            GameObject projectile = pooler.SpawnFromPool(projectileObject.tag, transform.parent, transform.position + direction, transform.rotation);
+            GameObject projectile = pooler.SpawnFromPool(projectileObject.tag, transform, transform.position + direction, transform.rotation);
             Projectile projectileScript = projectile.GetComponent<Projectile>();
             projectileScript.Launch(direction, speed, duration);
 

@@ -162,9 +162,18 @@ public class EnemyEditor : EditorWindow
         enemy.AddComponent<EnemyController>();
         enemy.AddComponent<MultidirectionalTransformMovement>();
         enemy.AddComponent<SimpleDestroyable>();
+
+        Rigidbody2D rigidbody2D = enemy.AddComponent<Rigidbody2D>();
+        rigidbody2D.gravityScale = 0;
+        rigidbody2D.freezeRotation = true;
+        rigidbody2D.drag = 200;
+
         BoxCollider2D boxCollider = enemy.AddComponent<BoxCollider2D>();
         boxCollider.offset = new Vector2(0, 0.25f);
         boxCollider.size = new Vector2(1.25f, 0.5f);
+
+        SpriteRenderer spriteRenderer = enemy.GetComponent<SpriteRenderer>();
+        spriteRenderer.sortingLayerName = "Decoration";
 
         enemy.tag = NYRA.Tag.Enemies;
         enemy.layer = LayerMask.NameToLayer(NYRA.Layer.Enemy);
