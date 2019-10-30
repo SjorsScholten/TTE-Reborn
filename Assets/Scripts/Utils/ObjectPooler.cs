@@ -43,6 +43,8 @@ public class ObjectPooler : MonoBehaviourSingleton<ObjectPooler> {
     }
 
     public void Despawn(GameObject obj) {
+        if (!ObjectPooler.Instance) return;
+
         StartCoroutine(WaitFrameBeforeHierachyMove(obj));
     }
 
