@@ -27,6 +27,9 @@ public class EnemyController : MonoBehaviour {
     public AnimationClip Clip { get; private set; }
     public bool Attacking { get { return attack.IsAttacking; } }
 
+    [Header("Pathfinding")]
+    public PathfindingAI pathfinding;
+
     private void Awake() {
         Animator = GetComponent<Animator>();
         
@@ -66,9 +69,11 @@ public class EnemyController : MonoBehaviour {
     private void Idle() {
         idle.Idle();
         Target = aggro.LookForTarget();
-        if (Target != null) {
+        if (Target != null) {  
             EnemyState = EntityState.Aggro;
         }
+
+        if (pathfinding) pathfinding.Target = this.Target;
     }
 
     private void Aggro() {

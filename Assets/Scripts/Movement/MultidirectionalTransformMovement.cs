@@ -11,6 +11,8 @@ public class MultidirectionalTransformMovement : MonoBehaviour, ICharacterMoveme
     private Transform myTransform;
     private Rigidbody2D rb2d;
 
+    public Rigidbody2D Rigidbody { get { return rb2d; } }
+
     public float MoveSpeed {
         get { return moveSpeed; } set { moveSpeed = value; }
     }
