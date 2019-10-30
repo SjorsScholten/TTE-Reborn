@@ -9,6 +9,7 @@ public class GeneralTab : Tab
     private string objectName = "";
     private GameObject selection;
 
+    private Animator animator;
     private EnemyAnimations animations;
     private EnemyController controller;
     private MultidirectionalTransformMovement movement;
@@ -32,9 +33,13 @@ public class GeneralTab : Tab
             GUILayout.Space(5);
         }
 
-        if (controller != null)
+        if (controller != null && animator != null)
         {
             EditorGUILayout.LabelField("Animations", EditorStyles.boldLabel);
+
+            animator.runtimeAnimatorController = EditorGUILayout.ObjectField("Animation Controller", animator.runtimeAnimatorController, typeof(RuntimeAnimatorController), false) as RuntimeAnimatorController;
+
+            GUILayout.Space(5);
 
             animations = EditorGUILayout.ObjectField("Animations", animations, typeof(EnemyAnimations), false) as EnemyAnimations;
             ChangeAnimation();
@@ -46,6 +51,7 @@ public class GeneralTab : Tab
         objectName = selection.name;
         this.selection = selection;
         controller = selection.GetComponent<EnemyController>();
+        animator = selection.GetComponent<Animator>();
         if (controller != null)
         {
             animations = controller.animations;

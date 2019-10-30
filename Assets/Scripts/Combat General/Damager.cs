@@ -40,4 +40,9 @@ public class Damager : MonoBehaviour {
         collisions.Remove(collision);
         Debug.Log("removed" + collision.name);
     }
+
+    public void SetParent(Transform parent)
+    {
+        this.parent = parent;
+    }
 }

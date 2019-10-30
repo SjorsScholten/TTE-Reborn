@@ -22,12 +22,12 @@ public class Destroyable : MonoBehaviour {
     [Header("Knockback & Stun")]
 
     [SerializeField] private bool receivesKnockback = true;
-    [SerializeField] private float knockbackMultiplier;
-    [SerializeField] private float stunTimer;
+    [SerializeField] private float knockbackMultiplier = 1.8f;
+    [SerializeField] private float stunTimer = 0.3f;
     public bool IsStunned { get; private set; }
 
     [Header("I-Frames")]
-    [SerializeField] private float iFrames;
+    [SerializeField] private float iFrames = 1.2f;
 
     private TimedVariable invinsibilityTimer = new TimedVariable();
     private bool isInvinsible;

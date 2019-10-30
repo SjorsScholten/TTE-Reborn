@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,9 +7,6 @@ public class AggroCircle : AggroBehaviour {
 
     [SerializeField] private float aggroRadius = 3;
     [SerializeField] private float deAggroRadius = 4.5f;
-    [SerializeField] [Tooltip("Line of Sight")] private bool requiresLOS;
-    
-    [SerializeField] private GameObject alertIcon;
 
     public override Transform LookForTarget() {
         var targets = Physics2D.OverlapCircleAll(transform.position, aggroRadius, layerMask);
@@ -34,7 +32,10 @@ public class AggroCircle : AggroBehaviour {
 
         Transform nearestTarget = null;
         foreach (var t in targets) {
-            //if (requiresLOS&& !HasLOS(t.transform)) continue;
+            if (requiresLOS && !HasLOS(t.transform, deAggroRadius))
+            {
+                continue;
+            }
             if (nearestTarget != null) {
                 if (Vector3.Distance(nearestTarget.position, transform.position) >
                     Vector3.Distance(t.transform.position, transform.position)) {

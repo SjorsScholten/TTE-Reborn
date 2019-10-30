@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MultidirectionalTransformMovement : MonoBehaviour, ICharacterMovement {
-    [SerializeField] private float moveSpeed;
+    [SerializeField] private float moveSpeed = 3;
 
     private float speedSmoothTime = 0.1f;
     private float speedSmoothVelocity;
