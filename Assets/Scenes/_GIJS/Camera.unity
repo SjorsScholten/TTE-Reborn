@@ -379,7 +379,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 373038351}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6, y: 0, z: 0}
+  m_LocalPosition: {x: -6, y: -0.106, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 897454465}
@@ -898,6 +898,7 @@ GameObject:
   - component: {fileID: 897454465}
   - component: {fileID: 897454464}
   - component: {fileID: 897454463}
+  - component: {fileID: 897454466}
   m_Layer: 0
   m_Name: Turdle
   m_TagString: Untagged
@@ -973,7 +974,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!4 &897454465
 Transform:
   m_ObjectHideFlags: 0
@@ -982,12 +983,28 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 897454462}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.06, y: -0.4, z: 0}
+  m_LocalPosition: {x: -0.06, y: 0.18, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 373038353}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!70 &897454466
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897454462}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.2}
+  m_Size: {x: 0.65, y: 0.39}
+  m_Direction: 1
 --- !u!4 &961560988 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 900049496294176182, guid: 99cfbe65416cd8444ab3d76d9dc7a148,
@@ -2193,12 +2210,12 @@ PrefabInstance:
     - target: {fileID: 2241654800137577074, guid: 9c1572e89197cf74eb7ae650afdcdaa2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.36
+      value: -2.191
       objectReference: {fileID: 0}
     - target: {fileID: 2241654800137577074, guid: 9c1572e89197cf74eb7ae650afdcdaa2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.82
+      value: 1.012
       objectReference: {fileID: 0}
     - target: {fileID: 2241654800137577074, guid: 9c1572e89197cf74eb7ae650afdcdaa2,
         type: 3}
