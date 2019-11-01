@@ -16,7 +16,7 @@ MonoBehaviour:
   wisdom: 0
   strength: 10
   defense: 7
-  magic: 0
+  magic: 10
   resistance: 5
   speed: 2
   luck: 4
