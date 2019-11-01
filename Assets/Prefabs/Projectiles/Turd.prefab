@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 6770417034511549919}
   - component: {fileID: 6770417034511549912}
   - component: {fileID: -1598796930654185632}
+  - component: {fileID: 5316617529382857490}
+  - component: {fileID: 25611515244645447}
+  - component: {fileID: 8300524516897880580}
   m_Layer: 0
   m_Name: Turd
   m_TagString: Untagged
@@ -94,3 +97,80 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c432e9627e8933f41bf9221e17c9e58a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!58 &5316617529382857490
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6770417034511549913}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.06}
+  serializedVersion: 2
+  m_Radius: 0.3
+--- !u!114 &25611515244645447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6770417034511549913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b25c06214febd454b9c3fc1aab7b6843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageSource: 64
+  stats: {fileID: 11400000, guid: 68aad8d227925f743baf38f0a57e574f, type: 2}
+  parent: {fileID: 6770417034511549919}
+--- !u!114 &8300524516897880580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6770417034511549913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5761c533644d8ac408f3fd7799c4aed7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onlyTriggerOnce: 0
+  disableAfter: 0
+  resetOnDisableObject: 0
+  hitLayers:
+    serializedVersion: 2
+    m_Bits: 2304
+  onTriggerEnterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -1598796930654185632}
+        m_MethodName: Hit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 25611515244645447}
+        m_MethodName: OnEnter
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExitEvent:
+    m_PersistentCalls:
+      m_Calls: []

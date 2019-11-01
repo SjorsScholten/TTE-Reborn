@@ -36,7 +36,6 @@ public abstract class AggroBehaviour : MonoBehaviour {
         
         if (hit)
         {
-            Debug.Log(hit.transform.name);
             if (hit.transform.CompareTag(NYRA.Tag.Playable))
             {
                 return true;

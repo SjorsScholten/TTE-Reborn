@@ -7,7 +7,6 @@ public class AttackProjectile : AttackBehaviour
     [SerializeField] private float radius = 5;
     
     [Header("Projectile")]
-    [SerializeField] private int numberOfProjectiles = 1;
     [SerializeField] private float speed = 5;
     [SerializeField] private float duration = 6;
     [SerializeField] private EnemyPool projectileObject;
@@ -26,24 +25,25 @@ public class AttackProjectile : AttackBehaviour
     }
 
     public override IEnumerator Routine()
-    {
-        IsAttacking = true;
-        
-        for (int i = 0; i < numberOfProjectiles; i++)
+    {       
+        if(IsAttacking == false)
         {
-            Vector3 target = enemy.Target.position;
-            Vector3 direction = (target - transform.position).normalized;
+            IsAttacking = true;
+            
             enemy.Animator.Play(enemy.animations.attackAnimation);
+            yield return new WaitForSecondsRealtime(enemy.Clip.length * 0.21f);
 
-            GameObject projectile = pooler.SpawnFromPool(projectileObject.tag, transform, transform.position + direction, transform.rotation);
+            Vector3 target = enemy.Target.GetComponent<SpriteRenderer>().bounds.center;
+            Vector3 direction = (target - transform.position).normalized;
+
+            GameObject projectile = pooler.SpawnFromPool(projectileObject.tag, transform.parent.parent, transform.position + direction, transform.rotation);
             Projectile projectileScript = projectile.GetComponent<Projectile>();
             projectileScript.Launch(direction, speed, duration);
-
-            yield return new WaitForSecondsRealtime(enemy.Clip.length);
+            yield return new WaitForSecondsRealtime(enemy.Clip.length * 0.34f);
+            isOnCooldown = true;
+            IsAttacking = false;
+            enemy.ForceAggro();
         }
-        isOnCooldown = true;
-        IsAttacking = false;
-        enemy.ForceAggro();
     }
 
     private void OnDrawGizmos()

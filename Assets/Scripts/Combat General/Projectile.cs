@@ -35,6 +35,11 @@ public class Projectile : MonoBehaviour
         StartCoroutine(Timer());
     }
 
+    public void Hit()
+    {
+        pooler.Despawn(this.gameObject);
+    }
+
     private IEnumerator Timer()
     {
         yield return new WaitForSecondsRealtime(duration);
