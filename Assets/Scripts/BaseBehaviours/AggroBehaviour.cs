@@ -30,7 +30,7 @@ public abstract class AggroBehaviour : MonoBehaviour {
 
     public bool HasLOS(Transform target, float distance)
     {
-        Tools.DrawDebugRay(transform.position, target.position, Color.white);
+        Tools.DrawDebugRay(transform.position, target.position, Color.yellow);
 
         RaycastHit2D hit = Physics2D.Raycast(this.transform.position, (target.position - transform.position).normalized, distance, LOSMask);
         

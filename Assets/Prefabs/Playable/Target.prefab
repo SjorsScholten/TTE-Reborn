@@ -398,7 +398,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weakAttackAnimator: {fileID: 240861151}
   attackContainer: {fileID: 2241654800007665458}
-  cooldownImage: {fileID: 0}
 --- !u!114 &2531787443770519665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -415,7 +414,7 @@ MonoBehaviour:
   immuneToSource: 0
   health: 0
   receivesKnockback: 1
-  knockbackMultiplier: 5
+  knockbackMultiplier: 7
   stunTimer: 0.25
   iFrames: 2.5
   OnDestroyedEvent:
@@ -504,6 +503,6 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.24906874}
+  m_Offset: {x: 0, y: 0.4}
   serializedVersion: 2
-  m_Radius: 0.44906855
+  m_Radius: 0.40294445
