@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
-{
+public class Projectile : MonoBehaviour {
     private Vector3 direction;
     private float speed;
     private float duration;
@@ -12,22 +11,18 @@ public class Projectile : MonoBehaviour
 
     private ObjectPooler pooler;
 
-    private void Awake()
-    {
+    private void Awake() {
         pooler = ObjectPooler.Instance;
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (attack)
-        {
+    void Update() {
+        if (attack) {
             transform.position += direction * speed * Time.deltaTime;
         }
     }
 
-    public void Launch(Vector3 direction, float speed, float duration)
-    {
+    public void Launch(Vector3 direction, float speed, float duration) {
         this.direction = direction;
         this.speed = speed;
         this.duration = duration;
@@ -35,15 +30,17 @@ public class Projectile : MonoBehaviour
         StartCoroutine(Timer());
     }
 
-    public void Hit()
-    {
+    public void Hit() {
         pooler.Despawn(this.gameObject);
     }
 
-    private IEnumerator Timer()
-    {
+    private IEnumerator Timer() {
         yield return new WaitForSecondsRealtime(duration);
         attack = false;
         pooler.Despawn(this.gameObject);
+    }
+
+    private void OnDisable() {
+        pooler.Despawn(gameObject);
     }
 }

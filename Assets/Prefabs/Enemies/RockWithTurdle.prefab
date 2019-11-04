@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3158097690833111054}
   - component: {fileID: 3158097690833111052}
   m_Layer: 8
-  m_Name: Rock
+  m_Name: RockWithTurdle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

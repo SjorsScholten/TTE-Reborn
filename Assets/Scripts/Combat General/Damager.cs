@@ -19,11 +19,11 @@ public class Damager : MonoBehaviour {
     public void OnEnter(Collider2D collision) {
         Destroyable destroyable = collision.GetComponent<Destroyable>();
 
-        if (destroyable != null)
-        {
-            int damage = Tools.GetDamage(damageSource, stats);
-            destroyable.Damage(damage, parent, damageSource);
-        }
+        if (destroyable == null) return; //Object can not take damage, so return.
+
+        int damage = Tools.GetDamage(damageSource, stats);
+        destroyable.Damage(damage, parent, damageSource);
+
     }
 
     public void DamageCollisions() {
@@ -42,8 +42,7 @@ public class Damager : MonoBehaviour {
         Debug.Log("removed" + collision.name);
     }
 
-    public void SetParent(Transform parent)
-    {
+    public void SetParent(Transform parent) {
         this.parent = parent;
     }
 }

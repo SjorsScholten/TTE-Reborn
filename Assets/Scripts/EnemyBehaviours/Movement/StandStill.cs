@@ -8,16 +8,13 @@ public class StandStill : MovementBehaviour
     public override void Move(Transform target)
     {
         //TODO Andere animatie indien mogelijk?
-        enemy.Animator.Play(enemy.animations.idleAnimation);
+        enemy.animator.Play(enemy.animations.idleAnimation);
 
         Vector3 velocity = target.position - transform.position;
-        if (velocity.normalized.x <= 0)
-        {
-            GetComponent<SpriteRenderer>().flipX = true;
-        }
-        else
-        {
-            GetComponent<SpriteRenderer>().flipX = false;
+        if (velocity.normalized.x <= 0) {
+            transform.localScale = new Vector3(-1f, 1f, 1f);
+        } else {
+            transform.localScale = new Vector3(1f, 1f, 1f);
         }
     }
 

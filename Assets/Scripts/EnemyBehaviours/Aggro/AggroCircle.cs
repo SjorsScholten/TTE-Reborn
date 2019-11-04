@@ -32,7 +32,7 @@ public class AggroCircle : AggroBehaviour {
 
         Transform nearestTarget = null;
         foreach (var t in targets) {
-            if (requiresLOS && !HasLOS(t.transform, deAggroRadius))
+            if (requiresLOS && !HasLOS(t.transform, aggroRadius))
             {
                 continue;
             }
@@ -51,7 +51,7 @@ public class AggroCircle : AggroBehaviour {
     }
 
     public override bool TargetStillInRange(Transform target) {
-        //if (!requiresLOS && !HasLOS(target)) return false;
+        if (requiresLOS && !HasLOS(enemy.Target, deAggroRadius)) return false;
         return Vector3.Distance(target.position, transform.position) <= deAggroRadius;
     }
 
