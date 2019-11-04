@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-[RequireComponent(typeof(Animator), typeof(SpriteRenderer))]
 public class EnemyController : MonoBehaviour {
 
     [Header("Idle Behaviour")]
@@ -19,9 +18,9 @@ public class EnemyController : MonoBehaviour {
     public AggroBehaviour aggro;
 
     [Header("Animations")]
-    public EnemyAnimations animations;    
+    public EnemyAnimations animations;
 
-    public Animator Animator { get; private set; }
+    public Animator animator;
     public EntityState EnemyState { get; private set; }
     public Transform Target { get; private set; }
     public AnimationClip Clip { get; private set; }
@@ -31,9 +30,7 @@ public class EnemyController : MonoBehaviour {
     public PathfindingAI pathfinding;
 
     private void Awake() {
-        Animator = GetComponent<Animator>();
-        
-        Clip = Animator.runtimeAnimatorController.animationClips.Single(x => animations.attackAnimation == x.name);
+        Clip = animator.runtimeAnimatorController.animationClips.Single(x => animations.attackAnimation == x.name);
      
         idle.enemy = this;
         aggro.enemy = this;
@@ -106,7 +103,7 @@ public class EnemyController : MonoBehaviour {
     }
 
     private IEnumerator StunRoutine(float stunTimer) {
-        Animator.Play(animations.hurtAnimation);
+        animator.Play(animations.hurtAnimation);
         EnemyState = EntityState.Stun;
         yield return new WaitForSecondsRealtime(stunTimer);
         EnemyState = EntityState.Aggro;

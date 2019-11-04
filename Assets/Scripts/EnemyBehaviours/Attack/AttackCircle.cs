@@ -13,7 +13,7 @@ public class AttackCircle : AttackBehaviour {
 
     public override IEnumerator Routine() {       
         IsAttacking = true;
-        enemy.Animator.Play(enemy.animations.attackAnimation);   
+        enemy.animator.Play(enemy.animations.attackAnimation);   
         yield return new WaitForSecondsRealtime(enemy.Clip.length);
         isOnCooldown = true;
         IsAttacking = false;

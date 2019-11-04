@@ -28,22 +28,22 @@ public class AttackProjectile : AttackBehaviour
     {       
         if(IsAttacking == false)
         {
-            IsAttacking = true;
-            
-            enemy.Animator.Play(enemy.animations.attackAnimation);
-            yield return new WaitForSecondsRealtime(enemy.Clip.length * 0.21f);
-
-            Vector3 target = enemy.Target.GetComponent<SpriteRenderer>().bounds.center;
-            Vector3 direction = (target - transform.position).normalized;
-
-            GameObject projectile = pooler.SpawnFromPool(projectileObject.tag, transform.parent.parent, transform.position + direction, transform.rotation);
-            Projectile projectileScript = projectile.GetComponent<Projectile>();
-            projectileScript.Launch(direction, speed, duration);
-            yield return new WaitForSecondsRealtime(enemy.Clip.length * 0.34f);
+            IsAttacking = true;            
+            enemy.animator.Play(enemy.animations.attackAnimation);
+            yield return new WaitForSecondsRealtime(enemy.Clip.length);
             isOnCooldown = true;
             IsAttacking = false;
             enemy.ForceAggro();
         }
+    }
+
+    public void ThrowProjectile() {
+        Vector3 target = enemy.Target.GetComponent<SpriteRenderer>().bounds.center;
+        Vector3 direction = (target - transform.position).normalized;
+
+        GameObject projectile = pooler.SpawnFromPool(projectileObject.tag, enemy.transform.parent, transform.position + direction, transform.rotation);
+        Projectile projectileScript = projectile.GetComponent<Projectile>();
+        projectileScript.Launch(direction, speed, duration);
     }
 
     private void OnDrawGizmos()
