@@ -39,4 +39,8 @@ public class Projectile : MonoBehaviour {
         attack = false;
         pooler.Despawn(this.gameObject);
     }
+
+    private void OnDisable() {
+        pooler.Despawn(gameObject);
+    }
 }
