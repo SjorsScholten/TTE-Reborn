@@ -2041,29 +2041,6 @@ PrefabInstance:
       propertyPath: OnDamagedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 274083105}
-    - target: {fileID: 2531787443770519665, guid: 9c1572e89197cf74eb7ae650afdcdaa2,
-        type: 3}
-      propertyPath: knockbackMultiplier
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 2531787443770519665, guid: 9c1572e89197cf74eb7ae650afdcdaa2,
-        type: 3}
-      propertyPath: immuneToSource
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6699788444523506279, guid: 9c1572e89197cf74eb7ae650afdcdaa2,
-        type: 3}
-      propertyPath: cooldownImage
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1099221177, guid: 9c1572e89197cf74eb7ae650afdcdaa2, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.41387594
-      objectReference: {fileID: 0}
-    - target: {fileID: 1099221177, guid: 9c1572e89197cf74eb7ae650afdcdaa2, type: 3}
-      propertyPath: m_Radius
-      value: 0.40294445
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c1572e89197cf74eb7ae650afdcdaa2, type: 3}
 --- !u!1 &2111183305
