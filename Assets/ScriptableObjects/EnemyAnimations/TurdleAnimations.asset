@@ -16,8 +16,8 @@ MonoBehaviour:
   idleAnimation: TurdleIdle
   walkAnimation: TurdleIdle
   attackAnimation: TurdleThrow
-  hurtAnimation: TurdleIdle
+  hurtAnimation: TurdleOuch
   choiceIndexIdle: 0
   choiceIndexWalk: 0
   choiceIndexAttack: 1
-  choiceIndexHurt: 0
+  choiceIndexHurt: 2
