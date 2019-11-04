@@ -112,4 +112,9 @@ public class Destroyable : MonoBehaviour {
     private bool IsImmune(DamageSource source) {
         return immuneToSource.HasFlag(source);
     }
+
+    public bool IsInvinsible()
+    {
+        return this.isInvinsible;
+    }
 }

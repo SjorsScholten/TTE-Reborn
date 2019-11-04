@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class WalkTowardsTarget : MovementBehaviour {
     public override void Move(Transform target) {
@@ -16,4 +17,6 @@ public class WalkTowardsTarget : MovementBehaviour {
             GetComponent<SpriteRenderer>().flipX = false;
         }
     }
+
+    public override List<Type> OnDestroy() { return null; }
 }
