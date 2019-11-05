@@ -13,9 +13,9 @@ public class WalkTowardsPath : MovementBehaviour {
         Vector2 velocity = enemy.pathfinding.Direction;
         mtm.Move(velocity.normalized);
 
-        if (velocity.normalized.x <= 0.01f) {
+        if (velocity.normalized.x <= .1f) {
             transform.localScale = new Vector3(-1f, 1f, 1f);
-        } else if (velocity.normalized.x >= -0.01f) {
+        } else if (velocity.normalized.x >= -.1f) {
             transform.localScale = new Vector3(1f, 1f, 1f);
         }
     }

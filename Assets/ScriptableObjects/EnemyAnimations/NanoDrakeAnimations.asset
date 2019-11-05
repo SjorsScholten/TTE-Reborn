@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 4892212805002509900, guid: 06fff4724f7a6564b96844964733b570, type: 3}
   idleAnimation: DrakeIdle
-  walkAnimation: DrakeIdle
+  walkAnimation: DrakeFly
   attackAnimation: DrakeIdle
   hurtAnimation: DrakeIdle
   choiceIndexIdle: 0
-  choiceIndexWalk: 0
+  choiceIndexWalk: 1
   choiceIndexAttack: 0
   choiceIndexHurt: 0

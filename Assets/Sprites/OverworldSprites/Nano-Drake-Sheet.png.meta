@@ -17,6 +17,18 @@ TextureImporter:
   - first:
       213: -852083966620699798
     second: Nano-Drake-Sheet_4
+  - first:
+      213: -1318363940711204226
+    second: Nano-Drake-Sheet_5
+  - first:
+      213: -4188512584625680668
+    second: Nano-Drake-Sheet_6
+  - first:
+      213: 9068840912527472194
+    second: Nano-Drake-Sheet_7
+  - first:
+      213: -7961650657673752753
+    second: Nano-Drake-Sheet_8
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -115,7 +127,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f658be450ae4c854db9ffff94c483a82
+      spriteID: c3b2302554348964a9c682e2d382ff49
       internalID: -8454517412385728748
       vertices: []
       indices: 
@@ -136,7 +148,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e85733a1493d3794cb8ae072c90e5640
+      spriteID: fa0d4a4b9d81d274699023853833e94d
       internalID: -2721475727070578967
       vertices: []
       indices: 
@@ -157,7 +169,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 08273b43f29d9924e8c7a19bb8a742f2
+      spriteID: 0c384fc4dbf973a4cbc3c1754acbc0d9
       internalID: -7966124716304878245
       vertices: []
       indices: 
@@ -178,7 +190,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bb7bc274959d4454cb7f77379861ca52
+      spriteID: 0d888a25026aaeb46ae5b9cb0f6c58c9
       internalID: 12384166607023990
       vertices: []
       indices: 
@@ -199,8 +211,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 03efea5654fe277498b9a3cf69a19701
+      spriteID: d9e39a5514c29ce478de054c27353b4a
       internalID: -852083966620699798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nano-Drake-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83afea168704be64f9c6f3f47aad8863
+      internalID: -1318363940711204226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nano-Drake-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 077df1875dafe70459baea9f41a8648b
+      internalID: -4188512584625680668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nano-Drake-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3463d15ada4b9f4b815a2065610e040
+      internalID: 9068840912527472194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nano-Drake-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2efafa1f744f5e144bea1769f1d06dc1
+      internalID: -7961650657673752753
       vertices: []
       indices: 
       edges: []

@@ -50,14 +50,18 @@ public class PathfindingAI : MonoBehaviour {
                 return;
             } else {
                 reachedEnd = false;
-            }
-
-            Direction = (Vector2)path.vectorPath[currentWaypoint] - rb2d.position;
+            }       
 
             float distance = Vector2.Distance(rb2d.position, path.vectorPath[currentWaypoint]);
             if (distance < nextWaypointDistance) {
                 currentWaypoint++;
             }
+
+            try {
+                Direction = (Vector2)path.vectorPath[currentWaypoint] - rb2d.position;
+            } catch {
+                return;
+            }            
         }
     }
 
