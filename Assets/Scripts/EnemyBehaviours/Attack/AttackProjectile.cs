@@ -10,6 +10,7 @@ public class AttackProjectile : AttackBehaviour
     [SerializeField] private float speed = 5;
     [SerializeField] private float duration = 6;
     [SerializeField] private EnemyPool projectileObject;
+    [SerializeField] private Transform originPoint;
 
     private ObjectPooler pooler;
 
@@ -41,7 +42,7 @@ public class AttackProjectile : AttackBehaviour
         Vector3 target = enemy.Target.GetComponent<SpriteRenderer>().bounds.center;
         Vector3 direction = (target - transform.position).normalized;
 
-        GameObject projectile = pooler.SpawnFromPool(projectileObject.tag, enemy.transform.parent, transform.position + direction, transform.rotation);
+        GameObject projectile = pooler.SpawnFromPool(projectileObject.tag, enemy.transform.parent, originPoint.position, transform.rotation);
         Projectile projectileScript = projectile.GetComponent<Projectile>();
         projectileScript.Launch(direction, speed, duration);
     }
