@@ -109,6 +109,7 @@ MonoBehaviour:
   attack: {fileID: 1846941098162468901}
   aggro: {fileID: 1846941098162468911}
   animations: {fileID: 11400000, guid: cd15712c7ab8b0f438aaec5619defa95, type: 2}
+  animator: {fileID: 0}
   pathfinding: {fileID: 0}
 --- !u!95 &1846941098162468910
 Animator:

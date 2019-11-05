@@ -205,9 +205,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 0}
-  cooldown: 3
+  cooldown: 2.75
   radius: 6
-  speed: 6.5
+  speed: 6
   duration: 4
   projectileObject: {fileID: 11400000, guid: b24b2d06cc2eb464c8fbb8e2b01b827e, type: 2}
 --- !u!1 &2945778983708139565
