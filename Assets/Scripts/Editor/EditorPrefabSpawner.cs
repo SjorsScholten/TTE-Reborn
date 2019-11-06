@@ -14,7 +14,9 @@ public class EditorPrefabSpawner : Editor {
 
     private class PrefabSpawn {
         public string Path;
-        public Transform ParentObject;
+        public string ParentObjectPath;
+        public bool CanSpawnOutsideRoom;
+        public bool AllowedToSpawn;
     }
 
     private static Event _lastEvent;
@@ -30,10 +32,10 @@ public class EditorPrefabSpawner : Editor {
                 var content = "Spawners" + prefabPath.Substring(EditorContextPaths.SpawnersPath.Length);
                 if (!content.Contains('.')) continue;
                 content = content.Substring(0, content.IndexOf('.'));
-
                 menu.AddItem(new GUIContent(content), false, Spawn, new PrefabSpawn {
                     Path = prefabPath,
-                    ParentObject = GetParent(EditorContextPaths.EnemiesObjectPath)
+                    ParentObjectPath = EditorContextPaths.EnemiesObjectPath,
+                    CanSpawnOutsideRoom = false
                 });
             }
 
@@ -41,30 +43,43 @@ public class EditorPrefabSpawner : Editor {
         }
     }
 
-    static Transform GetParent(string pathToFind) {
+    static Transform GetParent(PrefabSpawn spawn) {
         var selectedObject = Selection.activeGameObject;
 
         if (selectedObject == null) return null;
 
         var room = selectedObject.GetComponent<Room>();
+        if (room == null && selectedObject.transform.parent.name == spawn.ParentObjectPath) {
+            spawn.AllowedToSpawn = true;
+            return selectedObject.transform.parent;
+        }
 
         if (room != null) {
             var children = room.transform.GetComponentsInChildren<Transform>();
             Transform parent = null;
             foreach (var child in children) {
-                if (child.name == pathToFind) {
+                if (child.name == spawn.ParentObjectPath) {
                     parent = child;
                     break;
                 }
             }
+            if (!parent) spawn.AllowedToSpawn = false;
+            else spawn.AllowedToSpawn = true;
             return parent;
         } else {
+            spawn.AllowedToSpawn = false;
             return null;
         }
     }
 
     static void Spawn(object obj) {
         var prefabToSpawn = obj as PrefabSpawn;
+        var parentObject = GetParent(prefabToSpawn);
+
+        if (prefabToSpawn.AllowedToSpawn == false) {
+            Debug.LogError("Object may not be placed outside of rooms.\nPlease select a room to place this object.");
+            return;
+        }
 
         var go = PrefabUtility.InstantiatePrefab((GameObject)AssetDatabase.LoadAssetAtPath(prefabToSpawn.Path, typeof(GameObject))) as GameObject;
 
@@ -72,8 +87,8 @@ public class EditorPrefabSpawner : Editor {
 
         pos = Camera.main.ScreenToWorldPoint(pos);
 
-        if (prefabToSpawn.ParentObject != null) {
-            go.transform.parent = prefabToSpawn.ParentObject;
+        if (parentObject != null) {
+            go.transform.parent = parentObject;
 
         }
 
