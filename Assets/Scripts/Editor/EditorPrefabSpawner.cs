@@ -14,7 +14,7 @@ public class EditorPrefabSpawner : Editor {
 
     private class PrefabSpawn {
         public string Path;
-        public string ParentObjectName;
+        public Transform ParentObject;
     }
 
     private static Event _lastEvent;
@@ -25,18 +25,41 @@ public class EditorPrefabSpawner : Editor {
 
             var menu = new GenericMenu();
 
-            foreach (var guid in AssetDatabase.FindAssets("", new[] { EditorContextPaths.TestingPath })) {
+            foreach (var guid in AssetDatabase.FindAssets("", new[] { EditorContextPaths.SpawnersPath })) {
                 var prefabPath = AssetDatabase.GUIDToAssetPath(guid);
-                var content = "Testing" + prefabPath.Substring(EditorContextPaths.TestingPath.Length);
+                var content = "Spawners" + prefabPath.Substring(EditorContextPaths.SpawnersPath.Length);
                 if (!content.Contains('.')) continue;
                 content = content.Substring(0, content.IndexOf('.'));
+
                 menu.AddItem(new GUIContent(content), false, Spawn, new PrefabSpawn {
                     Path = prefabPath,
-                    ParentObjectName = EditorContextPaths.MainCamera
+                    ParentObject = GetParent(EditorContextPaths.EnemiesObjectPath)
                 });
             }
 
             menu.ShowAsContext();
+        }
+    }
+
+    static Transform GetParent(string pathToFind) {
+        var selectedObject = Selection.activeGameObject;
+
+        if (selectedObject == null) return null;
+
+        var room = selectedObject.GetComponent<Room>();
+
+        if (room != null) {
+            var children = room.transform.GetComponentsInChildren<Transform>();
+            Transform parent = null;
+            foreach (var child in children) {
+                if (child.name == pathToFind) {
+                    parent = child;
+                    break;
+                }
+            }
+            return parent;
+        } else {
+            return null;
         }
     }
 
@@ -49,14 +72,12 @@ public class EditorPrefabSpawner : Editor {
 
         pos = Camera.main.ScreenToWorldPoint(pos);
 
-        if (prefabToSpawn.ParentObjectName != null) {
-            var parentPath = prefabToSpawn.ParentObjectName;
-            var parentObject = GameObject.Find(parentPath);
+        if (prefabToSpawn.ParentObject != null) {
+            go.transform.parent = prefabToSpawn.ParentObject;
 
-            go.transform.parent = parentObject.transform;
         }
 
-        go.transform.position = pos;
+        go.transform.localPosition = Vector3.zero;
 
         Undo.RegisterCreatedObjectUndo(go, "Undo Spawn " + Path.GetFileNameWithoutExtension(prefabToSpawn.Path));
 
@@ -66,6 +87,7 @@ public class EditorPrefabSpawner : Editor {
 }
 
 public class EditorContextPaths {
-    public static string TestingPath = "Assets/Prefabs/EditorContextTesting";
+    public static string SpawnersPath = "Assets/Prefabs/EnemySpawners";
+    public static string EnemiesObjectPath = "Enemies";
     public static string MainCamera = "Main Camera";
 }
