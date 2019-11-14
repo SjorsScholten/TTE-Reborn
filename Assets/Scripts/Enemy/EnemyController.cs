@@ -6,41 +6,43 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour {
 
     [Header("Idle Behaviour")]
-    [SerializeField] private IdleBehaviour idle;
+    public IdleBehaviour idle;
 
     [Header("Movement Behaviour")]
-    [SerializeField] private MovementBehaviour movement;
+    public MovementBehaviour movement;
 
     [Header("Attack Behaviour")]
-    [SerializeField] private AttackBehaviour attack;
+    public AttackBehaviour attack;
+
+    [Header("Aggro Behaviour")]
+    public AggroBehaviour aggro;
 
     [Header("Animations")]
     public EnemyAnimations animations;
 
-    [Header("Aggro Behaviour")]
-    [SerializeField] private AggroBehaviour aggro;
-
-    [Header("Stun Settings")]
-    [SerializeField] private float stunTimer;
-
-    public Animator Animator { get; private set; }
+    public Animator animator;
     public EntityState EnemyState { get; private set; }
     public Transform Target { get; private set; }
     public AnimationClip Clip { get; private set; }
     public bool Attacking { get { return attack.IsAttacking; } }
 
-    private void Awake() {
-        Animator = GetComponent<Animator>();
-        Clip = Animator.runtimeAnimatorController.animationClips.Single(x => animations.attackAnimation == x.name);
+    [Header("Pathfinding")]
+    public PathfindingAI pathfinding;
 
-        EnemyState = EntityState.Idle;
+    private void Awake() {
+        Clip = animator.runtimeAnimatorController.animationClips.Single(x => animations.attackAnimation == x.name);
+     
         idle.enemy = this;
         aggro.enemy = this;
         movement.enemy = this;
         attack.enemy = this;
     }
 
-    private void Update() {
+    private void OnEnable() {
+        EnemyState = EntityState.Idle;
+    }
+
+    private void FixedUpdate() {
         switch (EnemyState) {
             case EntityState.Idle:
                 Idle();
@@ -64,9 +66,11 @@ public class EnemyController : MonoBehaviour {
     private void Idle() {
         idle.Idle();
         Target = aggro.LookForTarget();
-        if (Target != null) {
+        if (Target != null) {  
             EnemyState = EntityState.Aggro;
         }
+
+        if (pathfinding) pathfinding.Target = this.Target;
     }
 
     private void Aggro() {
@@ -94,17 +98,14 @@ public class EnemyController : MonoBehaviour {
         }
     }
 
-    public void Stun() {
-        StartCoroutine(StunRoutine());
+    public void Stun(float stunTimer) {
+        StartCoroutine(StunRoutine(stunTimer));
     }
 
-    private IEnumerator StunRoutine() {
-        //TODO: Knockback based on damager position.
-        //Might be better to do that in Destroyable script.
-
-        Animator.Play(animations.hurtAnimation);
+    private IEnumerator StunRoutine(float stunTimer) {
+        animator.Play(animations.hurtAnimation);
         EnemyState = EntityState.Stun;
         yield return new WaitForSecondsRealtime(stunTimer);
-        EnemyState = EntityState.Idle;
+        EnemyState = EntityState.Aggro;
     }
 }

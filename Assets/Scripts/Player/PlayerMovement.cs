@@ -20,23 +20,26 @@ public class PlayerMovement : MonoBehaviour, PlayerControls.IMovementActions {
     public Vector2 Direction { get; private set; }
 
     private PlayerAttack playerAttack;
-
     private PlayerControls input;
+    private Destroyable destroyable;
 
     private void Awake() {
         input = new PlayerControls();
         input.Movement.SetCallbacks(this);
         lastDirection = Vector2.down;
         playerAttack = GetComponent<PlayerAttack>();
+        destroyable = GetComponent<Destroyable>();
     }
 
-    private void Update() {
+    private void FixedUpdate() {
         DoMove();
 
         Animate();
     }
 
     private void DoMove() {
+        if (playerAttack.IsAttacking || destroyable.IsStunned) return;
+
         OnMovePlayerEvent.Invoke(Direction);
         playerAttack.RotateAttacks(lastDirection);
     }
@@ -48,7 +51,8 @@ public class PlayerMovement : MonoBehaviour, PlayerControls.IMovementActions {
     private void Animate() {
         if (!isActive) return;
 
-        if (Direction == Vector2.zero) { //Idle
+        if (Direction == Vector2.zero || playerAttack.IsAttacking) { //Idle 
+            //|| Remove playerAttack.IsAttacking here when attack animation is actually on the player sprites.
             animator.SetBool("Idle", true);
             animator.SetFloat("Horizontal", lastDirection.x);
             animator.SetFloat("Vertical", lastDirection.y);

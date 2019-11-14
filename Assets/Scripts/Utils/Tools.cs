@@ -64,4 +64,14 @@ public class Tools : MonoBehaviour {
         else return stats.strength;
     }
 
+    /// <summary>
+    /// Draws a Debug ray towards your direction.
+    /// </summary>
+    /// <param name="start"></param>
+    /// <param name="dir"></param>
+    /// <param name="color"></param>
+    public static void DrawDebugRay(Vector3 start, Vector3 target, Color color)
+    {
+        Debug.DrawRay(start, (target - start), color);
+    }
 }

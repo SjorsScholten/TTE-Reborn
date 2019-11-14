@@ -12,11 +12,11 @@ public class PlayerAttack : MonoBehaviour, PlayerControls.ICombatActions {
     [SerializeField] private Animator weakAttackAnimator;
     [SerializeField] private Transform attackContainer;
 
-    [SerializeField] private Image cooldownImage;
-
     private float animationLength;
     private float cooldownTimer;
     private bool cooldown = false;
+
+    public bool IsAttacking { get { return cooldown; } }
 
     void Awake() {
         input = new PlayerControls();
@@ -33,8 +33,6 @@ public class PlayerAttack : MonoBehaviour, PlayerControls.ICombatActions {
                 cooldown = false;
                 cooldownTimer = 0;
             }
-
-            cooldownImage.fillAmount = cooldownTimer / animationLength;
         }
     }
 

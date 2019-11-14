@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class StandStillIdle : IdleBehaviour {
     public override void Idle() {
-        enemy.Animator.Play(enemy.animations.idleAnimation);
+        enemy.animator.Play(enemy.animations.idleAnimation);
     }
 }

@@ -1,14 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class AggroCircle : AggroBehaviour {
 
-    [SerializeField] private float aggroRadius;
-    [SerializeField] private float deAggroRadius;
-    [SerializeField] [Tooltip("Line of Sight")] private bool requiresLOS;
-    [SerializeField] private LayerMask layerMask;
-    [SerializeField] private GameObject alertIcon;
+    [SerializeField] private float aggroRadius = 3;
+    [SerializeField] private float deAggroRadius = 4.5f;
 
     public override Transform LookForTarget() {
         var targets = Physics2D.OverlapCircleAll(transform.position, aggroRadius, layerMask);
@@ -17,21 +15,27 @@ public class AggroCircle : AggroBehaviour {
         {
             if (Physics2D.OverlapCircleAll(transform.position, deAggroRadius, layerMask).Length > 0)
             {
-                alertIcon.SetActive(true);
+                ActivateAlert(true);
             }
             else
             {
-                alertIcon.SetActive(false);
+                ActivateAlert(false);
             }
         }
         else
         {
-            alertIcon.SetActive(false);
+            if (alertIcon != null)
+            {
+                alertIcon.SetActive(false);
+            }
         }
 
         Transform nearestTarget = null;
         foreach (var t in targets) {
-            //if (requiresLOS&& !HasLOS(t.transform)) continue;
+            if (requiresLOS && !HasLOS(t.transform, aggroRadius))
+            {
+                continue;
+            }
             if (nearestTarget != null) {
                 if (Vector3.Distance(nearestTarget.position, transform.position) >
                     Vector3.Distance(t.transform.position, transform.position)) {
@@ -47,7 +51,7 @@ public class AggroCircle : AggroBehaviour {
     }
 
     public override bool TargetStillInRange(Transform target) {
-        //if (!requiresLOS && !HasLOS(target)) return false;
+        if (requiresLOS && !HasLOS(enemy.Target, deAggroRadius)) return false;
         return Vector3.Distance(target.position, transform.position) <= deAggroRadius;
     }
 
@@ -66,6 +70,13 @@ public class AggroCircle : AggroBehaviour {
             lastPositionAggro = nextPositionAggro;
             lastPositionDeAggro = nextPositionDeAggro;
         }
+    }
 
+    private void ActivateAlert(bool activate)
+    {
+        if (alertIcon != null)
+        {
+            alertIcon.SetActive(activate);
+        }
     }
 }

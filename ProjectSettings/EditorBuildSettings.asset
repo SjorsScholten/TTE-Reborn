@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/_OLAF/EnemyTest.unity
-    guid: a310ac1a403cf794992f4fcdb84684c2
+    path: Assets/Scenes/_GIJS/Camera.unity
+    guid: e693863daac73b64c817667e27d2d203
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: d6b788309a0aecf44860ec37ac9088fc,
       type: 2}

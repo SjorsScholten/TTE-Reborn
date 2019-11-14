@@ -10,7 +10,7 @@ public class FollowLeader : MonoBehaviour {
     [SerializeField] private float distanceRadius;
 
     void Start() {
-        partyMembers[0].GetComponent<PlayerMovement>().isActive = true;
+        SetActiveMainMember(true);
     }
 
     void Update() {
@@ -32,6 +32,10 @@ public class FollowLeader : MonoBehaviour {
             animator.SetFloat("Horizontal", velocity.x);
             animator.SetFloat("Vertical", velocity.y);
         }
+    }
+
+    public void SetActiveMainMember(bool active) {
+        partyMembers[0].GetComponent<PlayerMovement>().isActive = active;
     }
 
     private void AnimateFollower(Transform member, Vector3 velocity) {

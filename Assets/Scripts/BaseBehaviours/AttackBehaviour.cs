@@ -6,7 +6,7 @@ public abstract class AttackBehaviour : MonoBehaviour {
 
     [HideInInspector] public EnemyController enemy;
 
-    [SerializeField] protected float cooldown;
+    [SerializeField] protected float cooldown = 1;
 
     protected bool isOnCooldown;
 
@@ -14,13 +14,14 @@ public abstract class AttackBehaviour : MonoBehaviour {
 
     public bool IsAttacking { get; protected set; }
 
-    private void Awake() {
+    private void OnEnable() {
         timerCooldown.time = cooldown;
         timerCooldown.triggerAction = () => {
             timerCooldown.Reset();
             isOnCooldown = false;
-            Debug.Log("Fired Timer Cooldown Reset");
         };
+        IsAttacking = false;
+        isOnCooldown = false;
     }
 
     private void Update() {

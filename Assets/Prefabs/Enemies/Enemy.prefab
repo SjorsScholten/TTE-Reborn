@@ -56,6 +56,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -145,6 +146,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -222,8 +224,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: EnemyMovement+OnMoveEnemy, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
   OnAttack:
     m_PersistentCalls:
       m_Calls:
@@ -238,8 +238,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: EnemyMovement+OnMoveEnemy, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
 --- !u!114 &3023555003810348738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,6 +268,10 @@ MonoBehaviour:
   stats: {fileID: 11400000, guid: 68aad8d227925f743baf38f0a57e574f, type: 2}
   immuneToSource: 0
   health: 0
+  receivesKnockback: 1
+  knockbackMultiplier: 0
+  stunTimer: 0
+  iFrames: 0
   OnDestroyedEvent:
     m_PersistentCalls:
       m_Calls:
@@ -284,13 +286,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: Destroyable+OnDestroyed, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
   OnDamagedEvent:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Destroyable+OnDamaged, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
+  OnKnockbackEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1332502093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -303,6 +304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9fb799f27334cb4295067dd77d96168, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectToDestroy: {fileID: 0}
 --- !u!114 &6058017218382234552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -440,6 +442,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageSource: 256
   stats: {fileID: 11400000, guid: 431b0b1243c61bd4492648f4cb2b0f01, type: 2}
+  parent: {fileID: 0}
 --- !u!114 &3821844161231237259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -472,8 +475,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: TriggerReporter+OnTriggerEnter, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   onTriggerExitEvent:
     m_PersistentCalls:
       m_Calls:
@@ -488,5 +489,3 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: TriggerReporter+OnTriggerExit, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null

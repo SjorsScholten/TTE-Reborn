@@ -2,48 +2,47 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Damager : MonoBehaviour
-{
+public class Damager : MonoBehaviour {
 
-    [SerializeField]
-    [EnumFlag]
-    private DamageSource damageSource;
+    [SerializeField] [EnumFlag] private DamageSource damageSource;
 
-    [SerializeField]
-    private BaseStats stats;
+    [SerializeField] private BaseStats stats;
+
+    [SerializeField] private Transform parent;
 
     private List<Collider2D> collisions;
 
-    private void Awake()
-    {
+    private void Awake() {
         collisions = new List<Collider2D>();
     }
 
-    public void OnEnter(Collider2D collision)
-    {        
+    public void OnEnter(Collider2D collision) {
         Destroyable destroyable = collision.GetComponent<Destroyable>();
 
+        if (destroyable == null) return; //Object can not take damage, so return.
+
         int damage = Tools.GetDamage(damageSource, stats);
-        destroyable.Damage(damage, this.transform, damageSource);
+        destroyable.Damage(damage, parent, damageSource);
+
     }
 
-    public void DamageCollisions()
-    {
-        foreach (Collider2D col in collisions)
-        {
+    public void DamageCollisions() {
+        foreach (Collider2D col in collisions) {
             OnEnter(col);
         }
     }
 
-    public void AddCollision(Collider2D collision)
-    {
+    public void AddCollision(Collider2D collision) {
         collisions.Add(collision);
         Debug.Log("Col with " + collision.name);
     }
 
-    public void RemoveCollision(Collider2D collision)
-    {
+    public void RemoveCollision(Collider2D collision) {
         collisions.Remove(collision);
         Debug.Log("removed" + collision.name);
+    }
+
+    public void SetParent(Transform parent) {
+        this.parent = parent;
     }
 }

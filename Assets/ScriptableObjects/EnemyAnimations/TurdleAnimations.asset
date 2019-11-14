@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2dbc723ee7db9042b19404ee66cd963, type: 3}
+  m_Name: TurdleAnimations
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 3837236116313628565, guid: 4c7b619c292cd4c4bb5df3411393ef89, type: 3}
+  idleAnimation: TurdleIdle
+  walkAnimation: TurdleIdle
+  attackAnimation: TurdleThrow
+  hurtAnimation: TurdleOuch
+  choiceIndexIdle: 0
+  choiceIndexWalk: 0
+  choiceIndexAttack: 1
+  choiceIndexHurt: 2

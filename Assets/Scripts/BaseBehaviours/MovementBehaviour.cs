@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public abstract class MovementBehaviour : MonoBehaviour {
 
@@ -8,9 +9,11 @@ public abstract class MovementBehaviour : MonoBehaviour {
 
     protected MultidirectionalTransformMovement mtm;
 
-    private void Awake() {
+    private void OnEnable() {
         mtm = GetComponent<MultidirectionalTransformMovement>();
     }
 
     public abstract void Move(Transform target);
+
+    public abstract List<Type> OnDestroy();
 }
