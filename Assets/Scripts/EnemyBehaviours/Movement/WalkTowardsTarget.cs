@@ -11,9 +11,12 @@ public class WalkTowardsTarget : MovementBehaviour {
         mtm.Move(velocity.normalized);
 
         if (velocity.normalized.x <= 0) {
-            transform.localScale = new Vector3(-1f, 1f, 1f);
+            if (transform.localScale.x >= 0)
+            {
+                transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+            }
         } else {
-            transform.localScale = new Vector3(1f, 1f, 1f);
+            transform.localScale = new Vector3(Math.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z); ;
         }
     }
 

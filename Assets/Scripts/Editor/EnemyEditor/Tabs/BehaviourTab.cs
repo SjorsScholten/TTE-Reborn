@@ -80,6 +80,8 @@ public class BehaviourTab : Tab
     {
         if (controller != null)
         {
+            //GUILayout.BeginVertical();
+            scrollpos = GUILayout.BeginScrollView(scrollpos, false, true, null);
             //UI Code here
             for (int i = 0; i < behaviours.Count; i++)
             {
@@ -98,6 +100,8 @@ public class BehaviourTab : Tab
                     SetRefference(i);
                 }
             }
+            GUILayout.FlexibleSpace();
+            GUILayout.EndScrollView();
         }
     }
 
@@ -167,19 +171,19 @@ public class BehaviourTab : Tab
          switch (behaviourIndex)
         {
             case 0:
-                UnityEngine.Object.DestroyImmediate(controller.GetComponent<IdleBehaviour>());
+                UnityEngine.Object.DestroyImmediate(controller.GetComponent<IdleBehaviour>(), true);
                 break;
             case 1:
                 MovementBehaviour behaviour = controller.GetComponent<MovementBehaviour>();
                 List<Type> types = behaviour.OnDestroy();
-                UnityEngine.Object.DestroyImmediate(behaviour);
+                UnityEngine.Object.DestroyImmediate(behaviour, true);
                 DestroyTypes(types);
                 break;
             case 2:
-                UnityEngine.Object.DestroyImmediate(controller.GetComponent<AttackBehaviour>());
+                UnityEngine.Object.DestroyImmediate(controller.GetComponent<AttackBehaviour>(), true);
                 break;
             case 3:
-                UnityEngine.Object.DestroyImmediate(controller.GetComponent<AggroBehaviour>());
+                UnityEngine.Object.DestroyImmediate(controller.GetComponent<AggroBehaviour>(), true);
                 break;
         }
     }
@@ -190,7 +194,7 @@ public class BehaviourTab : Tab
         {
             foreach (Type type in types)
             {
-                UnityEngine.Object.DestroyImmediate(controller.GetComponent(type));
+                UnityEngine.Object.DestroyImmediate(controller.GetComponent(type), true);
             }
         }
     }

@@ -301,9 +301,9 @@ MonoBehaviour:
   immuneToSource: 0
   health: 0
   receivesKnockback: 1
-  knockbackMultiplier: 6
+  knockbackMultiplier: 3
   stunTimer: 0.35
-  iFrames: 3.9
+  iFrames: 1.5
   OnDestroyedEvent:
     m_PersistentCalls:
       m_Calls:
@@ -428,7 +428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b55fb5fe38121d54691e996245cbbdcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
+  moveSpeed: 4
 --- !u!114 &356326692
 MonoBehaviour:
   m_ObjectHideFlags: 0

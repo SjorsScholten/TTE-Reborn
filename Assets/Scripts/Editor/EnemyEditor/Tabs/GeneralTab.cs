@@ -13,6 +13,7 @@ public class GeneralTab : Tab
     private EnemyAnimations animations;
     private EnemyController controller;
     private MultidirectionalTransformMovement movement;
+    private Destroyable destroyable;
 
     public GeneralTab()
     {
@@ -21,7 +22,9 @@ public class GeneralTab : Tab
 
     public override void DisplayTab()
     {
+        scrollpos = GUILayout.BeginScrollView(scrollpos, false, true, null);
         //UI Code here
+        EditorGUILayout.LabelField("General Settings", EditorStyles.boldLabel);
         objectName = EditorGUILayout.TextField("Name of Object", objectName);
         ChangeName();
 
@@ -30,6 +33,22 @@ public class GeneralTab : Tab
         if (movement != null)
         {
             movement.MoveSpeed = EditorGUILayout.FloatField("Speed", movement.MoveSpeed);
+            GUILayout.Space(5);
+        }
+
+        if (destroyable != null)
+        {
+            destroyable.receivesKnockback = EditorGUILayout.Toggle("Recieves Knockback", destroyable.receivesKnockback);
+            GUILayout.Space(5);
+            if (destroyable.receivesKnockback)
+            {
+                destroyable.knockbackMultiplier = EditorGUILayout.FloatField("Knockback Multiplier", destroyable.knockbackMultiplier);
+                GUILayout.Space(5);
+            }
+
+            destroyable.stunTimer = EditorGUILayout.FloatField("Stun Timer", destroyable.stunTimer);
+            GUILayout.Space(5);
+            destroyable.iFrames = EditorGUILayout.FloatField("IFrames", destroyable.iFrames);
             GUILayout.Space(5);
         }
 
@@ -44,6 +63,7 @@ public class GeneralTab : Tab
             animations = EditorGUILayout.ObjectField("Animations", animations, typeof(EnemyAnimations), false) as EnemyAnimations;
             ChangeAnimation();
         }
+        GUILayout.EndScrollView();
     }
 
     public override void OnSelectionChanged(GameObject selection)
@@ -52,6 +72,7 @@ public class GeneralTab : Tab
         this.selection = selection;
         controller = selection.GetComponent<EnemyController>();
         animator = selection.GetComponent<Animator>();
+        destroyable = selection.GetComponent<Destroyable>();
         if (controller != null)
         {
             animations = controller.animations;

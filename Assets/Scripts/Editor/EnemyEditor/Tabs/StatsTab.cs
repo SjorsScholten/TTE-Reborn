@@ -17,6 +17,7 @@ public class StatsTab : Tab
     {
         if (destroyable != null)
         {
+            scrollpos = GUILayout.BeginScrollView(scrollpos, false, true, null);
             stats = EditorGUILayout.ObjectField("Stats Object", stats, typeof(BaseStats), true) as BaseStats;
             SaveStats();
             if (stats != null)
@@ -31,6 +32,7 @@ public class StatsTab : Tab
                 stats.luck = EditorGUILayout.IntField("Luck", stats.luck);
             }
             GUILayout.Space(5);
+            GUILayout.EndScrollView();
         }
     }
 

@@ -367,6 +367,7 @@ MonoBehaviour:
   attack: {fileID: 943518129458820656}
   aggro: {fileID: 356326690}
   animations: {fileID: 11400000, guid: 47a234061dd45e7478ccf972264d3e89, type: 2}
+  animator: {fileID: 0}
   pathfinding: {fileID: 1401643325}
 --- !u!114 &356326690
 MonoBehaviour:
@@ -381,13 +382,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 0}
+  requiresLOS: 0
   layerMask:
     serializedVersion: 2
     m_Bits: 2048
+  LOSMask:
+    serializedVersion: 2
+    m_Bits: 0
+  alertIcon: {fileID: 5347029954744862445}
   aggroRadius: 3
   deAggroRadius: 4.5
-  requiresLOS: 0
-  alertIcon: {fileID: 5347029954744862445}
 --- !u!114 &356326691
 MonoBehaviour:
   m_ObjectHideFlags: 0

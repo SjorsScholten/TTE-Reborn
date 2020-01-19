@@ -6,6 +6,7 @@ public abstract class Tab
 {
     protected string tabName = "";
     protected Rect windowSize;
+    protected Vector2 scrollpos;
 
     public abstract void DisplayTab();
 

@@ -13,7 +13,7 @@ public class EnemyEditor : EditorWindow
 
     private string path = "Assets/Prefabs/Enemies/";
 
-    private void OnEnable()
+    private void Awake()
     {
         //Gets tabs
         tabs = new Tab[3] { new GeneralTab() ,new StatsTab(), new BehaviourTab() };
@@ -27,6 +27,11 @@ public class EnemyEditor : EditorWindow
         }
 
         Selection.selectionChanged += SelectionChanged;
+    }
+
+    private void OnDestroy()
+    {
+        Selection.selectionChanged -= SelectionChanged;
     }
 
     [MenuItem("TTE/Enemy Editor")]
@@ -159,9 +164,13 @@ public class EnemyEditor : EditorWindow
     {
         GameObject enemy = new GameObject("New Enemy");
         enemy.AddComponent<Destroyable>();
-        enemy.AddComponent<EnemyController>();
+        EnemyController controller = enemy.AddComponent<EnemyController>();
+        enemy.AddComponent<SpriteRenderer>();
+        Animator animator = enemy.AddComponent<Animator>();
         enemy.AddComponent<MultidirectionalTransformMovement>();
         enemy.AddComponent<SimpleDestroyable>();
+
+        controller.animator = animator;
 
         Rigidbody2D rigidbody2D = enemy.AddComponent<Rigidbody2D>();
         rigidbody2D.gravityScale = 0;
